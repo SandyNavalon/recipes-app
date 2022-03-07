@@ -4,15 +4,18 @@ import React from "react";
 import { useAuthDispatch, logoutUser, useAuthState } from "../../Context/context.index";
 import { useNavigate } from "react-router-dom";
 
-function Dashboard(props) {
+function Dashboard(_props) {
   let navigate = useNavigate();
   const dispatch = useAuthDispatch(); // lee el método dispatch del contexto
-  const userDetails = useAuthState(); //lee los detalles del usuario del contexto
+  const user = useAuthState(); //lee los detalles del usuario del contexto
+const email = useAuthState();
+
+console.log('user:', user);
 
   const handleLogout = () => {
     logoutUser(dispatch); //llama a la acción logout
     navigate("/"); //navega de nuevo al login sin usuario
-  };
+  }
   return (
     <div style={{ padding: 10 }}>
       <div >
@@ -21,7 +24,10 @@ function Dashboard(props) {
           Logout
         </button>
       </div>
-      <p>Welcome {userDetails.user.email}</p>
+      <p>Welcome {user.user}</p>
+      <p>Tu email es {email.email}</p>
+
+      <p>tus recetas son {user.recipes}</p>
     </div>
   );
 }

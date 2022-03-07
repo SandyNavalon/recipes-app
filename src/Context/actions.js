@@ -1,6 +1,6 @@
 // Context/actions.js
 
-const ROOT_URL = 'https://secret-hamlet-03431.herokuapp.com';
+const ROOT_URL = 'http://localhost:4000';
 
 
 export async function loginUser(dispatch, loginPayload) {
@@ -12,7 +12,7 @@ export async function loginUser(dispatch, loginPayload) {
 
     try {
         dispatch({ type: 'REQUEST_LOGIN' });
-        let response = await fetch(`${ROOT_URL}/login`, requestOptions);
+        let response = await fetch(`${ROOT_URL}/user/login`, requestOptions);
         let data = await response.json();
 
         if (data.user) {

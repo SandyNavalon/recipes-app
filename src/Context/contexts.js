@@ -9,7 +9,6 @@ export function useAuthState() {
     if (context === undefined) {
         throw new Error("useAuthState debe utilizarse dentro de un AuthProvider");
     }
-
     return context;
 }
 
@@ -19,7 +18,7 @@ export function useAuthDispatch() {
     if (context === undefined) {
         throw new Error("useAuthDispatch debe utilizarse dentro de un AuthProvider");
     }
-
+   
     return context;
 }
 
