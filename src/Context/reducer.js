@@ -48,6 +48,8 @@ export const AuthReducer = (initialState, action) => {
       return {
         ...initialState,
         user: action.payload.user,
+        email: action.payload.email,
+        recipes: action.payload.recipes,
         token: action.payload.auth_token,
         loading: false
       };
