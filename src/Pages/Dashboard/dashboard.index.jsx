@@ -35,6 +35,8 @@ console.log('user:', user);
       <p>Tu email es {email.email}</p>
 
       <div>
+        <hr></hr>
+      <h1>Recetas:</h1>
       <ul>{recipesList}</ul>
 
       </div>

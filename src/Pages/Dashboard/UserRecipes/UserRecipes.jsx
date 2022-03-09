@@ -43,7 +43,7 @@ function UserRecipes(props) {
     return (
         <div >
             <div >
-                <h1>Recetas:</h1>
+                
 
                 <div >
 
