@@ -5,6 +5,7 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import routes from "./Config/routes.js";
 import AppRoutes from "./Components/AppRoute";
 import { AuthProvider } from "./Context/context.index";
+import AuthIndex from "./Pages/Register/Register.index.jsx";
 
 function App() {
   return (

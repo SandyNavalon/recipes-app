@@ -50,9 +50,11 @@ function UserRecipes(props) {
                     <h1>{recipe.title}</h1>
                     <h2>type: {recipe.type}</h2>
                     <p>category: {recipe.category}</p>
-                    <p>ingredients: {recipe.ingredients}</p>
+                    <ul>ingredients: {recipe.ingredients.map((item, index) => {
+                        return (<li key={index}>{item}</li>)
+                    })}</ul>
                     <p>{recipe.description}</p>
-                    <img alt={recipe.title} src={recipe.img}></img>
+                    <img alt={recipe.title} src={recipe.img} width="300px"></img>
 
 
                 </div>
