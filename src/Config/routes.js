@@ -1,6 +1,6 @@
 import React from "react";
+import AddRecipe from "../Pages/AddRecipe/addRecipe.index";
 import Login from '../Pages/Login/login.index'
-import Dashboard from '../Pages/Dashboard/dashboard.index'
 import PageNotFound from '../Pages/NotFound/notFound.index'
 import Register from "../Pages/Register/Register.index";
 
@@ -25,7 +25,13 @@ const routes = [
       path:"/register",
       element: <Register/>,
       isPrivate: false
-    }
+    },
+
+    {
+      path:"/dashboard/add-recipes",
+      element: <AddRecipe/>,
+      isPrivate: false
+    },
   ];
-  
+
   export default routes;

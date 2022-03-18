@@ -1,5 +1,3 @@
-// Context/reducer.js
-
 import React, { useReducer } from "react";
 
 //
