@@ -1,30 +1,28 @@
-// Context/reducer.js
-
 import React, { useReducer } from "react";
 
 //
 let user = localStorage.getItem("currentUser")
   ? JSON.parse(localStorage.getItem("currentUser")).user
   : "";
-console.log('user:', user);
+  // console.log('user:', user);
 
   let email = localStorage.getItem("currentUser")
   ? JSON.parse(localStorage.getItem("currentUser")).email
   : "";
 
-  console.log('email:', email);
+  // console.log('email:', email);
 
   let recipes = localStorage.getItem("currentUser")
   ? JSON.parse(localStorage.getItem("currentUser")).recipes
   : "";
 
-  console.log('recipes:', recipes);
+  // console.log('recipes:', recipes);
 
 let token = localStorage.getItem("currentUser")
   ? JSON.parse(localStorage.getItem("currentUser")).auth_token
   : "";
 
-  console.log('token->', token);
+  // console.log('token->', token);
   //punto de partida
 export const initialState = {
   user: "" || user,

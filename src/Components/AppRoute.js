@@ -7,7 +7,12 @@ import Dashboard from "../Pages/Dashboard/dashboard.index";
 function AppRoutes() {
   const { user } = useAuthState();
 
-  return <>{user ? <Dashboard /> : <Navigate to="/" />}</>;
+  return(
+    <>
+      {user ? <Dashboard /> : <Navigate to="/" />}
+    </>
+
+  );
 }
 
 export default AppRoutes;
