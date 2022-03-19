@@ -2,7 +2,7 @@
 
 import React from "react";
 import { useAuthDispatch, logoutUser, useAuthState } from "../../Context/context.index";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import UserRecipes from "./UserRecipes/UserRecipes";
 
 function Dashboard(_props) {
@@ -15,8 +15,6 @@ const recipesItem = user.recipes
 const recipesList = recipesItem.map((item)=>
 <li key={item.toString()}><UserRecipes name={item}/></li>
 );
-
-
 console.log('user:', user);
 
   const handleLogout = () => {
@@ -24,9 +22,12 @@ console.log('user:', user);
     navigate("/"); //navega de nuevo al login sin usuario
   }
   return (
+    <>
     <div style={{ padding: 10 }}>
       <div >
         <h1>Dashboard</h1>
+        <Link to="/dashboard/add-recipe"><button>Añadir Receta</button></Link>
+
         <button  onClick={handleLogout}>
           Logout
         </button>
@@ -38,10 +39,11 @@ console.log('user:', user);
         <hr></hr>
       <h1>Recetas:</h1>
       <ul>{recipesList}</ul>
-
       </div>
+      
     </div>
-  );
+    {/* {user ? <AddRecipe/> : <Navigate to="/"}*/ }
+    </>  );
 }
 
 export default Dashboard;

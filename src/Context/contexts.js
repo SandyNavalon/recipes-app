@@ -9,7 +9,8 @@ export function useAuthState() {
     if (context === undefined) {
         throw new Error("useAuthState debe utilizarse dentro de un AuthProvider");
     }
-    return context;
+    return  context
+    
 }
 
 
