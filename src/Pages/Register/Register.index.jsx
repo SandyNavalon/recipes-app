@@ -8,7 +8,7 @@ const Register = () => {
 
 const handleSubmit = (data) => {
 registerService(data)
-} 
+}
 
   return (
     <>

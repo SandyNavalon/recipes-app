@@ -32,7 +32,7 @@ function Login(props) {
         <form>
           <div>
             <div>
-              <label htmlFor="email">Username</label>
+              <label htmlFor="email">Email</label>
               <input
                 type="text"
                 id="email"
