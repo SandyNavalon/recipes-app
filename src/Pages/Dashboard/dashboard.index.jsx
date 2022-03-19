@@ -15,7 +15,7 @@ function Dashboard(_props) {
 
   const recipesItem = user.recipes
   const recipesList = recipesItem.map((item)=>
-  <li class='recipeList 'key={item.toString()}><UserRecipes name={item}/></li>
+  <li className='recipeList 'key={item.toString()}><UserRecipes name={item}/></li>
   );
 
 
@@ -39,7 +39,7 @@ function Dashboard(_props) {
 
       <div>
         <hr></hr>
-      <div class='recipebtns'>
+      <div className='recipebtns'>
           <h1>Recetas</h1>
           <Link to='/dashboard/add-recipes'>añadir receta</Link>
       </div>

@@ -2,7 +2,6 @@
 import React, { useState } from 'react';
 import { Navigate } from 'react-router-dom';
 import AutoCompleteText from '../../Components/IngredientsList/AutoCompleteText';
-import HideableText from '../../Components/IngredientsList/HideableText';
 import { useAuthState } from '../../Context/contexts';
 
 import '../../Styles/form.scss'
@@ -54,7 +53,7 @@ const AddRecipe = ({ recipes }) => {
 
                         <label>Categoría</label>
                         <select name='category' value={state.category} onChange={handleInput}>
-                            <option value='' disabled selected>Selecciona una opción</option>
+                            <option value='' defaultValue={''}>Selecciona una opción</option>
                             <option value='desayuno'>Desayuno</option>
                             <option value='almuerzo'>Almuerzo</option>
                             <option value='merienda'>Merienda</option>
@@ -64,7 +63,7 @@ const AddRecipe = ({ recipes }) => {
 
                         <label>Tipo</label>
                         <select name='type' value={state.type} onChange={handleInput}>
-                            <option value='' disabled selected>Selecciona una opción</option>
+                            <option value='' defaultValue={''}>Selecciona una opción</option>
                             <option value='italiana'>Italiana</option>
                             <option value='mediterranea'>Mediterránea</option>
                             <option value='oriental'>Oriental</option>
@@ -73,14 +72,15 @@ const AddRecipe = ({ recipes }) => {
                         <label>Ingredientes</label>
                         <AutoCompleteText
                         />
+                        <button>añadir</button>
 
 
                         <label>Receta</label>
                         <textarea name='description' value={state.description} onChange={handleInput}></textarea>
 
-                        <input type='file' name='recipe-img' value={state.img} onChange={handleInput}></input>
+                        <input type='file' name='recipe-img' onChange={handleInput}></input>
 
-                        <button type='submit'> Guardar receta</button>
+                        <button type='submit'>Guardar receta</button>
 
                     </fieldset>
 

@@ -8,8 +8,9 @@ export default class AutoCompleteText extends React.Component {
         this.ingredients = ingredientsList;
 
         this.state = {
+            text: '',
             suggestions: [],
-            text:''
+            ingredients: [],
         };
     }
 
@@ -26,7 +27,8 @@ export default class AutoCompleteText extends React.Component {
 
     suggestionSelected (value) {
         this.setState(() => ({
-            text: value,
+            ingredients:[...this.state.ingredients, value],
+            text:'',
             suggestions:[],
         }))
     }
