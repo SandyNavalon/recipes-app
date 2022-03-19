@@ -1,11 +1,12 @@
 // Pages/Dashboard/index.js
 import React from "react";
 import { useAuthDispatch, logoutUser, useAuthState } from "../../Context/context.index";
-import { Link, useNavigate, useRoutes } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import UserRecipes from "./UserRecipes/UserRecipes";
 
 import '../../Styles/dashboard.scss'
-import AddRecipe from "../AddRecipe/addRecipe.index";
+
+const ROOT = 'http://localhost:3000/';
 
 function Dashboard(_props) {
   let navigate = useNavigate();
@@ -19,7 +20,7 @@ function Dashboard(_props) {
   );
 
 
-  console.log('user:', user);
+
 
   const handleLogout = () => {
     logoutUser(dispatch); //llama a la acción logout
@@ -42,6 +43,7 @@ function Dashboard(_props) {
       <div className='recipebtns'>
           <h1>Recetas</h1>
           <Link to='/dashboard/add-recipes'>añadir receta</Link>
+        
       </div>
         <ul>{recipesList}</ul>
       </div>

@@ -2,6 +2,7 @@ import React from "react";
 import AddRecipe from "../Pages/AddRecipe/addRecipe.index";
 import Login from '../Pages/Login/login.index'
 import PageNotFound from '../Pages/NotFound/notFound.index'
+import RecipeDetail from "../Pages/RecipeDetail/recipeDetail.index";
 import Register from "../Pages/Register/Register.index";
 
 // Config/routes.js
@@ -30,6 +31,11 @@ const routes = [
     {
       path:"/dashboard/add-recipes",
       element: <AddRecipe/>,
+      isPrivate: false
+    },
+   {
+      path:"/dashboard/detail/:id",
+      element: <RecipeDetail/>,
       isPrivate: false
     },
   ];
