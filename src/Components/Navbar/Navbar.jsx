@@ -50,7 +50,7 @@ const Navbar = () => {
                     <div className='navbar__item'>
                         <p>Bienvenida/o</p>
 
-                        <div className='nav__btn'>
+                        <div className='navbar__item-btn'>
                             {/* la className afecta a todos los endpoints porque van con '/' */}
                             <NavLink
                                 className={({isActive}) => (isActive ? 'active' : 'inactive')}

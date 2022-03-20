@@ -4,7 +4,7 @@ import React, { useReducer } from "react";
 let user = localStorage.getItem("currentUser")
   ? JSON.parse(localStorage.getItem("currentUser")).user
   : "";
-// console.log('user:', user);
+  // console.log('user:', user);
 
 let _id = localStorage.getItem("currentUser")
 ? JSON.parse(localStorage.getItem("currentUser"))._id

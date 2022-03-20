@@ -15,7 +15,7 @@ function App() {
           {routes.map((route) => (
             <Route key={route.path} path={route.path} element={route.element} />
           ))}
-          <Route element={<AppRoutes />} path="/dashboard" />
+          <Route element={<AppRoutes />} path="/dashboard/*" />
           <Route element={<AppRoutes />} path="/dashboard/add-recipe" />
         </Routes>
       </Router>

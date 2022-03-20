@@ -1,7 +1,7 @@
 // Pages/Dashboard/index.js
 import React from "react";
-import { useAuthState } from "../../Context/context.index";
-import { Link } from "react-router-dom";
+import { useAuthDispatch, logoutUser, useAuthState } from "../../Context/context.index";
+import { Link, useNavigate } from "react-router-dom";
 import UserRecipes from "./UserRecipes/UserRecipes";
 
 import '../../Styles/dashboard.scss'
@@ -14,19 +14,14 @@ function Dashboard(_props) {
 
   const recipesItem = user.recipes
   const recipesList = recipesItem.map((item)=>
-  <li className='recipeList 'key={item.toString()}><UserRecipes name={item}/></li>
+  <li className='recipeList' key={item.toString()}><UserRecipes name={item}/></li>
   );
 
 
-  // console.log('user:', user);
-
-  // const handleLogout = () => {
-  //   logoutUser(dispatch); //llama a la acción logout
-  //   navigate("/"); //navega de nuevo al login sin usuario
-  // }
-
   return (
     <div style={{ padding: 10 }}>
+
+        <h1>Dashboard</h1>
       <div>
         <hr></hr>
       <div className='recipebtns'>

@@ -4,6 +4,7 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { loginUser, useAuthState, useAuthDispatch } from "../../Context/context.index";
 import styles from "./login.module.css";
+// import RecipeList from "../../Components/RecipeList/RecipeList";
 
 function Login(props) {
   const [email, setEmail] = useState("");
@@ -56,6 +57,9 @@ function Login(props) {
             login
           </button>
         </form>
+      </div>
+
+      <div>
       </div>
     </div>
   );
