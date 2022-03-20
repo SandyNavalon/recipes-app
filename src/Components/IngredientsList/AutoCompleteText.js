@@ -23,25 +23,72 @@ export default class AutoCompleteText extends React.Component {
             suggestions = this.ingredients.sort().filter(v => regex.test(v));
             }
             this.setState(() => ({ suggestions, text: value }));
+
+            // console.log(value)
     }
 
     suggestionSelected (value) {
+
+        //guardo el value elegido/escrito en input
+        // const ingredientChoosen = value;
+        // let selectionIngredients = [];
+
         this.setState(() => ({
             ingredients:[...this.state.ingredients, value],
             text:'',
             suggestions:[],
         }))
+
+        // return(
+        //     <>
+        //         <div>
+        //             <p>{selectionIngredients}</p>
+        //         </div>
+        //     </>
+        // )
     }
+
+    ingredientsSelected (value) {
+        this.setState(() => ({
+            ingredients:[...this.state.ingredients, value],
+            // ingredientsChoosen: []
+        }))
+    }
+
+    renderSelected () {
+        const { ingredients } =this.state;
+        if(ingredients.length === 0) {
+            return null;
+        }
+
+        return (
+            <>
+            <div>
+            <h2>LISTA INGREDIENTES</h2>
+                <ul>
+                    {ingredients.map((item) => <li key={item.id}>{item}</li>)}
+                </ul>
+            </div>
+
+            </>
+        )
+
+    }
+
 
     renderSuggestions () {
         const { suggestions } = this.state;
         if(suggestions.length === 0) {
             return null;
+
         }
         return (
-            <ul>
-                {suggestions.map((item) => <li onClick={() => this.suggestionSelected(item)}>{item}</li>)}
-            </ul>
+            <>
+                <ul>
+                    {suggestions.map((item) => <li key={item.id} onClick={() => this.suggestionSelected(item)}>{item}</li>)}
+                </ul>
+
+            </>
         )
     }
 
@@ -50,10 +97,13 @@ export default class AutoCompleteText extends React.Component {
 
         return (
             <div>
-                <input value={text} onChange={this.onTextChanged} type='text' />
-                    {this.renderSuggestions()}
+                <input value={text} onChange={this.onTextChanged} type='text'/>
+                <div>{this.renderSuggestions()}</div>
+
+                <div>{this.renderSelected()}</div>
+
             </div>
         )
-    }
 
+    }
 }

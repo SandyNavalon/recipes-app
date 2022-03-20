@@ -41,11 +41,9 @@ function RegisterUser({handleSubmit}) {
         // pero hoy solo los sacamos en un alert.
         onSubmit: (values) => {
             handleSubmit({...values /*, image:"https://cambodiaict.net/wp-content/uploads/2019/12/computer-icons-user-profile-google-account-photos-icon-account-150x150.jpg"*/});
-            alert(JSON.stringify(values, null, 2));
+            // alert(JSON.stringify(values, null, 2));
         },
     }
-
-
 
     );
 
@@ -66,7 +64,6 @@ function RegisterUser({handleSubmit}) {
                     <div>{formik.errors.email}</div>
                 ) : null}
 
-                
                 <label htmlFor="user">User</label>
                 <input
                     id="user"

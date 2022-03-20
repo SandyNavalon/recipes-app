@@ -4,7 +4,7 @@ import Axios from 'axios';
 
 function UserRecipes(props) {
     const recipeId = props.name;
-    console.log('props:',recipeId);
+    // console.log('props:',recipeId);
 
     const [error, setError] = useState(null);
     const [isLoaded, setIsLoaded] = useState(false);
@@ -15,7 +15,7 @@ function UserRecipes(props) {
         category: "",
         ingredients: [],
         description: "",
-        img: ""
+        img: "",
     });
 
 
