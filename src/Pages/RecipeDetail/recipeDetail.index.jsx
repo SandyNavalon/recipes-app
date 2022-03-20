@@ -1,6 +1,8 @@
 import React from 'react'
 import { useEffect, useState } from 'react';
 import Axios  from 'axios';
+import { Link } from 'react-router-dom';
+import { useAuthState } from '../../Context/contexts';
 
 
 const RecipeDetail = () => {
@@ -8,6 +10,9 @@ const RecipeDetail = () => {
   //sacamos el id de la url del browser troceándolo
   const url = window.location.href;
   const urlId = url.slice(-24);
+
+  //securizamos ruta usando user
+  const {user} = useAuthState();
 
   const [error, setError] = useState(null);
   const [isLoaded, setIsLoaded] = useState(false);
@@ -57,6 +62,8 @@ const RecipeDetail = () => {
       <p>category: {recipe.category}</p>
 
       <p>{recipe.description}</p>
+      <Link to="/dashboard/">Volver </Link>
+      {user ? <Link to="*"> Editar</Link> : null}
     </div>
   )
 }

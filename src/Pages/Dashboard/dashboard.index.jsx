@@ -6,7 +6,6 @@ import UserRecipes from "./UserRecipes/UserRecipes";
 
 import '../../Styles/dashboard.scss'
 
-const ROOT = 'http://localhost:3000/';
 
 function Dashboard(_props) {
   let navigate = useNavigate();
@@ -16,7 +15,7 @@ function Dashboard(_props) {
 
   const recipesItem = user.recipes
   const recipesList = recipesItem.map((item)=>
-  <li className='recipeList 'key={item.toString()}><UserRecipes name={item}/></li>
+  <li className='recipeList' key={item.toString()}><UserRecipes name={item}/></li>
   );
 
 
