@@ -26,8 +26,15 @@ const Navbar = () => {
             <div className='navbar__item-btn'>
                 <NavLink
                 className={({isActive}) => (isActive ? 'active' : 'inactive')}
-                to="/dashboard">
+                to="/">
                 ver recetas
+                </NavLink>
+            </div>
+            <div className='navbar__item-btn'>
+                <NavLink
+                className={({isActive}) => (isActive ? 'active' : 'inactive')}
+                to="/dashboard">
+                mi recetario
                 </NavLink>
             </div>
 
