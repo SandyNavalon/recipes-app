@@ -31,7 +31,7 @@ const RecipeDetail = () => {
   useEffect(() => {
     Axios(`http://localhost:4000/recipes/${urlId}`)
       .then(res => {
-       
+
         setRecipe({
 
           title: res.data.title,
@@ -52,17 +52,17 @@ const RecipeDetail = () => {
 
   return (
     <div>
-      
-      <h1>Nombre{recipe.title}</h1>
-<img alt={recipe.title} src={recipe.img} width="500px"></img>
-      <h2>type: {recipe.type}</h2>
-      <ul>ingredients: {recipe.ingredients.map((item, index) => {
+
+      <h1>{recipe.title}</h1>
+      <img alt={recipe.title} src={recipe.img} width="500px"></img>
+      <h2>Tipo: {recipe.type}</h2>
+      <ul>Ingredientes: {recipe.ingredients.map((item, index) => {
         return (<li key={index}>{item}</li>)
       })}</ul>
-      <p>category: {recipe.category}</p>
+      <p>Categoría: {recipe.category}</p>
 
       <p>{recipe.description}</p>
-      <Link to="/dashboard/">Volver </Link>
+      <Link to="/dashboard/"> Volver</Link>
       {user ? <Link to="*"> Editar</Link> : null}
     </div>
   )

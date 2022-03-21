@@ -1,7 +1,7 @@
 // Pages/Login/index.js
 
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { loginUser, useAuthState, useAuthDispatch } from "../../Context/context.index";
 import styles from "./login.module.css";
 // import RecipeList from "../../Components/RecipeList/RecipeList";
@@ -28,7 +28,7 @@ function Login(props) {
   return (
     <div>
       <div className={{ width: 200 }}>
-        <h1>Login Page</h1>
+        <h1>Login</h1>
         {errorMessage ? <p className={styles.error}>{errorMessage}</p> : null}
         <form>
           <div>
@@ -43,7 +43,7 @@ function Login(props) {
               />
             </div>
             <div>
-              <label htmlFor="password">Password</label>
+              <label htmlFor="password">Contraseña</label>
               <input
                 type="password"
                 id="password"
@@ -60,6 +60,10 @@ function Login(props) {
       </div>
 
       <div>
+      <h3>¿Todavía no tienes cuenta?</h3>
+      <Link to='/register'>
+      <button>Registrar</button>
+      </Link>
       </div>
     </div>
   );

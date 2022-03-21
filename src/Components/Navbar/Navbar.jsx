@@ -27,7 +27,7 @@ const Navbar = () => {
                 <NavLink
                 className={({isActive}) => (isActive ? 'active' : 'inactive')}
                 to="/dashboard">
-                DASHBOARD
+                ver recetas
                 </NavLink>
             </div>
 

@@ -1,5 +1,6 @@
 import React from "react";
 import { useFormik } from 'formik';
+import { useNavigate } from "react-router-dom";
 
 function RegisterUser({handleSubmit}) {
     const validate = (values) => {
@@ -28,7 +29,7 @@ function RegisterUser({handleSubmit}) {
         return errors;
     };
 
-
+    let navigate = useNavigate();
     const formik = useFormik({
         initialValues: {
             email: "",
@@ -41,6 +42,7 @@ function RegisterUser({handleSubmit}) {
         // pero hoy solo los sacamos en un alert.
         onSubmit: (values) => {
             handleSubmit({...values /*, image:"https://cambodiaict.net/wp-content/uploads/2019/12/computer-icons-user-profile-google-account-photos-icon-account-150x150.jpg"*/});
+            navigate('/login')
             // alert(JSON.stringify(values, null, 2));
         },
     }
@@ -49,7 +51,7 @@ function RegisterUser({handleSubmit}) {
 
     return (
         <div className="register">
-            <h1>Register</h1>
+            {/* <h1>Registro</h1> */}
             <form onSubmit={formik.handleSubmit}>
                 <label htmlFor="email">Email</label>
                 <input
@@ -64,7 +66,7 @@ function RegisterUser({handleSubmit}) {
                     <div>{formik.errors.email}</div>
                 ) : null}
 
-                <label htmlFor="user">User</label>
+                <label htmlFor="user">Usuario</label>
                 <input
                     id="user"
                     name="user"
@@ -74,7 +76,7 @@ function RegisterUser({handleSubmit}) {
                 />
 
 
-                <label htmlFor="password">Password</label>
+                <label htmlFor="password">Contraseña</label>
                 <input
                     id="password"
                     name="password"
@@ -88,7 +90,7 @@ function RegisterUser({handleSubmit}) {
                 ) : null}
 
 
-                <label htmlFor="passwordVerification">Password again</label>
+                <label htmlFor="passwordVerification">Repetir contraseña</label>
                 <input
                     id="passwordVerification"
                     name="passwordVerification"
@@ -101,7 +103,7 @@ function RegisterUser({handleSubmit}) {
                     <div>{formik.errors.passwordVerification}</div>
                 ) : null}
 
-                <button type="submit">Register</button>
+                <button type="submit">Registro</button>
             </form>
         </div>
     );

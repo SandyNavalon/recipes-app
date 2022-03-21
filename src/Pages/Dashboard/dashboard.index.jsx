@@ -20,12 +20,11 @@ function Dashboard(_props) {
 
   return (
     <div style={{ padding: 10 }}>
-
-        <h1>Dashboard</h1>
+        {/* <h1>Dashboard</h1> */}
       <div>
         <hr></hr>
       <div className='recipebtns'>
-          <h1>Recetas</h1>
+          <h1>Mis Recetas</h1>
           <Link to='/dashboard/add-recipes'>añadir receta</Link>
       </div>
         <ul>{recipesList}</ul>
