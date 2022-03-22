@@ -3,12 +3,14 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import routes from "./Config/routes.js";
 import AppRoutes from "./Components/AppRoute";
 import { AuthProvider } from "./Context/context.index";
+import Navbar from "./Components/Navbar/Navbar.jsx";
 
 
 function App() {
   return (
     <AuthProvider>
       <Router>
+      <Navbar/>
         <Routes>
           {routes.map((route) => (
             <Route key={route.path} path={route.path} element={route.element} />

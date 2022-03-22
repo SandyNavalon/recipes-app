@@ -8,8 +8,9 @@ import { Link } from "react-router-dom";
 function UserRecipes(props) {
     const recipeId = props.name;
     //const prueba = 'soy una prueba';
-    console.log('props:', recipeId);
+    // console.log('props:', recipeId);
 
+    //NO SE ESTA USANDO
     const [error, setError] = useState(null);
     const [isLoaded, setIsLoaded] = useState(false);
 
@@ -38,23 +39,16 @@ function UserRecipes(props) {
 
 
     return (
-        <div >
-            <div >
+            <div className="card">
+                <img className="card__img" alt={recipe.title} src={recipe.img}/>
 
-                <div >
-
-                    <h1>{recipe.title}</h1>
-
-
-                    <img alt={recipe.title} src={recipe.img} width="300px"></img>
-                    <Link to={`detail/${recipeId}`}><button>view detail</button></Link>
-
-
-
+                <div className="card__info">
+                    <h1 className="card__info-title">{recipe.title}</h1>
+                    <Link to={`/detail/${recipeId}`}>
+                        <button className="card__info-btn">Preparar</button>
+                    </Link>
                 </div>
-
             </div>
-        </div>
     );
 }
 

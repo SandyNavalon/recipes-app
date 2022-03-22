@@ -2,6 +2,8 @@ import React from 'react'
 import { useState, useEffect } from "react";
 import Axios from 'axios';
 import { Link } from "react-router-dom";
+import '../../Pages/Home/home.scss';
+
 //import RecipeDetail from "../../RecipeDetail/recipeDetail.index";
 const RecipeList = () => {
 
@@ -27,17 +29,19 @@ const RecipeList = () => {
     console.log('recipe:', recipe);
 
     return (
-        <>
-            <ul >
+        <div className='recipeCard'>
+            <ul className='recipeCard__list'>
                 {recipe.map((item) =>
-                <li key={item._id.toString()}>
+                <li className='recipeCard__list-item' key={item._id.toString()}>
+                    <div>
+                        <img alt={item.title} src={item.img}/>
+                    </div>
                     <h3 >{item.title}</h3>
-                    <img alt={item.title} src={item.img} width="300px"></img>
-                    <Link to={`detail/${item._id}`}><button>view detail</button></Link>
+                    <Link to={`detail/${item._id}`}><button>Preparar</button></Link>
                 </li>
                 )}
             </ul>
-        </>
+        </div>
     );
 }
 

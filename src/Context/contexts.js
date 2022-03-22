@@ -18,7 +18,7 @@ export function useAuthDispatch() {
     if (context === undefined) {
         throw new Error("useAuthDispatch debe utilizarse dentro de un AuthProvider");
     }
-   
+
     return context;
 }
 
