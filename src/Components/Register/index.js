@@ -42,7 +42,9 @@ function RegisterUser({handleSubmit}) {
         onSubmit: (values) => {
             handleSubmit({...values /*, image:"https://cambodiaict.net/wp-content/uploads/2019/12/computer-icons-user-profile-google-account-photos-icon-account-150x150.jpg"*/});
             alert(JSON.stringify(values, null, 2));
+           
         },
+        
     }
 
 

@@ -6,26 +6,29 @@ import { Link } from "react-router-dom";
 
 
 function UserRecipes(props) {
-    const recipeId = props.name;
-    //const prueba = 'soy una prueba';
-    console.log('props:', recipeId);
+    const recipeId = props.name[0];
+    const keyword = props.name[1];
+    console.log('props:', keyword);
 
-    const [error, setError] = useState(null);
-    const [isLoaded, setIsLoaded] = useState(false);
+        const [error, setError] = useState(null);
+        const [isLoaded, setIsLoaded] = useState(false);
 
     const [recipe, setRecipe] = useState({
         title: "",
-        img: ""
+        img: "",
+        ingredients: ""
     });
 
 
     useEffect(() => {
         Axios(`http://localhost:4000/recipes/${recipeId}`)
             .then(res => {
+                console.log('res:', res);
                 setRecipe({
 
                     title: res.data.title,
-                    img: res.data.img
+                    img: res.data.img,
+                    ingredients: res.data.ingredients
                 });
             },
 
@@ -34,28 +37,27 @@ function UserRecipes(props) {
                     setError(error);
                 }
             )
-    }, [])
+    }, []);
+    
 
-
+if(keyword === ''){
     return (
-        <div >
-            <div >
-
-                <div >
-
+        
+        <div>
+            <div>
+                <div>
                     <h1>{recipe.title}</h1>
-
-
+                    <h3>ingredientes</h3>
+                    <p>{recipe.ingredients}</p>
                     <img alt={recipe.title} src={recipe.img} width="300px"></img>
-                    <Link to={`detail/${recipeId}`}><button>view detail</button></Link>
-
-
-
+                    <Link to={`/detail/${recipeId}`}><button>view detail</button></Link>
                 </div>
-
             </div>
         </div>
-    );
+    );} else {
+        return (<p>aqui van recetas con el buscador</p>)
+        
+    }
 }
 
 export default UserRecipes;

@@ -24,10 +24,9 @@ const RecipeList = () => {
             )
     }, [])
 
-    console.log('recipe:', recipe);
+  
 
     return (
-        <>
             <ul >
                 {recipe.map((item) =>
                 <li key={item._id.toString()}>
@@ -37,7 +36,6 @@ const RecipeList = () => {
                 </li>
                 )}
             </ul>
-        </>
     );
 }
 
