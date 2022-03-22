@@ -13,7 +13,7 @@ export async function saveRecipeService ( recipeData ){
         formData.append('ingredients', recipeData.ingredients)
         formData.append('description', recipeData.description)
         formData.append('img', recipeData.img)
-        // formData.append('userId', recipeData.userId)
+        formData.append('userId', recipeData.userId)
 
 
         const response = await axios({

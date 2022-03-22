@@ -14,6 +14,7 @@ export default class AutoCompleteText extends React.Component {
         };
     }
 
+
     onTextChanged = (ev) => {
         const value = ev.target.value;
         let suggestions = [];
@@ -66,8 +67,9 @@ export default class AutoCompleteText extends React.Component {
                 <div>
                 <h2>LISTA INGREDIENTES</h2>
                     <ul>
-                    {ingredients.map((item) => <li key={item}>{item}</li>)}
+                    {ingredients.map((item, index) => <li key={index}>{item}</li>)}
                     </ul>
+                    {/* <button>Confirmar ingredientes</button> */}
                 </div>
 
             </>
@@ -85,7 +87,7 @@ export default class AutoCompleteText extends React.Component {
         return (
             <>
                 <ul>
-                    {suggestions.map((item) => <li key={item} onClick={() => this.suggestionSelected(item)}>{item}</li>)}
+                    {suggestions.map((item, index) => <li key={index} onClick={() => this.suggestionSelected(item)}>{item}</li>)}
                 </ul>
 
             </>
@@ -94,15 +96,13 @@ export default class AutoCompleteText extends React.Component {
 
     render () {
         const {text} = this.state;
-        const {ingredients} = this.state;
+
         return (
             <div>
                 <input value={text} onChange={this.onTextChanged} type='text'/>
                 <div>{this.renderSuggestions()}</div>
-                <div value={ingredients}>{this.renderSelected()}</div>
-
+                <div>{this.renderSelected()}</div>
             </div>
         )
-
     }
 }

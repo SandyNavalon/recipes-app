@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React from 'react';
 import { NavLink, useNavigate } from 'react-router-dom';
 import { logoutUser } from '../../Context/actions';
 import { useAuthDispatch, useAuthState } from '../../Context/contexts';
@@ -22,54 +22,55 @@ const Navbar = () => {
 
     return (
 
-        <>
-            <div className='navbar'>
-                <div className='navbar__item-btn'>
+        <div className='navbar'>
+            <div className='navbar__items'>
+                <div className='navbar__items-btn'>
                     <NavLink
                     className={({isActive}) => (isActive ? 'active' : 'inactive')}
                     to="/">
                     ver recetas
                     </NavLink>
                 </div>
-                <div className='navbar__item-btn'>
+                <div className='navbar__items-btn'>
                     <NavLink
                     className={({isActive}) => (isActive ? 'active' : 'inactive')}
                     to="/dashboard">
                     mi recetario
                     </NavLink>
                 </div>
+            </div>
 
-                { user.email ? (
-                        <div className='navbar__item'>
-                            <p>Bienvenida/o {user.user}</p>
+        { user.email ? (
+            <div className='navbar__items'>
+                <p>Bienvenida/o {user.user}</p>
 
-                            <div className='navbar__item-btn'>
-                            <NavLink
+                    <div className='navbar__items-btn'>
+                        <NavLink
                             onClick={handleLogout}
                             className={({isActive}) => (isActive ? 'active' : 'inactive')}
                             to="/">
-                                LOGOUT
-                            </NavLink>
-                            </div>
-                        </div>)
-
-                        :
-
-                        <div className='navbar__item'>
-                            <p>Bienvenida/o</p>
-
-                            <div className='navbar__item-btn'>
-                                {/* la className afecta a todos los endpoints porque van con '/' */}
-                                <NavLink
-                                    className={({isActive}) => (isActive ? 'active' : 'inactive')}
-                                    to="/login">
-                                    LOGIN
-                                    </NavLink>
-                            </div>
-
-                        </div>}
+                            LOGOUT
+                        </NavLink>
+                    </div>
             </div>
-        </>
+        )
+
+            :
+
+            <div className='navbar__items'>
+                <p>Bienvenida/o</p>
+
+                    <div className='navbar__items-btn'>
+                        {/* la className afecta a todos los endpoints porque van con '/' */}
+                        <NavLink
+                            className={({isActive}) => (isActive ? 'active' : 'inactive')}
+                            to="/login">
+                            LOGIN
+                        </NavLink>
+                    </div>
+
+            </div>}
+        </div>
     )
 }
 

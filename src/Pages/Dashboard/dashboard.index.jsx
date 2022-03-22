@@ -1,7 +1,7 @@
 // Pages/Dashboard/index.js
 import React from "react";
 import { useAuthState } from "../../Context/context.index";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import UserRecipes from "./UserRecipes/UserRecipes";
 
 
@@ -17,20 +17,20 @@ function Dashboard(_props) {
   <li className='recipeList' key={item.toString()}><UserRecipes name={item}/></li>
   );
 
-
   return (
-    <div style={{ padding: 10 }}>
-        {/* <h1>Dashboard</h1> */}
-      <div>
-        <hr></hr>
-      <div className='recipebtns'>
+    <div className="dashboardPrivate">
+
+      <div className="dashboardPrivate__top">
           <h1>Mis Recetas</h1>
-          <Link to='/dashboard/add-recipes'>añadir receta</Link>
+          <Link to='/dashboard/add-recipes'>
+            <button>añadir receta</button>
+          </Link>
       </div>
+
+      <div className="dashboardPrivate__list">
         <ul>{recipesList}</ul>
       </div>
     </div>
-
   );
 }
 

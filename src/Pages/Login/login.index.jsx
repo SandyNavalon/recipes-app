@@ -1,9 +1,7 @@
-// Pages/Login/index.js
-
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { loginUser, useAuthState, useAuthDispatch } from "../../Context/context.index";
-import styles from "./login.module.css";
+import styles from "./login.scss";
 // import RecipeList from "../../Components/RecipeList/RecipeList";
 
 function Login(props) {
@@ -12,6 +10,8 @@ function Login(props) {
   const dispatch = useAuthDispatch();
   let navigate = useNavigate();
   const { loading, errorMessage } = useAuthState(); //lee los valores del loading y errorMessages del contexto
+
+
 
   const handleLogin = async (e) => {
     e.preventDefault();
@@ -27,43 +27,41 @@ function Login(props) {
 
   return (
     <div>
-      <div className={{ width: 200 }}>
-        <h1>Login</h1>
-        {errorMessage ? <p className={styles.error}>{errorMessage}</p> : null}
-        <form>
-          <div>
-            <div>
-              <label htmlFor="email">Email</label>
-              <input
-                type="text"
-                id="email"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                disabled={loading}
-              />
-            </div>
-            <div>
-              <label htmlFor="password">Contraseña</label>
-              <input
-                type="password"
-                id="password"
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-                disabled={loading}
-              />
-            </div>
-          </div>
-          <button onClick={handleLogin} disabled={loading}>
-            login
-          </button>
-        </form>
-      </div>
+        <div className="login">
+          <h1>Login</h1>
+          {errorMessage ? <p className={styles.error}>{errorMessage}</p> : null}
+          <form className="login__form">
+              <div className="login__form-email">
+                <label htmlFor="email">Email</label>
+                <input
+                  type="text"
+                  id="email"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  disabled={loading}
+                />
+              </div>
+              <div className="login__form-password">
+                <label htmlFor="password">Contraseña</label>
+                <input
+                  type="password"
+                  id="password"
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
+                  disabled={loading}
+                />
+              </div>
+              <button className="login__form-btn" onClick={handleLogin} disabled={loading}>
+              login
+              </button>
+          </form>
+        </div>
 
-      <div>
-      <h3>¿Todavía no tienes cuenta?</h3>
-      <Link to='/register'>
-      <button>Registrar</button>
-      </Link>
+      <div className="new">
+        <h3 className="new__title">¿Todavía no tienes cuenta?</h3>
+        <Link to='/register'>
+        <button className="new__btn">Registrar</button>
+        </Link>
       </div>
     </div>
   );

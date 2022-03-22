@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Navigate } from 'react-router-dom';
+import { Navigate, useNavigate } from 'react-router-dom';
 import AutoCompleteText from './IngredientsList/AutoCompleteText';
 import { useAuthState } from '../../Context/contexts';
 
@@ -8,17 +8,26 @@ import '../../Pages/AddRecipe/addRecipe.scss'
 
 const AddRecipe = ({handleSubmit}) => {
     // const {user, _id} = useAuthState();
+    let navigate = useNavigate();
+
     const { user } = useAuthState();
 
+    const {ingredients} = AutoCompleteText;
+
+    // traer el ID de user desde localStorage
+    const currentUser = localStorage.getItem('currentUser');
+    const userParsed = JSON.parse(currentUser);
+
+    // console.log('current', userParsed._id);
 
     const [formState, setFormState] = useState({
         title: '',
         type: '',
         category: '',
-        ingredients:'',
+        ingredients: ingredients,
         img: '',
         description:'',
-        // userId: _id,
+        userId: userParsed._id
     });
 
     // console.log(formState);
@@ -33,9 +42,11 @@ const AddRecipe = ({handleSubmit}) => {
 
     const submitForm = (ev) => {
         ev.preventDefault();//prevenir comportamiento nativo navegador
-        handleSubmit({ ...formState})
-        console.log(formState);
+        handleSubmit({ ...formState, userId: userParsed._id});
 
+        navigate('/dashboard')//redirige a dashboard cuando posteas la receta
+        console.log(formState);
+        console.log('ingredientessssss:', ingredients);
 
         // const { title, type, category, ingredients, description } = formState;
 
@@ -77,7 +88,42 @@ const AddRecipe = ({handleSubmit}) => {
                         </select>
 
                         <label>Ingredientes</label>
-                        <AutoCompleteText />
+                        <AutoCompleteText/>
+                        {/* <AutoComplete
+                        suggestions={[
+                            'Patata',
+                            'Lechugas',
+                            'Acelga',
+                            'Alcachofa',
+                            'Batata',
+                            'Berenjena',
+                            'Brócoli',
+                            'Brecol',
+                            'Calabacín',
+                            'Calabaza',
+                            'Cardo',
+                            'Cebolla',
+                            'Cebolla caramelizada',
+                            'Cebolleta',
+                            'Coles',
+                            'Coles de Bruselas',
+                            'Coliflor',
+                            'Endivia',
+                            'Tomate',
+                            'Zanahoria',
+                            'Escarola',
+                            'Espárrago',
+                            'Espinaca',
+                            'Hinojo',
+                            'Judías',
+                            'Maíz',
+                            'Palmito',
+                            'Pepino',
+                            'Pimiento',
+                            'Puerro',
+                            'Remolacha',
+                        ]}
+                        /> */}
 
                         {/* <button>añadir</button> */}
 

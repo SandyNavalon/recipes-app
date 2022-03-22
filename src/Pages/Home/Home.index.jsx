@@ -3,7 +3,7 @@ import RecipeList from '../../Components/RecipeList/RecipeList'
 
 const Home = () => {
   return (
-    <div>
+    <div className='dashboardPublic'>
         <RecipeList />
     </div>
   )

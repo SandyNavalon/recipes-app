@@ -51,59 +51,66 @@ function RegisterUser({handleSubmit}) {
 
     return (
         <div className="register">
-            {/* <h1>Registro</h1> */}
-            <form onSubmit={formik.handleSubmit}>
-                <label htmlFor="email">Email</label>
-                <input
-                    id="email"
-                    name="email"
-                    type="email"
-                    onChange={formik.handleChange}
-                    onBlur={formik.handleBlur}
-                    value={formik.values.email}
-                />
-                {formik.touched.email && formik.errors.email ? (
-                    <div>{formik.errors.email}</div>
-                ) : null}
+            <form className="register__form" onSubmit={formik.handleSubmit}>
+                <div className="register__form-email">
+                    <label htmlFor="email">Email</label>
+                    <input
+                        id="email"
+                        name="email"
+                        type="email"
+                        onChange={formik.handleChange}
+                        onBlur={formik.handleBlur}
+                        value={formik.values.email}
+                    />
+                    {formik.touched.email && formik.errors.email ? (
+                        <div>{formik.errors.email}</div>
+                    ) : null}
+                </div>
 
-                <label htmlFor="user">Usuario</label>
-                <input
-                    id="user"
-                    name="user"
-                    onChange={formik.handleChange}
-                    onBlur={formik.handleBlur}
-                    value={formik.values.user}
-                />
-
-
-                <label htmlFor="password">Contraseña</label>
-                <input
-                    id="password"
-                    name="password"
-                    type="password"
-                    onChange={formik.handleChange}
-                    onBlur={formik.handleBlur}
-                    value={formik.values.password}
-                />
-                {formik.touched.password && formik.errors.password ? (
-                    <div>{formik.errors.password}</div>
-                ) : null}
+                <div className="register__form-user">
+                    <label htmlFor="user">Usuario</label>
+                    <input
+                        id="user"
+                        name="user"
+                        onChange={formik.handleChange}
+                        onBlur={formik.handleBlur}
+                        value={formik.values.user}
+                    />
+                </div>
 
 
-                <label htmlFor="passwordVerification">Repetir contraseña</label>
-                <input
-                    id="passwordVerification"
-                    name="passwordVerification"
-                    type="password"
-                    onChange={formik.handleChange}
-                    onBlur={formik.handleBlur}
-                    value={formik.values.passwordVerification}
-                />
-                {formik.touched.passwordVerification && formik.errors.passwordVerification ? (
-                    <div>{formik.errors.passwordVerification}</div>
-                ) : null}
+                <div className="register__form-password">
+                    <label htmlFor="password">Contraseña</label>
+                    <input
+                        id="password"
+                        name="password"
+                        type="password"
+                        onChange={formik.handleChange}
+                        onBlur={formik.handleBlur}
+                        value={formik.values.password}
+                    />
+                    {formik.touched.password && formik.errors.password ? (
+                        <div>{formik.errors.password}</div>
+                    ) : null}
+                </div>
 
-                <button type="submit">Registro</button>
+                <div className="register__form-passwordRepit">
+                    <label htmlFor="passwordVerification">Repetir contraseña</label>
+                    <input
+                        id="passwordVerification"
+                        name="passwordVerification"
+                        type="password"
+                        onChange={formik.handleChange}
+                        onBlur={formik.handleBlur}
+                        value={formik.values.passwordVerification}
+                    />
+                    {formik.touched.passwordVerification && formik.errors.passwordVerification ? (
+                        <div>{formik.errors.passwordVerification}</div>
+                    ) : null}
+                </div>
+
+                <button className="register__form-btn" type="submit">Registro</button>
+
             </form>
         </div>
     );

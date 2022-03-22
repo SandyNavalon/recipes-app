@@ -1,26 +1,4 @@
-.recipeCard{
-    margin-top: 200px;
 
-    &__list{
-        display: grid;
-        justify-content: center;
-        align-items: center;
-        grid-template-columns: 150px 150px 150px 150px;
-        grid-template-rows: 80px;
-        grid-gap: 12rem;
-
-        padding-left: 0px;
-
-        &-item{
-            text-decoration: none;
-            list-style: none;
-        }
-
-        img{
-            width: 200px;
-        }
-    }
-}
 
 
 
