@@ -2,7 +2,6 @@
 import { useState, useEffect } from "react";
 import Axios from 'axios';
 import { Link } from "react-router-dom";
-//import RecipeDetail from "../../RecipeDetail/recipeDetail.index";
 
 
 function UserRecipes(props) {
@@ -39,8 +38,10 @@ function UserRecipes(props) {
             )
     }, []);
     
+    //const recipeIngredients = recipe.ingredients;
+    //const ingredientMatch = recipeIngredients.findOne(keyword);
 
-if(keyword === ''){
+if( !keyword.length ){
     return (
         
         <div>
@@ -54,9 +55,13 @@ if(keyword === ''){
                 </div>
             </div>
         </div>
-    );} else {
-        return (<p>aqui van recetas con el buscador</p>)
-        
+    );} 
+    
+    // if (ingredientMatch !== ''){
+    //     return (<p>{recipe.title}</p>)
+    // }
+    else {
+       return <p>no concuerdan recetas con ingredientes</p>
     }
 }
 

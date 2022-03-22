@@ -16,25 +16,31 @@ function Dashboard(_props) {
   const email = useAuthState();
 
 
-  
+
 
 
   // es el valor del input 
-  const [name, setName] = useState('');
+  const [ingredient, setIngredient] = useState('');
 
-  const recipesItem = [user.recipes, name]
-  console.log('recipesItem .1 ', recipesItem[0].name);
 
+  //console.log('recipesItem .1 ', recipesItem[0].name);
+
+  const [ingredientsArray, setIngredientsArray] = useState([])
+  const recipesItem = [user.recipes, ingredientsArray]
+  
   const filter = (e) => {
-      //saca el valor del campo y lo guarda en keyword
-      const keyword = e.target.value;
-      
-      setName(keyword);
+    e.preventDefault()
+    console.log('e:', e);
+    setIngredientsArray([
+      ...ingredientsArray, {name: ingredient}
+    ])
+    e.target.reset();
+    setIngredient('');
   };
 
 
-  const recipesList = recipesItem[0].map((item)=>
-  <li className='recipeList' key={item.toString()}><UserRecipes name={recipesItem}  /></li>
+  const recipesList = recipesItem[0].map((item) =>
+    <li className='recipeList' key={item.toString()}><UserRecipes name={recipesItem} /></li>
   );
 
   const handleLogout = () => {
@@ -55,24 +61,31 @@ function Dashboard(_props) {
 
       <div>
         <hr></hr>
-      <div className='recipebtns'>
+        <div className='recipebtns'>
           <h1>Recetas</h1>
           <Link to='/dashboard/add-recipes'>añadir receta</Link>
-        
-      </div>
+
+        </div>
         <ul>{recipesList}</ul>
       </div>
-<div>
-  <p>Filtrito</p>
-  <input
-   type="search"
-   value={name}
-   onChange={filter}
-   placeholder="Filtrito"></input>
-</div>
+      <div>
+        <form onSubmit={filter}>
+          <p>Filtrito</p>
+
+          <input
+            type="search"
+            value={ingredient}
+            onChange={(event)=>setIngredient(event.target.value)}
+            placeholder="Filtrito"></input>
+          <button type="submit">añadir</button>
+          <ul>
+            {ingredientsArray.map((item, index)=> <li key={index}>{item.name}</li> )}
+          </ul>
+        </form>
+      </div>
       {/* <div>
       <FiltroPrueba></FiltroPrueba>
-      </div> */}
+      </div>  */}
     </div>
 
   );
