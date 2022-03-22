@@ -41,12 +41,12 @@ function UserRecipes(props) {
         <div >
             <div >
 
-                <div >
+                <div>
 
                     <h1>{recipe.title}</h1>
 
                     <img alt={recipe.title} src={recipe.img} width="300px"></img>
-                    <Link to={`/detail/${recipeId}`}><button>¡Quiero hacerlo!</button></Link>
+                    <Link to={`/detail/${recipeId}`}><button>Preparar</button></Link>
 
 
                 </div>

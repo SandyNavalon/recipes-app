@@ -1,18 +1,24 @@
 import React from "react";
+
 import AddRecipe from "../Pages/AddRecipe/addRecipe.index";
 import Login from '../Pages/Login/login.index'
 import PageNotFound from '../Pages/NotFound/notFound.index'
 import RecipeDetail from "../Pages/RecipeDetail/recipeDetail.index";
 import Register from "../Pages/Register/Register.index";
-import Dashboard from "../Pages/Dashboard/dashboard.index";
-import RecipeList from "../Components/RecipeList/RecipeList";
+import Home from "../Pages/Home/Home.index";
 
 // Config/routes.js
 
 const routes = [
     {
+      path: "/*",
+      element: <PageNotFound />,
+      isPrivate: false
+
+    },
+    {
       path: "/",
-      element: <RecipeList />,
+      element: <Home />,
       isPrivate: false
 
     },
@@ -22,14 +28,6 @@ const routes = [
       isPrivate: false
 
     },
-
-    {
-      path: "/*",
-      element: <PageNotFound />,
-      isPrivate: false
-
-    },
-
     {
       path:"/register",
       element: <Register/>,

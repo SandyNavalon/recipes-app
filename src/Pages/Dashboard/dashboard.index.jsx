@@ -1,10 +1,9 @@
 // Pages/Dashboard/index.js
 import React from "react";
-import { useAuthDispatch, logoutUser, useAuthState } from "../../Context/context.index";
+import { useAuthState } from "../../Context/context.index";
 import { Link, useNavigate } from "react-router-dom";
 import UserRecipes from "./UserRecipes/UserRecipes";
 
-import '../../Styles/dashboard.scss'
 
 function Dashboard(_props) {
   // let navigate = useNavigate();
@@ -13,6 +12,7 @@ function Dashboard(_props) {
   // const email = useAuthState();
 
   const recipesItem = user.recipes
+
   const recipesList = recipesItem.map((item)=>
   <li className='recipeList' key={item.toString()}><UserRecipes name={item}/></li>
   );

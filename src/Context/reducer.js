@@ -6,11 +6,11 @@ let user = localStorage.getItem("currentUser")
   : "";
   // console.log('user:', user);
 
-let _id = localStorage.getItem("currentUser")
-? JSON.parse(localStorage.getItem("currentUser"))._id
-: "";
+// let _id = localStorage.getItem("currentUser")
+// ? JSON.parse(localStorage.getItem("currentUser"))._id
+// : "";
 
-console.log('id:', _id);
+// console.log('_id:', _id);
 
 let email = localStorage.getItem("currentUser")
 ? JSON.parse(localStorage.getItem("currentUser")).email
@@ -32,7 +32,7 @@ let token = localStorage.getItem("currentUser")
   //punto de partida
 export const initialState = {
   user: "" || user,
-  _id: ""  || _id,
+  // _id: ""  || _id,
   email: "" || email,
   recipes: "" || recipes,
   token: "" || token,
@@ -53,7 +53,7 @@ export const AuthReducer = (initialState, action) => {
       return {
         ...initialState,
         user: action.payload.user,
-        _id: action.payload._id,
+        // _id: action.payload._id,
         email: action.payload.email,
         recipes: action.payload.recipes,
         token: action.payload.auth_token,

@@ -1,25 +1,29 @@
 import React, { useState } from 'react';
 import { Navigate } from 'react-router-dom';
-import AutoCompleteText from '../IngredientsList/AutoCompleteText';
+import AutoCompleteText from './IngredientsList/AutoCompleteText';
 import { useAuthState } from '../../Context/contexts';
 
-import '../../Styles/form.scss'
+import '../../Pages/AddRecipe/addRecipe.scss'
+
 
 const AddRecipe = ({handleSubmit}) => {
-    const {user, _id} = useAuthState();
+    // const {user, _id} = useAuthState();
+    const { user } = useAuthState();
 
 
     const [formState, setFormState] = useState({
         title: '',
         type: '',
         category: '',
-        ingredients:[],
+        ingredients:'',
         img: '',
         description:'',
-        userId: _id,
+        // userId: _id,
     });
 
-    console.log(formState);
+    // console.log(formState);
+
+    // const [ingredientChoosen, setIngredientChoosen] = useState()
 
     //handleChange
     const handleInput = (ev) => {
@@ -41,6 +45,8 @@ const AddRecipe = ({handleSubmit}) => {
         // }
 
     };
+
+
 
     return (
         <>
@@ -71,7 +77,7 @@ const AddRecipe = ({handleSubmit}) => {
                         </select>
 
                         <label>Ingredientes</label>
-                        <AutoCompleteText/>
+                        <AutoCompleteText />
 
                         {/* <button>añadir</button> */}
 

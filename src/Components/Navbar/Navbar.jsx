@@ -22,52 +22,54 @@ const Navbar = () => {
 
     return (
 
-        <div className='navbar'>
-            <div className='navbar__item-btn'>
-                <NavLink
-                className={({isActive}) => (isActive ? 'active' : 'inactive')}
-                to="/">
-                ver recetas
-                </NavLink>
-            </div>
-            <div className='navbar__item-btn'>
-                <NavLink
-                className={({isActive}) => (isActive ? 'active' : 'inactive')}
-                to="/dashboard">
-                mi recetario
-                </NavLink>
-            </div>
+        <>
+            <div className='navbar'>
+                <div className='navbar__item-btn'>
+                    <NavLink
+                    className={({isActive}) => (isActive ? 'active' : 'inactive')}
+                    to="/">
+                    ver recetas
+                    </NavLink>
+                </div>
+                <div className='navbar__item-btn'>
+                    <NavLink
+                    className={({isActive}) => (isActive ? 'active' : 'inactive')}
+                    to="/dashboard">
+                    mi recetario
+                    </NavLink>
+                </div>
 
-            { user.email ? (
-                    <div className='navbar__item'>
-                        <p>Bienvenida/o {user.user}</p>
+                { user.email ? (
+                        <div className='navbar__item'>
+                            <p>Bienvenida/o {user.user}</p>
 
-                        <div className='navbar__item-btn'>
-                        <NavLink
-                        onClick={handleLogout}
-                        className={({isActive}) => (isActive ? 'active' : 'inactive')}
-                        to="/">
-                            LOGOUT
-                        </NavLink>
-                        </div>
-                    </div>)
-
-                    :
-
-                    <div className='navbar__item'>
-                        <p>Bienvenida/o</p>
-
-                        <div className='navbar__item-btn'>
-                            {/* la className afecta a todos los endpoints porque van con '/' */}
+                            <div className='navbar__item-btn'>
                             <NavLink
-                                className={({isActive}) => (isActive ? 'active' : 'inactive')}
-                                to="/login">
-                                LOGIN
-                                </NavLink>
-                        </div>
+                            onClick={handleLogout}
+                            className={({isActive}) => (isActive ? 'active' : 'inactive')}
+                            to="/">
+                                LOGOUT
+                            </NavLink>
+                            </div>
+                        </div>)
 
-                    </div>}
-        </div>
+                        :
+
+                        <div className='navbar__item'>
+                            <p>Bienvenida/o</p>
+
+                            <div className='navbar__item-btn'>
+                                {/* la className afecta a todos los endpoints porque van con '/' */}
+                                <NavLink
+                                    className={({isActive}) => (isActive ? 'active' : 'inactive')}
+                                    to="/login">
+                                    LOGIN
+                                    </NavLink>
+                            </div>
+
+                        </div>}
+            </div>
+        </>
     )
 }
 

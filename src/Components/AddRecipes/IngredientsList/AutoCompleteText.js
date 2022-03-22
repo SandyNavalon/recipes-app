@@ -28,7 +28,6 @@ export default class AutoCompleteText extends React.Component {
     }
 
     suggestionSelected (value) {
-
         //guardo el value elegido/escrito en input
         // const ingredientChoosen = value;
         // let selectionIngredients = [];
@@ -60,15 +59,16 @@ export default class AutoCompleteText extends React.Component {
         if(ingredients.length === 0) {
             return null;
         }
+        console.log(ingredients);
 
         return (
             <>
-            <div>
-            <h2>LISTA INGREDIENTES</h2>
-                <ul>
-                    {ingredients.map((item) => <li key={item.id}>{item}</li>)}
-                </ul>
-            </div>
+                <div>
+                <h2>LISTA INGREDIENTES</h2>
+                    <ul>
+                    {ingredients.map((item) => <li key={item}>{item}</li>)}
+                    </ul>
+                </div>
 
             </>
         )
@@ -85,7 +85,7 @@ export default class AutoCompleteText extends React.Component {
         return (
             <>
                 <ul>
-                    {suggestions.map((item) => <li key={item.id} onClick={() => this.suggestionSelected(item)}>{item}</li>)}
+                    {suggestions.map((item) => <li key={item} onClick={() => this.suggestionSelected(item)}>{item}</li>)}
                 </ul>
 
             </>
@@ -94,13 +94,12 @@ export default class AutoCompleteText extends React.Component {
 
     render () {
         const {text} = this.state;
-
+        const {ingredients} = this.state;
         return (
             <div>
                 <input value={text} onChange={this.onTextChanged} type='text'/>
                 <div>{this.renderSuggestions()}</div>
-
-                <div>{this.renderSelected()}</div>
+                <div value={ingredients}>{this.renderSelected()}</div>
 
             </div>
         )
