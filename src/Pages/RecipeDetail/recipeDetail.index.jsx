@@ -4,6 +4,7 @@ import Axios  from 'axios';
 import { Link } from 'react-router-dom';
 import { useAuthState } from '../../Context/contexts';
 
+import './recipeDetail.scss';
 
 const RecipeDetail = () => {
 
@@ -31,7 +32,7 @@ const RecipeDetail = () => {
   useEffect(() => {
     Axios(`http://localhost:4000/recipes/${urlId}`)
       .then(res => {
-       
+
         setRecipe({
 
           title: res.data.title,
@@ -51,21 +52,49 @@ const RecipeDetail = () => {
   }, [])
 
   return (
-    <div>
-      
-      <h1>Nombre{recipe.title}</h1>
-<img alt={recipe.title} src={recipe.img} width="500px"></img>
-      <h2>type: {recipe.type}</h2>
-      <ul>ingredients: {recipe.ingredients.map((item, index) => {
-        return (<li key={index}>{item}</li>)
-      })}</ul>
-      <p>category: {recipe.category}</p>
+    <div className='details'>
 
-      <p>{recipe.description}</p>
-      <Link to="/dashboard/">Volver </Link>
-      {user ? <Link to="*"> Editar</Link> : null}
+      <div className='details__top'>
+        <h1 className='details__top-title'>{recipe.title}</h1>
+        <img alt={recipe.title} src={recipe.img} className='details__top-img'/>
+        <h2 className='details__top-type'>Tipo: {recipe.type}</h2>
+      </div>
+
+      <div className='details__ingredients'>
+        <h3 className='details__ingredients-title'>Ingredientes:</h3>
+        <ul className='details__ingredients-list'>
+          {recipe.ingredients.map((item, index) => {
+          return (
+            <li key={index}>{item}</li>)
+        })}
+        </ul>
+      </div>
+
+      <div className='details__category'>
+        <h3 className='details__category-title'>Categoría:</h3>
+        <p className='details__category-text'>{recipe.category}</p>
+      </div>
+
+      <div className='details__description'>
+        <h3 className='details__description-title'>Preparación:</h3>
+        <p className='details__description-text'>{recipe.description}</p>
+      </div>
+
+        <div className='details__btns'>
+          <button className='details__btns-back'>
+            <Link to="/dashboard/">Volver</Link>
+          </button>
+
+          {user ?
+          <button className='details__btns-edit'>
+            <Link to="*">Editar</Link>
+          </button>
+          :
+          null}
+        </div>
+
     </div>
   )
 }
 
-export default RecipeDetail
+export default RecipeDetail;

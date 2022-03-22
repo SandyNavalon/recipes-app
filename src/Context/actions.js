@@ -23,6 +23,7 @@ export async function loginUser(dispatch, loginPayload) {
 
         dispatch({ type: 'LOGIN_ERROR', error: data.errors[0] });
         return;
+
     } catch (error) {
         dispatch({ type: 'LOGIN_ERROR', error: error });
     }

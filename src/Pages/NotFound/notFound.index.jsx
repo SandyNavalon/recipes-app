@@ -1,14 +1,14 @@
 // Pages/NotFound/index.js
- 
+
 import React from 'react';
-//import styles from './notfound.module.css';
- 
+import './notFound.scss';
+
 function NotFound(props) {
- return (
- <div >
- <h1>Page not found</h1>
- </div>
- );
+    return (
+        <div className='notFound'>
+            <h1 className='notFound__title'>Page not found</h1>
+        </div>
+    );
 }
- 
+
 export default NotFound;

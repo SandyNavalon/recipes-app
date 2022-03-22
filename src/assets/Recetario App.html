@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<!-- saved from url=(0027)http://localhost:3000/login -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <link rel="icon" href="http://localhost:3000/favicon.ico">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#000000">
+    <meta name="description" content="Web site created using create-react-app">
+    <!--
+      manifest.json provides metadata used when your web app is installed on a
+      user's mobile device or desktop. See https://developers.google.com/web/fundamentals/web-app-manifest/
+    -->
+    <link rel="manifest" href="http://localhost:3000/manifest.json">
+    <!--
+      Notice the use of  in the tags above.
+      It will be replaced with the URL of the `public` folder during the build.
+      Only files inside the `public` folder can be referenced from the HTML.
+
+      Unlike "/favicon.ico" or "favicon.ico", "/favicon.ico" will
+      work correctly both with client-side routing and a non-root public URL.
+      Learn how to configure a non-root public URL by running `npm run build`.
+    -->
+    <title>Recetario App</title>
+  <script defer="" src="./Recetario App_files/bundle.js.descarga"></script><style>body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+
+  background-color: #FFF7EA;
+
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIndlYnBhY2s6Ly8uL3NyYy9pbmRleC5jc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7RUFDRSxTQUFTO0VBQ1Q7O2NBRVk7RUFDWixtQ0FBbUM7RUFDbkMsa0NBQWtDOztFQUVsQyx5QkFBeUI7O0FBRTNCOztBQUVBO0VBQ0U7YUFDVztBQUNiIiwic291cmNlc0NvbnRlbnQiOlsiYm9keSB7XHJcbiAgbWFyZ2luOiAwO1xyXG4gIGZvbnQtZmFtaWx5OiAtYXBwbGUtc3lzdGVtLCBCbGlua01hY1N5c3RlbUZvbnQsICdTZWdvZSBVSScsICdSb2JvdG8nLCAnT3h5Z2VuJyxcclxuICAgICdVYnVudHUnLCAnQ2FudGFyZWxsJywgJ0ZpcmEgU2FucycsICdEcm9pZCBTYW5zJywgJ0hlbHZldGljYSBOZXVlJyxcclxuICAgIHNhbnMtc2VyaWY7XHJcbiAgLXdlYmtpdC1mb250LXNtb290aGluZzogYW50aWFsaWFzZWQ7XHJcbiAgLW1vei1vc3gtZm9udC1zbW9vdGhpbmc6IGdyYXlzY2FsZTtcclxuXHJcbiAgYmFja2dyb3VuZC1jb2xvcjogI0ZGRjdFQTtcclxuXHJcbn1cclxuXHJcbmNvZGUge1xyXG4gIGZvbnQtZmFtaWx5OiBzb3VyY2UtY29kZS1wcm8sIE1lbmxvLCBNb25hY28sIENvbnNvbGFzLCAnQ291cmllciBOZXcnLFxyXG4gICAgbW9ub3NwYWNlO1xyXG59XHJcbiJdLCJzb3VyY2VSb290IjoiIn0= */</style><style>.form-style {
+  display: flex;
+  flex-direction: column; }
+
+/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIndlYnBhY2s6Ly8uL3NyYy9QYWdlcy9BZGRSZWNpcGUvYWRkUmVjaXBlLnNjc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7RUFDSSxhQUFhO0VBQ2Isc0JBQXNCLEVBQUEiLCJzb3VyY2VzQ29udGVudCI6WyIuZm9ybS1zdHlsZXtcclxuICAgIGRpc3BsYXk6IGZsZXg7XHJcbiAgICBmbGV4LWRpcmVjdGlvbjogY29sdW1uO1xyXG5cclxufSJdLCJzb3VyY2VSb290IjoiIn0= */</style><style>
+/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsInNvdXJjZVJvb3QiOiIifQ== */</style><style>.recipeCard {
+  margin-top: 200px; }
+  .recipeCard__list {
+    display: grid;
+    justify-content: center;
+    align-items: center;
+    grid-template-columns: 150px 150px 150px 150px;
+    grid-template-rows: 80px;
+    grid-gap: 12rem;
+    padding-left: 0px; }
+    .recipeCard__list-item {
+      text-decoration: none;
+      list-style: none; }
+    .recipeCard__list img {
+      width: 200px; }
+
+/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIndlYnBhY2s6Ly8uL3NyYy9QYWdlcy9Ib21lL2hvbWUuc2NzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUNJLGlCQUFpQixFQUFBO0VBRWpCO0lBQ0ksYUFBYTtJQUNiLHVCQUF1QjtJQUN2QixtQkFBbUI7SUFDbkIsOENBQThDO0lBQzlDLHdCQUF3QjtJQUN4QixlQUFlO0lBRWYsaUJBQWlCLEVBQUE7SUFFakI7TUFDSSxxQkFBcUI7TUFDckIsZ0JBQWdCLEVBQUE7SUFadkI7TUFnQk8sWUFBWSxFQUFBIiwic291cmNlc0NvbnRlbnQiOlsiLnJlY2lwZUNhcmR7XHJcbiAgICBtYXJnaW4tdG9wOiAyMDBweDtcclxuXHJcbiAgICAmX19saXN0e1xyXG4gICAgICAgIGRpc3BsYXk6IGdyaWQ7XHJcbiAgICAgICAganVzdGlmeS1jb250ZW50OiBjZW50ZXI7XHJcbiAgICAgICAgYWxpZ24taXRlbXM6IGNlbnRlcjtcclxuICAgICAgICBncmlkLXRlbXBsYXRlLWNvbHVtbnM6IDE1MHB4IDE1MHB4IDE1MHB4IDE1MHB4O1xyXG4gICAgICAgIGdyaWQtdGVtcGxhdGUtcm93czogODBweDtcclxuICAgICAgICBncmlkLWdhcDogMTJyZW07XHJcblxyXG4gICAgICAgIHBhZGRpbmctbGVmdDogMHB4O1xyXG5cclxuICAgICAgICAmLWl0ZW17XHJcbiAgICAgICAgICAgIHRleHQtZGVjb3JhdGlvbjogbm9uZTtcclxuICAgICAgICAgICAgbGlzdC1zdHlsZTogbm9uZTtcclxuICAgICAgICB9XHJcblxyXG4gICAgICAgIGltZ3tcclxuICAgICAgICAgICAgd2lkdGg6IDIwMHB4O1xyXG4gICAgICAgIH1cclxuICAgIH1cclxufVxyXG5cclxuXHJcblxyXG4iXSwic291cmNlUm9vdCI6IiJ9 */</style><style>.active {
+  color: #002345;
+  font-weight: bold;
+  text-decoration: none;
+  text-align: center; }
+
+.inactive {
+  color: black;
+  text-decoration: none; }
+
+.navbar {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  top: 0;
+  width: 100%;
+  height: 400px;
+  background-image: url(http://localhost:3000/static/media/header.b96829ff185cc5ccd828.jpg);
+  opacity: 80%;
+  background-repeat: no-repeat;
+  background-size: cover; }
+  .navbar__items {
+    display: flex;
+    flex-direction: row;
+    align-items: center; }
+    .navbar__items-btn {
+      background-color: white;
+      width: 130px;
+      height: 30px;
+      text-align: center;
+      box-shadow: rgba(0, 0, 0, 0.2) 15px 28px 25px -18px;
+      cursor: pointer;
+      outline: none;
+      transition: all 235ms ease-in-out;
+      user-select: none;
+      -webkit-user-select: none;
+      touch-action: manipulation; }
+    .navbar__items-btn:hover {
+      box-shadow: rgba(0, 0, 0, 0.3) 2px 8px 8px -5px;
+      transform: translate3d(0, 2px, 0); }
+    .navbar__items-btn:focus {
+      box-shadow: rgba(0, 0, 0, 0.3) 2px 8px 4px -6px; }
+    .navbar__items p {
+      margin-right: 25px; }
+
+/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIndlYnBhY2s6Ly8uL3NyYy9Db21wb25lbnRzL05hdmJhci9OYXZiYXIuc2NzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUNJLGNBQWM7RUFDZCxpQkFBaUI7RUFDakIscUJBQXFCO0VBQ3JCLGtCQUFrQixFQUFBOztBQUd0QjtFQUNJLFlBQVk7RUFDWixxQkFBcUIsRUFBQTs7QUFHekI7RUFFSSxhQUFhO0VBQ2IsNkJBQTZCO0VBQzdCLG1CQUFtQjtFQUVuQixNQUFNO0VBQ04sV0FBVztFQUNYLGFBQWE7RUFDYix5REFBZ0Q7RUFDaEQsWUFBWTtFQUNaLDRCQUE0QjtFQUM1QixzQkFBc0IsRUFBQTtFQUV0QjtJQUNJLGFBQWE7SUFDYixtQkFBbUI7SUFDbkIsbUJBQWtCLEVBQUE7SUFHbEI7TUFDSSx1QkFBdUI7TUFFdkIsWUFBWTtNQUNaLFlBQVk7TUFDWixrQkFBa0I7TUFFbEIsbURBQW1EO01BQ25ELGVBQWU7TUFFZixhQUFhO01BQ2IsaUNBQWlDO01BQ2pDLGlCQUFpQjtNQUNqQix5QkFBeUI7TUFDekIsMEJBQTBCLEVBQUE7SUFHbEM7TUFDSSwrQ0FBK0M7TUFDL0MsaUNBQWlDLEVBQUE7SUFHckM7TUFDSSwrQ0FBK0MsRUFBQTtJQTdCbEQ7TUFpQ0csa0JBQWtCLEVBQUEiLCJzb3VyY2VzQ29udGVudCI6WyIuYWN0aXZlIHtcclxuICAgIGNvbG9yOiAjMDAyMzQ1O1xyXG4gICAgZm9udC13ZWlnaHQ6IGJvbGQ7XHJcbiAgICB0ZXh0LWRlY29yYXRpb246IG5vbmU7XHJcbiAgICB0ZXh0LWFsaWduOiBjZW50ZXI7XHJcbn1cclxuXHJcbi5pbmFjdGl2ZSB7XHJcbiAgICBjb2xvcjogYmxhY2s7XHJcbiAgICB0ZXh0LWRlY29yYXRpb246IG5vbmU7XHJcbn1cclxuXHJcbi5uYXZiYXIge1xyXG5cclxuICAgIGRpc3BsYXk6IGZsZXg7XHJcbiAgICBqdXN0aWZ5LWNvbnRlbnQ6IHNwYWNlLWFyb3VuZDtcclxuICAgIGFsaWduLWl0ZW1zOiBjZW50ZXI7XHJcblxyXG4gICAgdG9wOiAwO1xyXG4gICAgd2lkdGg6IDEwMCU7XHJcbiAgICBoZWlnaHQ6IDQwMHB4O1xyXG4gICAgYmFja2dyb3VuZC1pbWFnZTogdXJsKFwiLi4vLi4vYXNzZXRzL2hlYWRlci5qcGdcIik7XHJcbiAgICBvcGFjaXR5OiA4MCU7XHJcbiAgICBiYWNrZ3JvdW5kLXJlcGVhdDogbm8tcmVwZWF0O1xyXG4gICAgYmFja2dyb3VuZC1zaXplOiBjb3ZlcjtcclxuXHJcbiAgICAmX19pdGVtcyB7XHJcbiAgICAgICAgZGlzcGxheTogZmxleDtcclxuICAgICAgICBmbGV4LWRpcmVjdGlvbjogcm93O1xyXG4gICAgICAgIGFsaWduLWl0ZW1zOmNlbnRlcjtcclxuXHJcblxyXG4gICAgICAgICYtYnRuIHtcclxuICAgICAgICAgICAgYmFja2dyb3VuZC1jb2xvcjogd2hpdGU7XHJcblxyXG4gICAgICAgICAgICB3aWR0aDogMTMwcHg7XHJcbiAgICAgICAgICAgIGhlaWdodDogMzBweDtcclxuICAgICAgICAgICAgdGV4dC1hbGlnbjogY2VudGVyO1xyXG5cclxuICAgICAgICAgICAgYm94LXNoYWRvdzogcmdiYSgwLCAwLCAwLCAwLjIpIDE1cHggMjhweCAyNXB4IC0xOHB4O1xyXG4gICAgICAgICAgICBjdXJzb3I6IHBvaW50ZXI7XHJcblxyXG4gICAgICAgICAgICBvdXRsaW5lOiBub25lO1xyXG4gICAgICAgICAgICB0cmFuc2l0aW9uOiBhbGwgMjM1bXMgZWFzZS1pbi1vdXQ7XHJcbiAgICAgICAgICAgIHVzZXItc2VsZWN0OiBub25lO1xyXG4gICAgICAgICAgICAtd2Via2l0LXVzZXItc2VsZWN0OiBub25lO1xyXG4gICAgICAgICAgICB0b3VjaC1hY3Rpb246IG1hbmlwdWxhdGlvbjtcclxuICAgICAgICB9XHJcblxyXG4gICAgJi1idG46aG92ZXIge1xyXG4gICAgICAgIGJveC1zaGFkb3c6IHJnYmEoMCwgMCwgMCwgMC4zKSAycHggOHB4IDhweCAtNXB4O1xyXG4gICAgICAgIHRyYW5zZm9ybTogdHJhbnNsYXRlM2QoMCwgMnB4LCAwKTtcclxuICAgIH1cclxuXHJcbiAgICAmLWJ0bjpmb2N1cyB7XHJcbiAgICAgICAgYm94LXNoYWRvdzogcmdiYSgwLCAwLCAwLCAwLjMpIDJweCA4cHggNHB4IC02cHg7XHJcbiAgICB9XHJcblxyXG4gICAgcHtcclxuICAgICAgICBtYXJnaW4tcmlnaHQ6IDI1cHg7XHJcbiAgICB9XHJcblxyXG59XHJcbn0iXSwic291cmNlUm9vdCI6IiJ9 */</style></head>
+  <body wfd-invisible="true">
+    <noscript>You need to enable JavaScript to run this app.</noscript>
+    <div id="root"><div class="navbar"><div class="navbar__items"><div class="navbar__items-btn"><a class="inactive" href="http://localhost:3000/">ver recetas</a></div><div class="navbar__items-btn"><a class="inactive" href="http://localhost:3000/dashboard">mi recetario</a></div></div><div class="navbar__items"><p>Bienvenida/o</p><div class="navbar__items-btn"><a class="active" href="http://localhost:3000/login" aria-current="page">LOGIN</a></div></div></div><div><div class="[object Object]"><h1>Login</h1><form><div><div><label for="email">Email</label><input type="text" id="email" value="a"></div><div><label for="password">Contraseña</label><input type="password" id="password" value=""></div></div><button>login</button></form></div><div><h3>¿Todavía no tienes cuenta?</h3><a href="http://localhost:3000/register"><button>Registrar</button></a></div></div></div>
+    <!--
+      This HTML file is a template.
+      If you open it directly in the browser, you will see an empty page.
+
+      You can add webfonts, meta tags, or analytics to this file.
+      The build step will place the bundled scripts into the <body> tag.
+
+      To begin the development, run `npm start` or `yarn start`.
+      To create a production bundle, use `npm run build` or `yarn build`.
+    -->
+  
+
+</body></html>
