@@ -1,5 +1,5 @@
 // Pages/Dashboard/index.js
-import React from "react";
+import React, { useEffect } from "react";
 import { useAuthDispatch, logoutUser, useAuthState } from "../../Context/context.index";
 import { Link, useNavigate } from "react-router-dom";
 import UserRecipes from "./UserRecipes/UserRecipes";
@@ -16,7 +16,7 @@ function Dashboard(_props) {
   const email = useAuthState();
 
 
-
+const [recipes, setRecipes] = useState([]);
 
 
   // es el valor del input 
@@ -37,9 +37,25 @@ function Dashboard(_props) {
     ])
     e.target.reset();
     setIngredient('');
+
+    
+  for (const recipe of recipes) {
+    for (const item of recipe.ingredients) {
+      if(item===ingredient){
+        setRecipes(recipe)
+      }
+    }
+  }
+
+  console.log('recipes:', recipes);
   };
 
 const recipesItem = [user.recipes.data, ingredientsArray];
+
+useEffect(() => {
+  setRecipes(user.recipes.data);
+}, []);
+
 //console.log('ingredients:',recipesItem);
 
   //const recipesOfUser = user.recipes.data.map((item)=>
@@ -78,7 +94,22 @@ const recipesItem = [user.recipes.data, ingredientsArray];
           <Link to='/dashboard/add-recipes'>añadir receta</Link>
 
         </div>
-       <ul><li><UserRecipes name={recipesItem} /></li></ul> 
+       
+        {
+                recipes.map((item) =>
+                    <div key={item._id}>
+                        <h1>{item.title}</h1>
+                        <h3>ingredientes</h3>
+                        {item.ingredients.map((item, index) =>
+                            <p key={index.toString()}>{item}</p>
+                        )}
+                        <p><img alt={item.title} src={item.img} width="300px"></img></p>
+                        <Link to={`/detail/${item._id}`}><button>view detail</button></Link>
+                        <hr></hr>
+                    </div>)
+
+            }
+
       </div>
       
       <div></div>
