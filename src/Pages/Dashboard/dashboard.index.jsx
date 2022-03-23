@@ -23,11 +23,13 @@ function Dashboard(_props) {
   const [ingredient, setIngredient] = useState('');
 
 
-  //console.log('recipesItem .1 ', recipesItem[0].name);
+  
 
   const [ingredientsArray, setIngredientsArray] = useState([])
-  const recipesItem = [user.recipes, ingredientsArray]
-  
+  //const recipesItem = [user.recipes, ingredientsArray];
+
+  console.log('recipesItem .1 ', user.recipes);
+
   const filter = (e) => {
     e.preventDefault()
     console.log('e:', e);
@@ -38,9 +40,13 @@ function Dashboard(_props) {
     setIngredient('');
   };
 
-
-  const recipesList = recipesItem[0].map((item) =>
-    <li className='recipeList' key={item.toString()}><UserRecipes name={recipesItem} /></li>
+//ahora tengo un array de recetas y no ids. 
+//no hace falta que haga axios dentro del componente porque ya me las va a pintar de serie. 
+  const recipesList = user.recipes.map((item, index) =>
+ 
+    <li className='recipeList' key={index.toString()}><UserRecipes name={item} /></li>
+    
+  
   );
 
   const handleLogout = () => {

@@ -5,9 +5,9 @@ import { Link } from "react-router-dom";
 
 
 function UserRecipes(props) {
-    const recipeId = props.name[0];
-    const keyword = props.name[1];
-    console.log('props:', keyword);
+    const recipeId = props.name;
+    //const keyword = props.name[1];
+    console.log('props:', props);
 
         const [error, setError] = useState(null);
         const [isLoaded, setIsLoaded] = useState(false);
@@ -41,7 +41,7 @@ function UserRecipes(props) {
     //const recipeIngredients = recipe.ingredients;
     //const ingredientMatch = recipeIngredients.findOne(keyword);
 
-if( !keyword.length ){
+//if( !keyword.length ){
     return (
         
         <div>
@@ -55,15 +55,16 @@ if( !keyword.length ){
                 </div>
             </div>
         </div>
-    );} 
+    );
+} 
     
-    // if (ingredientMatch !== ''){
-    //     return (<p>{recipe.title}</p>)
-    // }
-    else {
-       return <p>no concuerdan recetas con ingredientes</p>
-    }
-}
+//     if (ingredientMatch !== ''){
+//         return (<p>{recipe.title}</p>)
+//     }
+//     else {
+//        return <p>no concuerdan recetas con ingredientes</p>
+//     }
+// }
 
 export default UserRecipes;
 
