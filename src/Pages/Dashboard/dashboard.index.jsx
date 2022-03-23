@@ -31,16 +31,16 @@ function Dashboard(_props) {
 
   const filter = (e) => {
     e.preventDefault()
-    console.log('e:', e);
+    //console.log('e:', e);
     setIngredientsArray([
-      ...ingredientsArray, {name: ingredient}
+      ...ingredientsArray, ingredient
     ])
     e.target.reset();
     setIngredient('');
   };
 
 const recipesItem = [user.recipes.data, ingredientsArray];
-// console.log('recipesItem:',recipesItem);
+//console.log('ingredients:',recipesItem);
 
   //const recipesOfUser = user.recipes.data.map((item)=>
    // {
@@ -78,7 +78,7 @@ const recipesItem = [user.recipes.data, ingredientsArray];
           <Link to='/dashboard/add-recipes'>añadir receta</Link>
 
         </div>
-        <ul><li><UserRecipes name={recipesItem} /></li></ul>
+       <ul><li><UserRecipes name={recipesItem} /></li></ul> 
       </div>
       
       <div></div>
@@ -95,7 +95,7 @@ const recipesItem = [user.recipes.data, ingredientsArray];
             placeholder="Filtrito"></input>
           <button type="submit">añadir</button>
           <ul>
-            {ingredientsArray.map((item, index)=> <li key={index}>{item.name}</li> )}
+            {ingredientsArray.map((item)=> <li key={item.toString()}>{item}</li> )}
           </ul>
         </form>
       </div>
