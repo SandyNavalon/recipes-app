@@ -25,9 +25,9 @@ function Dashboard(_props) {
   
 
   const [ingredientsArray, setIngredientsArray] = useState([])
-  //const recipesItem = [user.recipes, ingredientsArray];
+  
 
-  console.log('recipesItem ', user.recipes.data);
+  //console.log('recipesItem ', user.recipes.data);
 
   const filter = (e) => {
     e.preventDefault()
@@ -39,14 +39,21 @@ function Dashboard(_props) {
     setIngredient('');
   };
 
-//ahora tengo un array de recetas y no ids. 
-//no hace falta que haga axios dentro del componente porque ya me las va a pintar de serie. 
-  const recipesList = user.recipes.data.map((item, index) =>
+const recipesItem = [user.recipes.data, ingredientsArray];
+// console.log('recipesItem:',recipesItem);
+
+  //const recipesOfUser = user.recipes.data.map((item)=>
+   // {
+      //let recipesItem = [item, ingredientsArray];
+    //<li key={user.recipes.data._id}><UserRecipes name={user.recipes.data} /></li>
+  //},
+  //)
  
-    <li key={index.toString()}><UserRecipes name={item} /></li>
-    
   
-  );
+//
+
+//ahora tengo un array de recetas y no ids. el cual mapeo y paso por prop al componente
+
 
   const handleLogout = () => {
     logoutUser(dispatch); //llama a la acción logout
@@ -71,8 +78,12 @@ function Dashboard(_props) {
           <Link to='/dashboard/add-recipes'>añadir receta</Link>
 
         </div>
-        <ul>{recipesList}</ul>
+        <ul><li><UserRecipes name={recipesItem} /></li></ul>
       </div>
+      
+      <div></div>
+
+      {/** filtro */}
       <div>
         <form onSubmit={filter}>
           <p>Filtrito</p>
@@ -88,9 +99,7 @@ function Dashboard(_props) {
           </ul>
         </form>
       </div>
-      {/* <div>
-      <FiltroPrueba></FiltroPrueba>
-      </div>  */}
+     
     </div>
 
   );
