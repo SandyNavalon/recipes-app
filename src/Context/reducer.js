@@ -1,40 +1,13 @@
+import { getItem } from "../Services/storage.service";
 
-//
-let user = localStorage.getItem("currentUser")
-  ? JSON.parse(localStorage.getItem("currentUser")).user
-  : "";
-  // console.log('user:', user);
+const user = getItem("currentUser");
 
-// let _id = localStorage.getItem("currentUser")
-// ? JSON.parse(localStorage.getItem("currentUser"))._id
-// : "";
-
-// console.log('_id:', _id);
-
-let email = localStorage.getItem("currentUser")
-? JSON.parse(localStorage.getItem("currentUser")).email
-: "";
-
-  // console.log('email:', email);
-
-let recipes = localStorage.getItem("currentUser")
-? JSON.parse(localStorage.getItem("currentUser")).recipes
-: "";
-
-  // console.log('recipes:', recipes);
-
-let token = localStorage.getItem("currentUser")
-  ? JSON.parse(localStorage.getItem("currentUser")).auth_token
-  : "";
-
-  // console.log('token->', token);
-  //punto de partida
 export const initialState = {
-  user: "" || user,
+  user: user ? user : "",
   // _id: ""  || _id,
-  email: "" || email,
-  recipes: "" || recipes,
-  token: "" || token,
+  email: user ? user.email : "",
+  recipes: user ? user.recipes : "",
+  token: user ? user.auth_token : "",
   loading: false, //estado de la carga
   errorMessage: null, //si el inicio de sesion falla
 };

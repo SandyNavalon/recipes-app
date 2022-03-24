@@ -1,5 +1,7 @@
 // Context/actions.js
 
+import { setItem } from "../Services/storage.service";
+
 const ROOT_URL = 'http://localhost:4000';
 
 
@@ -17,7 +19,7 @@ export async function loginUser(dispatch, loginPayload) {
 
         if (data.user) {
             dispatch({ type: 'LOGIN_SUCCESS', payload: data });
-            localStorage.setItem('currentUser', JSON.stringify(data));
+            setItem('currentUser', data);
             return data
         }
 

@@ -1,20 +1,20 @@
-
-import React from 'react'
-import { saveRecipeService } from '../../Services/saveRecipeService'
-import AddRecipe from '../../Components/AddRecipes/AddRecipesComponent'
+import React from "react";
+import { saveRecipeService } from "../../Services/saveRecipeService";
+import AddRecipe from "../../Components/AddRecipes/AddRecipesComponent";
+import { addToExistingArray } from "../../Services/storage.service";
 
 const addRecipe = () => {
+  const handleSubmit = (data) => {
+    const newRecipe = saveRecipeService(data);
+    addToExistingArray('recipes', newRecipe);
+  };
 
-    const handleSubmit = (data) => {
-        saveRecipeService(data)
-        }
-
-    return (
-        <div>
-            <h2>AÑADIR RECETA</h2>
-            <AddRecipe handleSubmit= {handleSubmit}/>
-        </div>
-    )
-}
+  return (
+    <div>
+      <h2>AÑADIR RECETA</h2>
+      <AddRecipe handleSubmit={handleSubmit} />
+    </div>
+  );
+};
 
 export default addRecipe;
