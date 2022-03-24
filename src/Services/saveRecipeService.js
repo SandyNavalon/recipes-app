@@ -15,11 +15,13 @@ export async function saveRecipeService ( recipeData ){
         formData.append('img', recipeData.img)
         formData.append('userId', recipeData.userId)
 
-
         const response = await axios({
             url:`${ENDPOINT}/recipes/create`,
             method: 'POST',
             data: formData,
+            headers:{
+                'content-type':'multipart/form-data'
+            }
 
         })
         return response

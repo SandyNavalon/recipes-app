@@ -1,12 +1,19 @@
 import { useState } from "react";
+import ingredients from "./ingredients";
 
 
-const AutoComplete = ({ suggestions }) => {
+const AutoComplete = () => {
 
     const [filteredSuggestions, setFilteredSuggestions] = useState([]);
     const [activeSuggestionIndex, setActiveSuggestionIndex] = useState(0);
     const [showSuggestions, setShowSuggestions] = useState(false);
     const [input, setInput] = useState("");
+
+    const suggestions = ingredients.map((item) => {
+        return {
+            text: item,
+        }
+    })
 
     const onChange = (ev) => {
         const userInput = ev.target.value;

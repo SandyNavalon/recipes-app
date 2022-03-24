@@ -21,7 +21,7 @@ function Login(props) {
       if (!response.user) return;
       navigate("/dashboard");
     } catch (error) {
-      console.log(error);
+      return error
     }
   };
 
@@ -60,7 +60,7 @@ function Login(props) {
       <div className="new">
         <h3 className="new__title">¿Todavía no tienes cuenta?</h3>
         <Link to='/register'>
-        <button className="new__btn">Registrar</button>
+        <button className="new__btn">Registrate</button>
         </Link>
       </div>
     </div>

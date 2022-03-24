@@ -1,10 +1,13 @@
+import { Tag } from '@mui/icons-material';
+import { Autocomplete } from '@mui/material';
 import React, { useState } from 'react';
 import { Navigate, useNavigate } from 'react-router-dom';
-import AutoCompleteText from './IngredientsList/AutoCompleteText';
 import { useAuthState } from '../../Context/contexts';
 
 import '../../Pages/AddRecipe/addRecipe.scss'
-
+import AutoCompleteText from './IngredientsList/AutoCompleteText';
+import CustomizedHook from './IngredientsList/IngredientsSelectionTextComponent';
+import ingredientsList from '../AddRecipes/IngredientsList/ingredients'
 
 const AddRecipe = ({handleSubmit}) => {
     // const {user, _id} = useAuthState();
@@ -12,7 +15,7 @@ const AddRecipe = ({handleSubmit}) => {
 
     const { user } = useAuthState();
 
-    const {ingredients} = AutoCompleteText;
+    // const {ingredients} = AutoCompleteText;
 
     // traer el ID de user desde localStorage
     const currentUser = localStorage.getItem('currentUser');
@@ -20,19 +23,88 @@ const AddRecipe = ({handleSubmit}) => {
 
     // console.log('current', userParsed._id);
 
+
+    //COMPONENTE INGREDIENTES//
+
+    //? ingredientslist
+    const [state, setState] = useState({
+        text:'',
+        suggestions:[],
+        ingredientsText:[]
+    });
+
+    const onTextChanged = (ev) => {
+        const value = ev.target.value;
+        let suggestions = [];
+
+        if(value.length > 0) {
+            const regex = new RegExp(`^${value}`, 'i');
+            suggestions = state.ingredientsText.sort().filter(v => regex.test(v));
+            }
+            setState(() => ({ suggestions, text: value }));
+        }
+
+    function suggestionSelected(value) {
+        setState(() => ({
+            ingredientsText:[...state.ingredientsText.value],
+            text:'',
+            suggestions:[],
+        }))
+    }
+
+    function ingredientSelected(value) {
+        setState(() => ({
+            ingredientsText:[...state.ingredientsText, value]
+        }))
+    }
+
+    function renderSelection() {
+        const { ingredientsText } = state;
+        if(ingredientsText.length === 0) {
+            return null;
+        }
+
+        return (
+            <>
+                <div>
+                    <h2>LISTA INGREDIENTES</h2>
+                        <ul>
+                        {ingredientsText.map((item, index) => <li value={state.ingredientsText} key={index}>{item}</li>)}
+                        </ul>
+                    </div>
+            </>
+        )
+    }
+
+    function renderSuggestions() {
+        const {suggestions} = state;
+        if(suggestions.length === 0) {
+            return null
+        }
+        return(
+            <>
+                <ul>
+                    {suggestions.map((item, index) => <li key={index} onClick={() => suggestionSelected(item)}>{item}</li>)}
+                </ul>
+            </>
+        )
+    }
+
+    //FIN COMPONENTE INGREDIENTES//
+
     const [formState, setFormState] = useState({
         title: '',
         type: '',
         category: '',
-        ingredients: ingredients,
+        ingredients:[],
         img: '',
         description:'',
         userId: userParsed._id
     });
 
-    // console.log(formState);
-
-    // const [ingredientChoosen, setIngredientChoosen] = useState()
+    const updateIngredients = (ingredients) =>{
+        setFormState({...formState, ingredients})
+    }
 
     //handleChange
     const handleInput = (ev) => {
@@ -44,20 +116,13 @@ const AddRecipe = ({handleSubmit}) => {
         ev.preventDefault();//prevenir comportamiento nativo navegador
         handleSubmit({ ...formState, userId: userParsed._id});
 
+        alert('¡RECETA GUARDADA!')
         navigate('/dashboard')//redirige a dashboard cuando posteas la receta
         console.log(formState);
-        console.log('ingredientessssss:', ingredients);
-
-        // const { title, type, category, ingredients, description } = formState;
-
-        // if(!title || !type || !category || !ingredients || !description) {
-        //     console.log('Faltan datos');
-        //     return;
-        // }
 
     };
 
-
+    const{text} = state;
 
     return (
         <>
@@ -87,52 +152,31 @@ const AddRecipe = ({handleSubmit}) => {
                             <option value='oriental'>Oriental</option>
                         </select>
 
-                        <label>Ingredientes</label>
-                        <AutoCompleteText/>
-                        {/* <AutoComplete
-                        suggestions={[
-                            'Patata',
-                            'Lechugas',
-                            'Acelga',
-                            'Alcachofa',
-                            'Batata',
-                            'Berenjena',
-                            'Brócoli',
-                            'Brecol',
-                            'Calabacín',
-                            'Calabaza',
-                            'Cardo',
-                            'Cebolla',
-                            'Cebolla caramelizada',
-                            'Cebolleta',
-                            'Coles',
-                            'Coles de Bruselas',
-                            'Coliflor',
-                            'Endivia',
-                            'Tomate',
-                            'Zanahoria',
-                            'Escarola',
-                            'Espárrago',
-                            'Espinaca',
-                            'Hinojo',
-                            'Judías',
-                            'Maíz',
-                            'Palmito',
-                            'Pepino',
-                            'Pimiento',
-                            'Puerro',
-                            'Remolacha',
-                        ]}
-                        /> */}
-
+                        Lista ingredientes
+                        {/* <div>
+                            <input value={text} onChange={onTextChanged} type='text'/>
+                            <div>{renderSuggestions()}</div>
+                            <div>{renderSelection()}</div>
+                        </div> */}
+                        {/* <CustomizedHook setIngChosen={setIngChosen} ingChosen={ingChosen} /> */}
+                        <AutoCompleteText updateIngredients={updateIngredients}/>
                         {/* <button>añadir</button> */}
 
                         <label>Preparación</label>
                         <textarea name='description' value={formState.description} onChange={handleInput}></textarea>
 
-                        <input type='file' name='img' onChange={handleInput}></input>
+                        <input
+                            type='file'
+                            name='file'
+                            placeholder='Subir una foto'
+                            onChange={handleInput}
+                        />
 
-                        {/* <input type='text' name='userId' value={formState.userId} onChange={handleInput}></input> */}
+                        <div style={{ padding: "20px" }}>
+                            {formState.img ? (
+                                <img src={formState.img} alt={formState.name} width="200px" />
+                            ) : null}
+                        </div>
 
                         <button type='submit'>Guardar receta</button>
 

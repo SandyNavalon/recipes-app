@@ -53,5 +53,3 @@ function UserRecipes(props) {
 }
 
 export default UserRecipes;
-
-

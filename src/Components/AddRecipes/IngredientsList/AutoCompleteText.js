@@ -49,10 +49,12 @@ export default class AutoCompleteText extends React.Component {
     }
 
     ingredientsSelected (value) {
+        const newIngredients = [...this.state.ingredients, value]
+
         this.setState(() => ({
-            ingredients:[...this.state.ingredients, value],
-            // ingredientsChoosen: []
+            ingredients: newIngredients,
         }))
+        this.props.updateIngredients(newIngredients)
     }
 
     renderSelected () {
@@ -62,20 +64,19 @@ export default class AutoCompleteText extends React.Component {
         }
         console.log(ingredients);
 
-        return (
-            <>
-                <div>
-                <h2>LISTA INGREDIENTES</h2>
-                    <ul>
-                    {ingredients.map((item, index) => <li key={index}>{item}</li>)}
-                    </ul>
-                    {/* <button>Confirmar ingredientes</button> */}
-                </div>
+            return (
+                <>
+                    <div>
+                    <h2>LISTA INGREDIENTES</h2>
+                        <ul>
+                        {ingredients.map((item, index) => <li key={index}>{item}</li>)}
+                        </ul>
+                    </div>
 
-            </>
-        )
+                </>
+            )
 
-    }
+    };
 
 
     renderSuggestions () {
@@ -89,7 +90,6 @@ export default class AutoCompleteText extends React.Component {
                 <ul>
                     {suggestions.map((item, index) => <li key={index} onClick={() => this.suggestionSelected(item)}>{item}</li>)}
                 </ul>
-
             </>
         )
     }
@@ -101,8 +101,11 @@ export default class AutoCompleteText extends React.Component {
             <div>
                 <input value={text} onChange={this.onTextChanged} type='text'/>
                 <div>{this.renderSuggestions()}</div>
-                <div>{this.renderSelected()}</div>
+                <div>
+                    {this.renderSelected()}
+                </div>
             </div>
         )
     }
 }
+

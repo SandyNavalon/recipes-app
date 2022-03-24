@@ -3,6 +3,8 @@ import { NavLink, useNavigate } from 'react-router-dom';
 import { logoutUser } from '../../Context/actions';
 import { useAuthDispatch, useAuthState } from '../../Context/contexts';
 
+import logo from '../../assets/LOGO-boilbook-blanco.png'
+
 import './Navbar.scss';
 
 const Navbar = () => {
@@ -21,43 +23,56 @@ const Navbar = () => {
 
 
     return (
-
         <div className='navbar'>
+
+        { user.email ? (
             <div className='navbar__items'>
                 <div className='navbar__items-btn'>
                     <NavLink
                     className={({isActive}) => (isActive ? 'active' : 'inactive')}
                     to="/">
-                    ver recetas
+                    Ver recetas
                     </NavLink>
                 </div>
+
                 <div className='navbar__items-btn'>
                     <NavLink
                     className={({isActive}) => (isActive ? 'active' : 'inactive')}
                     to="/dashboard">
-                    mi recetario
+                    Mi recetario
                     </NavLink>
                 </div>
-            </div>
+                <div className='navbar__items-logo'>
+                    <img src={logo}/>
+                </div>
 
-        { user.email ? (
-            <div className='navbar__items'>
                 <p>Bienvenida/o {user.user}</p>
-
-                    <div className='navbar__items-btn'>
-                        <NavLink
-                            onClick={handleLogout}
-                            className={({isActive}) => (isActive ? 'active' : 'inactive')}
-                            to="/">
-                            LOGOUT
-                        </NavLink>
-                    </div>
+                <div className='navbar__items-btn'>
+                            <NavLink
+                                onClick={handleLogout}
+                                className={({isActive}) => (isActive ? 'active' : 'inactive')}
+                                to="/">
+                                LOGOUT
+                            </NavLink>
+                </div>
             </div>
         )
 
             :
 
             <div className='navbar__items'>
+                <div className='navbar__items-btn'>
+                    <NavLink
+                    className={({isActive}) => (isActive ? 'active' : 'inactive')}
+                    to="/">
+                    Ver recetas
+                    </NavLink>
+                </div>
+
+                <div className='navbar__items-logo'>
+                    <img src={logo}/>
+                </div>
+
                 <p>Bienvenida/o</p>
 
                     <div className='navbar__items-btn'>
@@ -68,9 +83,10 @@ const Navbar = () => {
                             LOGIN
                         </NavLink>
                     </div>
-
-            </div>}
+            </div>
+        }
         </div>
+
     )
 }
 

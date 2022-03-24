@@ -4,6 +4,7 @@ import routes from "./Config/routes.js";
 import AppRoutes from "./Components/AppRoute";
 import { AuthProvider } from "./Context/context.index";
 import Navbar from "./Components/Navbar/Navbar.jsx";
+import Footer from "./Components/Footer/Footer.jsx";
 
 
 function App() {
@@ -18,6 +19,7 @@ function App() {
           <Route element={<AppRoutes />} path="/dashboard/*" />
           <Route element={<AppRoutes />} path="/dashboard/add-recipe" />
         </Routes>
+        <Footer />
       </Router>
     </AuthProvider>
   );
