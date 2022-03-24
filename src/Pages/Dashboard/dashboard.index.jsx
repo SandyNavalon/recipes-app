@@ -5,8 +5,8 @@ import { Link, useNavigate } from "react-router-dom";
 import UserRecipes from "./UserRecipes/UserRecipes";
 import FiltroPrueba from "./FiltroPrueba";
 import { useState } from "react";
-
-import '../../Styles/dashboard.scss'
+import './dashboard.scss';
+//import '../general.scss'
 
 
 function Dashboard(_props) {
@@ -111,22 +111,23 @@ function Dashboard(_props) {
           <Link to='/dashboard/add-recipes'>añadir receta</Link>
 
         </div>
-
+      <div className="private-recipes">
         {
           recipes.map((item) =>
-            <div key={item._id}>
-              <h1>{item.title}</h1>
+            <div key={item._id} className='card'>
+              <p><img alt={item.title} src={item.img} width="300px"></img></p>
+              <h2>{item.title}</h2>
               <h3>ingredientes</h3>
               {item.ingredients.map((item, index) =>
-                <p key={index.toString()}>{item}</p>
+                <ul key={index.toString()}><li>{item}</li></ul>
               )}
-              <p><img alt={item.title} src={item.img} width="300px"></img></p>
+              
               <Link to={`/detail/${item._id}`}><button>view detail</button></Link>
               <hr></hr>
             </div>)
 
         }
-
+      </div>
       </div>
 
       <div></div>

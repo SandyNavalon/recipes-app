@@ -1,3 +1,33 @@
+
+ @import url('https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@100;300;400;500;700;800;900&display=swap');
+html,body{
+  font-family: 'M PLUS Rounded 1c', sans-serif;
+  color:#503617;
+   background-color: #ffaf59;
+}
+
+button{
+  background-color:#503617;
+	border-radius:30px;
+	//display:inline-block;
+	cursor:pointer;
+	color:#ffffff;
+	font-size:15px;
+  font-weight: bold;
+	padding:16px 31px;
+	text-decoration:none;
+  outline: inherit;
+}
+
+button:hover{
+  background-color:#914d00;
+}
+
+button:active {
+  position:relative;
+	top:1px;}
+
+  
 .App {
   text-align: center;
 }
