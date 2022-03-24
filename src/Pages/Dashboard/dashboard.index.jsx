@@ -13,7 +13,6 @@ function Dashboard(_props) {
   let navigate = useNavigate();
   const dispatch = useAuthDispatch(); // lee el método dispatch del contexto
   const user = useAuthState(); //lee los detalles del usuario del contexto
-  const email = useAuthState();
 
   const [recipes, setRecipes] = useState([]);
   const [seleccionada, setSeleccionada] = useState([]);
@@ -61,7 +60,7 @@ function Dashboard(_props) {
         <button onClick={handleLogout}>Logout</button>
       </div>
       <p>Welcome {user.user}</p>
-      <p>Tu email es {email.email}</p>
+      <p>Tu email es {user.email}</p>
 
       <div>
         <hr></hr>

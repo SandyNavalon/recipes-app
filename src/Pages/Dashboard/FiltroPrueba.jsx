@@ -1,17 +1,17 @@
 import React, { useState } from 'react';
 
 
-const RECIPES2 = [
-    { id: 1, name:'sal', title: 'Plato1', category: 'cena', type: 'americana' },
-    { id: 2, name:'sal', title: 'Platito', category: 'merienda', type: 'tailandesa' },
-    { id: 3, name:'pimienta', title: 'Pasta', category: 'cena', type: 'asiatica' },
-    { id: 4, name:'sal', title: 'Huevos fritos', category: 'almuerzo', type: 'sudamericana' },
-    { id: 5, name:'sal', title: 'Spaghetti', category: 'almuerzo', type: 'china' },
-    { id: 6, name:'sal', title: 'tortilla', category: 'cena', type: 'mediterranea' },
-    { id: 7, name:'sal', title: 'Poutain', category: 'cena', type: 'tailandesa' },
-    { id: 8, name:'pimienta', title: 'Dorada a la sal', category: 'desayuno', type: 'noruega' },
-    { id: 9, name:'sal', title: 'Frite de coles', category: 'desayuno', type: 'desayuno' },
-];
+// const RECIPES2 = [
+//     { id: 1, name:'sal', title: 'Plato1', category: 'cena', type: 'americana' },
+//     { id: 2, name:'sal', title: 'Platito', category: 'merienda', type: 'tailandesa' },
+//     { id: 3, name:'pimienta', title: 'Pasta', category: 'cena', type: 'asiatica' },
+//     { id: 4, name:'sal', title: 'Huevos fritos', category: 'almuerzo', type: 'sudamericana' },
+//     { id: 5, name:'sal', title: 'Spaghetti', category: 'almuerzo', type: 'china' },
+//     { id: 6, name:'sal', title: 'tortilla', category: 'cena', type: 'mediterranea' },
+//     { id: 7, name:'sal', title: 'Poutain', category: 'cena', type: 'tailandesa' },
+//     { id: 8, name:'pimienta', title: 'Dorada a la sal', category: 'desayuno', type: 'noruega' },
+//     { id: 9, name:'sal', title: 'Frite de coles', category: 'desayuno', type: 'desayuno' },
+// ];
 
 const RECIPES = [
     { id: 1, name: ['Pepino', 'sal'], title: 'Plato1', category: 'cena', type: 'americana' },

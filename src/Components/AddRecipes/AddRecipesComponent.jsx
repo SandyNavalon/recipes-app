@@ -14,10 +14,6 @@ const AddRecipe = ({ handleSubmit }) => {
 
   const { ingredients } = AutoCompleteText;
 
-  // traer el ID de user desde localStorage
-  const currentUser = getItem("currentUser");
-  const userParsed = JSON.parse(currentUser);
-
   // console.log('current', userParsed._id);
 
   const [formState, setFormState] = useState({
@@ -27,7 +23,7 @@ const AddRecipe = ({ handleSubmit }) => {
     ingredients: [],
     img: "",
     description: "",
-    userId: userParsed._id,
+    userId: user._id,
   });
 
   // console.log(formState);
@@ -46,7 +42,7 @@ const AddRecipe = ({ handleSubmit }) => {
 
   const submitForm = (ev) => {
     ev.preventDefault(); //prevenir comportamiento nativo navegador
-    handleSubmit({ ...formState, userId: userParsed._id });
+    handleSubmit({ ...formState, userId: user._id });
 
     navigate("/dashboard"); //redirige a dashboard cuando posteas la receta
     console.log(formState);
@@ -98,8 +94,6 @@ const AddRecipe = ({ handleSubmit }) => {
               <textarea name="description" value={formState.description} onChange={handleInput}></textarea>
 
               <input type="file" name="img" onChange={handleInput}></input>
-
-              {/* <input type='text' name='userId' value={formState.userId} onChange={handleInput}></input> */}
 
               <button type="submit">Guardar receta</button>
             </fieldset>

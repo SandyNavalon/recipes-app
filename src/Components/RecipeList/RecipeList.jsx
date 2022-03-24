@@ -7,8 +7,8 @@ import '../../Pages/Home/home.scss';
 //import RecipeDetail from "../../RecipeDetail/recipeDetail.index";
 const RecipeList = () => {
 
-    const [error, setError] = useState(null);
-    const [isLoaded, setIsLoaded] = useState(false);
+    // const [error, setError] = useState(null);
+    // const [isLoaded, setIsLoaded] = useState(false);
 
     const [recipe, setRecipe] = useState([]);
 
@@ -20,8 +20,8 @@ const RecipeList = () => {
                 setRecipe(recipesList)
             },
                 (error) => {
-                    setIsLoaded(true);
-                    setError(error);
+                    // setIsLoaded(true);
+                    // setError(error);
                 }
             )
     }, []);

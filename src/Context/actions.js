@@ -18,12 +18,13 @@ export async function loginUser(dispatch, loginPayload) {
     let data = await response.json();
 
     if (data.user) {
-      dispatch({ type: "LOGIN_SUCCESS", payload: data });
       await axios(`http://localhost:4000/recipes/myRecipes/${data._id}`).then((res) => {
         console.log("resLogin:", res);
         data.recipes = res.data;
       });
+      console.log('USER ACTION', data);
       setItem("currentUser", data);
+      dispatch({ type: "LOGIN_SUCCESS", payload: data });
       return data;
     }
 
@@ -37,5 +38,4 @@ export async function loginUser(dispatch, loginPayload) {
 export async function logoutUser(dispatch) {
   dispatch({ type: "LOGOUT" });
   localStorage.removeItem("currentUser");
-  localStorage.removeItem("token");
 }
