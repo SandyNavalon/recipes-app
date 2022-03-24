@@ -24,9 +24,7 @@ const RecipeList = () => {
                     setError(error);
                 }
             )
-    }, [])
-
-    console.log('recipe:', recipe);
+    }, []);
 
     return (
         <div className='recipeCard'>

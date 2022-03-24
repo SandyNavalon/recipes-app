@@ -5,6 +5,9 @@ import { Link, useNavigate } from "react-router-dom";
 // import UserRecipes from "./UserRecipes/UserRecipes";
 // import FiltroPrueba from "./FiltroPrueba";
 import { useState } from "react";
+import './dashboard.scss';
+//import '../general.scss'
+
 
 function Dashboard(_props) {
   let navigate = useNavigate();
@@ -35,7 +38,7 @@ function Dashboard(_props) {
       for (const item of recipe.ingredients) {
         ingredientsArray.forEach((element) => {
           if (element.localeCompare(item) === 0) {
-            setSeleccionada([seleccionada.push(recipe)]);
+            setSeleccionada([...seleccionada, recipe]);
             console.log("si entra");
           } else {
             //console.log('no entra');
@@ -45,21 +48,6 @@ function Dashboard(_props) {
     }
     console.log("recipes:", seleccionada);
   };
-
-  //const recipesItem = [user.recipes.data, ingredientsArray];
-
-  //console.log('ingredients:',recipesItem);
-
-  //const recipesOfUser = user.recipes.data.map((item)=>
-  // {
-  //let recipesItem = [item, ingredientsArray];
-  //<li key={user.recipes.data._id}><UserRecipes name={user.recipes.data} /></li>
-  //},
-  //)
-
-  //
-
-  //ahora tengo un array de recetas y no ids. el cual mapeo y paso por prop al componente
 
   const handleLogout = () => {
     logoutUser(dispatch); //llama a la acción logout
@@ -110,16 +98,14 @@ function Dashboard(_props) {
             type="search"
             value={ingredient}
             onChange={(event) => setIngredient(event.target.value)}
-            placeholder="Filtrito"
-          ></input>
+            placeholder="Filtrito"></input>
           <button type="submit">añadir</button>
           <ul>
-            {ingredientsArray.map((item) => (
-              <li key={item.toString()}>{item}</li>
-            ))}
+            {ingredientsArray.map((i) => <li key={i.toString()}>{i}</li>)}
           </ul>
         </form>
       </div>
+
     </div>
   );
 }

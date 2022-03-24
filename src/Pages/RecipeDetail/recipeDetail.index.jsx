@@ -32,7 +32,6 @@ const RecipeDetail = () => {
   useEffect(() => {
     Axios(`http://localhost:4000/recipes/${urlId}`)
       .then(res => {
-
         setRecipe({
 
           title: res.data.title,

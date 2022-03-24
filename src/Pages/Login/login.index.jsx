@@ -1,8 +1,7 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { loginUser, useAuthState, useAuthDispatch } from "../../Context/context.index";
-import styles from "./login.scss";
-// import RecipeList from "../../Components/RecipeList/RecipeList";
+import RecipeList from "../../Components/RecipeList/RecipeList";
 
 function Login(props) {
   const [email, setEmail] = useState("");
@@ -29,7 +28,7 @@ function Login(props) {
     <div>
         <div className="login">
           <h1>Login</h1>
-          {errorMessage ? <p className={styles.error}>{errorMessage}</p> : null}
+          {errorMessage ? <p>{errorMessage}</p> : null}
           <form className="login__form">
               <div className="login__form-email">
                 <label htmlFor="email">Email</label>
@@ -62,6 +61,10 @@ function Login(props) {
         <Link to='/register'>
         <button className="new__btn">Registrate</button>
         </Link>
+      </div>
+
+      <div>
+       <RecipeList/>
       </div>
     </div>
   );

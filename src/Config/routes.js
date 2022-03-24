@@ -6,6 +6,7 @@ import PageNotFound from '../Pages/NotFound/notFound.index'
 import RecipeDetail from "../Pages/RecipeDetail/recipeDetail.index";
 import Register from "../Pages/Register/Register.index";
 import Home from "../Pages/Home/Home.index";
+// import Dashboard from "../Pages/Dashboard/dashboard.index";
 
 // Config/routes.js
 
