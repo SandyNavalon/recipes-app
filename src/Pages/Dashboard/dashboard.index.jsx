@@ -16,17 +16,15 @@ function Dashboard(_props) {
   const email = useAuthState();
 
 
-const [recipes, setRecipes] = useState([]);
+  const [recipes, setRecipes] = useState([]);
 
 
   // es el valor del input 
   const [ingredient, setIngredient] = useState('');
 
-  
 
   const [ingredientsArray, setIngredientsArray] = useState([])
-  
-
+  console.log('ingredientArray', ingredientsArray);
   //console.log('recipesItem ', user.recipes.data);
 
   const filter = (e) => {
@@ -35,40 +33,59 @@ const [recipes, setRecipes] = useState([]);
     setIngredientsArray([
       ...ingredientsArray, ingredient
     ])
+
+    console.log('recipes:', user.recipes.data);
+    //console.log('ingredientsArray inside', ingredientsArray);
     e.target.reset();
     setIngredient('');
 
-    
-  for (const recipe of recipes) {
-    for (const item of recipe.ingredients) {
-      if(item===ingredient){
-        setRecipes(recipe)
-      }
+
+    for (const recipe of recipes) {
+      for (const item of recipe.ingredients) {
+
+        if (item.localeCompare(ingredientsArray) === 0) {
+          console.log('entra');
+          setRecipes( recipe)
+        } else {
+          console.log('noentra:');
+          // setRecipes(
+          //   {
+          //     category: "",
+          //     comments: [],
+          //     description: "",
+          //     img: "https://res.cloudinary.com/dlce3cxgc/image/upload/v1648114450/not-found_fdfpdx.jpg",
+          //     ingredients: [],
+          //     title: "Mala suerte",
+          //     type: ""
+          //   })
+        }
+      };
     }
+    console.log('recipes2:', recipes);
   }
 
-  console.log('recipes:', recipes);
-  };
 
-const recipesItem = [user.recipes.data, ingredientsArray];
 
-useEffect(() => {
-  setRecipes(user.recipes.data);
-}, []);
 
-//console.log('ingredients:',recipesItem);
+  //const recipesItem = [user.recipes.data, ingredientsArray];
+
+  useEffect(() => {
+    setRecipes(user.recipes.data);
+  }, []);
+
+  //console.log('ingredients:',recipesItem);
 
   //const recipesOfUser = user.recipes.data.map((item)=>
-   // {
-      //let recipesItem = [item, ingredientsArray];
-    //<li key={user.recipes.data._id}><UserRecipes name={user.recipes.data} /></li>
+  // {
+  //let recipesItem = [item, ingredientsArray];
+  //<li key={user.recipes.data._id}><UserRecipes name={user.recipes.data} /></li>
   //},
   //)
- 
-  
-//
 
-//ahora tengo un array de recetas y no ids. el cual mapeo y paso por prop al componente
+
+  //
+
+  //ahora tengo un array de recetas y no ids. el cual mapeo y paso por prop al componente
 
 
   const handleLogout = () => {
@@ -94,24 +111,24 @@ useEffect(() => {
           <Link to='/dashboard/add-recipes'>añadir receta</Link>
 
         </div>
-       
-        {
-                recipes.map((item) =>
-                    <div key={item._id}>
-                        <h1>{item.title}</h1>
-                        <h3>ingredientes</h3>
-                        {item.ingredients.map((item, index) =>
-                            <p key={index.toString()}>{item}</p>
-                        )}
-                        <p><img alt={item.title} src={item.img} width="300px"></img></p>
-                        <Link to={`/detail/${item._id}`}><button>view detail</button></Link>
-                        <hr></hr>
-                    </div>)
 
-            }
+        {
+          recipes.map((item) =>
+            <div key={item._id}>
+              <h1>{item.title}</h1>
+              <h3>ingredientes</h3>
+              {item.ingredients.map((item, index) =>
+                <p key={index.toString()}>{item}</p>
+              )}
+              <p><img alt={item.title} src={item.img} width="300px"></img></p>
+              <Link to={`/detail/${item._id}`}><button>view detail</button></Link>
+              <hr></hr>
+            </div>)
+
+        }
 
       </div>
-      
+
       <div></div>
 
       {/** filtro */}
@@ -122,15 +139,15 @@ useEffect(() => {
           <input
             type="search"
             value={ingredient}
-            onChange={(event)=>setIngredient(event.target.value)}
+            onChange={(event) => setIngredient(event.target.value)}
             placeholder="Filtrito"></input>
           <button type="submit">añadir</button>
           <ul>
-            {ingredientsArray.map((item)=> <li key={item.toString()}>{item}</li> )}
+            {ingredientsArray.map((i) => <li key={i.toString()}>{i}</li>)}
           </ul>
         </form>
       </div>
-     
+
     </div>
 
   );
