@@ -9,9 +9,17 @@ const addToExistingArray = (name, value) => {
     return newList;
 };
 
+const addToExistingArrayNested = (property, key, value) => {
+    const element = getItem(property) || [];
+    const newElement = element[key].concat(value);
+    setItem(property, newElement);
+    return newElement;
+};
+
 
 export {
     getItem,
     setItem,
     addToExistingArray,
+    addToExistingArrayNested
 };

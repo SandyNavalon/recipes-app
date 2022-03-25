@@ -4,7 +4,6 @@ import AutoCompleteText from "./IngredientsList/AutoCompleteText";
 import { useAuthState } from "../../Context/contexts";
 
 import "../../Pages/AddRecipe/addRecipe.scss";
-import { getItem } from "../../Services/storage.service";
 
 const AddRecipe = ({ handleSubmit }) => {
   let navigate = useNavigate();
@@ -22,10 +21,12 @@ const AddRecipe = ({ handleSubmit }) => {
     type: "",
     category: "",
     ingredients: [],
-    img: "",
+    img: null,
     description: "",
     userId: user.id,
   });
+
+  const [preview, setPreview] = useState(null);
 
   // console.log(formState);
 
@@ -41,6 +42,18 @@ const AddRecipe = ({ handleSubmit }) => {
     setFormState({ ...formState, [name]: value });
   };
 
+  const handleFileInput = (ev) => {
+    const reader = new FileReader();
+    let file = ev.target.files[0];
+
+    reader.onloadend = (ev) => {
+      setPreview(ev.target.result);
+      setFormState({ ...formState, img: file });
+    };
+
+    reader.readAsDataURL(file);
+  }
+
   const submitForm = (ev) => {
     ev.preventDefault(); //prevenir comportamiento nativo navegador
     handleSubmit({ ...formState });
@@ -48,13 +61,6 @@ const AddRecipe = ({ handleSubmit }) => {
     navigate("/dashboard"); //redirige a dashboard cuando posteas la receta
     console.log(formState);
     console.log("ingredientessssss:", ingredients);
-
-    // const { title, type, category, ingredients, description } = formState;
-
-    // if(!title || !type || !category || !ingredients || !description) {
-    //     console.log('Faltan datos');
-    //     return;
-    // }
   };
 
   return (
@@ -94,7 +100,9 @@ const AddRecipe = ({ handleSubmit }) => {
               <label>Preparación</label>
               <textarea name="description" value={formState.description} onChange={handleInput}></textarea>
 
-              <input type="file" name="img" onChange={handleInput}></input>
+              <input type="file" name="img" onChange={handleFileInput}></input>
+
+              {preview ? <img src={preview} alt="product" width="200px"/> : null}
 
               <button type="submit">Guardar receta</button>
             </fieldset>
