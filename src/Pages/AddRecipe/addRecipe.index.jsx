@@ -4,8 +4,8 @@ import AddRecipe from "../../Components/AddRecipes/AddRecipesComponent";
 import { addToExistingArray } from "../../Services/storage.service";
 
 const addRecipe = () => {
-  const handleSubmit = (data) => {
-    const newRecipe = saveRecipeService(data);
+  const handleSubmit = async (data) => {
+    const newRecipe = await saveRecipeService(data);
     addToExistingArray('recipes', newRecipe);
   };
 

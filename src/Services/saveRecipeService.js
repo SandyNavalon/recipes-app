@@ -21,7 +21,8 @@ export async function saveRecipeService(recipeData) {
       data: formData,
       headers: {},
     });
-    return response;
+
+    return response.data;
   } catch (error) {
     console.log(error);
   }

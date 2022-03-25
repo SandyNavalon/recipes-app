@@ -19,10 +19,10 @@ export async function loginUser(dispatch, loginPayload) {
 
     if (data.user) {
       await axios(`http://localhost:4000/recipes/myRecipes/${data._id}`).then((res) => {
-        console.log("resLogin:", res);
         data.recipes = res.data;
+
+        console.log('RES DATA FETCH', res.data)
       });
-      console.log('USER ACTION', data);
       setItem("currentUser", data);
       dispatch({ type: "LOGIN_SUCCESS", payload: data });
       return data;

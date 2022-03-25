@@ -22,7 +22,6 @@ function Dashboard(_props) {
   const [ingredientsArray, setIngredientsArray] = useState([]);
 
   useEffect(() => {
-    console.log(user);
     setRecipes(user.recipes);
   }, [user]);
 
@@ -32,7 +31,6 @@ function Dashboard(_props) {
     e.target.reset();
     setIngredient("");
 
-    console.log(ingredientsArray);
     for (const recipe of recipes) {
       for (const item of recipe.ingredients) {
         ingredientsArray.forEach((element) => {
@@ -45,7 +43,6 @@ function Dashboard(_props) {
         });
       }
     }
-    console.log("recipes:", seleccionada);
   };
 
   const handleLogout = () => {

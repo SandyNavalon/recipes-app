@@ -7,14 +7,15 @@ import "../../Pages/AddRecipe/addRecipe.scss";
 import { getItem } from "../../Services/storage.service";
 
 const AddRecipe = ({ handleSubmit }) => {
-  // const {user, _id} = useAuthState();
   let navigate = useNavigate();
 
-  const { user } = useAuthState();
+  const user = useAuthState();
 
   const { ingredients } = AutoCompleteText;
 
   // console.log('current', userParsed._id);
+
+  console.log(user.id);
 
   const [formState, setFormState] = useState({
     title: "",
@@ -23,7 +24,7 @@ const AddRecipe = ({ handleSubmit }) => {
     ingredients: [],
     img: "",
     description: "",
-    userId: user._id,
+    userId: user.id,
   });
 
   // console.log(formState);
@@ -42,7 +43,7 @@ const AddRecipe = ({ handleSubmit }) => {
 
   const submitForm = (ev) => {
     ev.preventDefault(); //prevenir comportamiento nativo navegador
-    handleSubmit({ ...formState, userId: user._id });
+    handleSubmit({ ...formState });
 
     navigate("/dashboard"); //redirige a dashboard cuando posteas la receta
     console.log(formState);

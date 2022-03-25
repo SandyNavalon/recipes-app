@@ -21,6 +21,8 @@ const AutoCompleteText = (props) => {
   };
 
   const suggestionSelected = (value) => {
+    if (selectedIngredients.find(ingredient => ingredient === value)) return;
+    
     const newIngredients = [...selectedIngredients, value];
     setSelectedIngredients([...selectedIngredients, value]);
     setSuggestions([]);
