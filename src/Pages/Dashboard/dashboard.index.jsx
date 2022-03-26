@@ -1,9 +1,10 @@
 import React, { useEffect } from "react";
-import { useAuthDispatch, logoutUser, useAuthState } from "../../Context/context.index";
+import { useAuthDispatch, useAuthState } from "../../Context/context.index";
 import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
 import ingredients from "../../Components/AddRecipes/IngredientsList/ingredients";
 import "./dashboard.scss";
+import axios from "axios";
 //import '../general.scss'
 
 function Dashboard(props) {
@@ -49,7 +50,7 @@ function Dashboard(props) {
     }, []);
     setFilterContent(arrayOfIngredients);
     setFilterResults(results)
-    console.log(results);
+    // console.log(results);
   };
 
   const suggestionSelected = (value) => {
@@ -104,23 +105,30 @@ function Dashboard(props) {
     );
   };
 
-  const handleLogout = () => {
-    logoutUser(dispatch); //llama a la acción logout
-    navigate("/"); //navega de nuevo al login sin usuario
-  };
+  const deleteRecipe = async (id) => {
+    try {
+
+      const { data } = await axios.delete(
+        `http://localhost:4000/recipes/${id}`
+      );
+      // console.log(data);
+
+      const arrayFiltrado = recipes.filter(item=>item._id !== id);
+      setRecipes(arrayFiltrado)
+      // console.log(id)
+
+    } catch (error) {
+      // console.log(error);
+    }
 
   return (
     <div style={{ padding: 10 }}>
       <div>
-        <h1>Dashboard</h1>
-        <button onClick={handleLogout}>Logout</button>
+        <p>Hola {user.user}</p>
       </div>
-      <p>Welcome {user.user}</p>
-      <p>Tu email es {user.email}</p>
 
-      {/** filtro */}
       <div>
-        <p>Filtrito</p>
+        <p>Filtro</p>
 
         <input type="search" value={inputValue} onChange={onTextChanged} placeholder="Filtrito"></input>
         <div>{renderSuggestions()}</div>
@@ -131,13 +139,13 @@ function Dashboard(props) {
         <hr></hr>
         <div className="recipebtns">
           <h1>Recetas</h1>
-          <Link to="/dashboard/add-recipes">añadir receta</Link>
+          <Link to="/dashboard/add-recipes">Añadir receta</Link>
         </div>
         {filterResults.length > 0 && filterContent.length > 0 ?
           filterResults.map((item) => (
             <div key={item._id}>
               <h1>{item.title}</h1>
-              <h3>ingredientes</h3>
+              <h3>Ingredientes</h3>
               {item.ingredients.map((item, index) => (
                 <p key={index.toString()}>{item}</p>
               ))}
@@ -145,9 +153,9 @@ function Dashboard(props) {
                 <img alt={item.title} src={item.img} width="300px"></img>
               </p>
               <Link to={`/detail/${item._id}`}>
-                <button>view detail</button>
+                <button>Preparar</button>
               </Link>
-              <hr></hr>
+              <button onClick={() => deleteRecipe(item._id)}>Eliminar receta</button>
             </div>
           ))
         :null}
@@ -166,9 +174,8 @@ function Dashboard(props) {
               <img alt={item.title} src={item.img} width="300px"></img>
             </p>
             <Link to={`/detail/${item._id}`}>
-              <button>view detail</button>
+              <button>Preparar</button>
             </Link>
-            <hr></hr>
           </div>
         ))}
       </div>
@@ -176,6 +183,7 @@ function Dashboard(props) {
       <div></div>
     </div>
   );
+  }
 }
 
 export default Dashboard;

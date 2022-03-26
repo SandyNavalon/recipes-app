@@ -1,16 +1,17 @@
 import React from 'react'
 import { useEffect, useState } from 'react';
 import Axios  from 'axios';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import { useAuthState } from '../../Context/contexts';
 
 import './recipeDetail.scss';
+import Rating from '../../Components/Rating/Rating';
 
-const RecipeDetail = () => {
+const RecipeDetail = (props) => {
 
   //sacamos el id de la url del browser troceándolo
-  const url = window.location.href;
-  const urlId = url.slice(-24);
+  const location = useLocation()
+  const urlId = location.pathname.split('/')[2];
 
   //securizamos ruta usando user
   const {user} = useAuthState();
@@ -34,6 +35,7 @@ const RecipeDetail = () => {
       .then(res => {
         setRecipe({
 
+          id: res.data.id,
           title: res.data.title,
           type: res.data.type,
           category: res.data.category,
@@ -50,12 +52,15 @@ const RecipeDetail = () => {
       )
   }, [])
 
+  
+
   return (
     <div className='details'>
 
       <div className='details__top'>
         <h1 className='details__top-title'>{recipe.title}</h1>
         <img alt={recipe.title} src={recipe.img} className='details__top-img'/>
+        <Rating />
         <h2 className='details__top-type'>Tipo: {recipe.type}</h2>
       </div>
 
@@ -86,7 +91,7 @@ const RecipeDetail = () => {
 
           {user ?
           <button className='details__btns-edit'>
-            <Link to="*">Editar</Link>
+            <Link to={'/detail/edit/'+ urlId}>Editar</Link>
           </button>
           :
           null}

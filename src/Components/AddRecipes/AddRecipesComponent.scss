@@ -1,0 +1,23 @@
+.form-style {
+    display: flex;
+    flex-direction: column;
+
+    fieldset{
+        display: flex;
+        flex-direction: column;
+        background-color: rgba(238, 250, 238, 0.5);
+
+        border: 0;
+    }
+
+    input,select, textarea, button {
+        border: 0;
+        border-radius: 5px;
+    }
+
+    select {
+        cursor: pointer;
+
+    }
+
+}

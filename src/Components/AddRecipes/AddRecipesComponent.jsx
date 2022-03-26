@@ -3,16 +3,14 @@ import { Navigate, useNavigate } from "react-router-dom";
 import AutoCompleteText from "./IngredientsList/AutoCompleteText";
 import { useAuthState } from "../../Context/contexts";
 
-import "../../Pages/AddRecipe/addRecipe.scss";
+import "../AddRecipes/AddRecipesComponent.scss";
 
 const AddRecipe = ({ handleSubmit }) => {
   let navigate = useNavigate();
 
   const user = useAuthState();
 
-  const { ingredients } = AutoCompleteText;
-
-  // console.log('current', userParsed._id);
+  // const { ingredients } = AutoCompleteText;
 
   console.log(user.id);
 
@@ -28,9 +26,6 @@ const AddRecipe = ({ handleSubmit }) => {
 
   const [preview, setPreview] = useState(null);
 
-  // console.log(formState);
-
-  // const [ingredientChoosen, setIngredientChoosen] = useState()
 
   const changeIngredients = (ingredients) => {
     setFormState({ ...formState, ingredients });
@@ -42,6 +37,7 @@ const AddRecipe = ({ handleSubmit }) => {
     setFormState({ ...formState, [name]: value });
   };
 
+  //subida imagen
   const handleFileInput = (ev) => {
     const reader = new FileReader();
     let file = ev.target.files[0];
@@ -60,45 +56,52 @@ const AddRecipe = ({ handleSubmit }) => {
 
     navigate("/dashboard"); //redirige a dashboard cuando posteas la receta
     console.log(formState);
-    console.log("ingredientessssss:", ingredients);
   };
 
   return (
     <>
       {user ? (
         <div>
-          <form autoComplete="off" onSubmit={submitForm} encType="multipart/form-data">
-            <fieldset className="form-style">
-              <label>Título</label>
-              <input type="text" name="title" value={formState.title} onChange={handleInput}></input>
+          <form className="form-style" autoComplete="off" onSubmit={submitForm} encType="multipart/form-data">
+            <fieldset>
+                <label>Título</label>
+                <input type="text" name="title" value={formState.title} onChange={handleInput} />
+              </fieldset>
 
-              <label>Categoría</label>
-              <select name="category" value={formState.category} onChange={handleInput}>
-                <option value="" defaultValue={""}>
-                  Selecciona una opción
-                </option>
-                <option value="desayuno">Desayuno</option>
-                <option value="almuerzo">Almuerzo</option>
-                <option value="merienda">Merienda</option>
-                <option value="cena">Cena</option>
-                <option value="otros">Otros</option>
-              </select>
+              <fieldset>
+                <label>Categoría</label>
+                <select name="category" value={formState.category} onChange={handleInput}>
+                  <option value="" defaultValue={""}>
+                    Selecciona una opción
+                  </option>
+                  <option value="desayuno">Desayuno</option>
+                  <option value="almuerzo">Almuerzo</option>
+                  <option value="merienda">Merienda</option>
+                  <option value="cena">Cena</option>
+                  <option value="otros">Otros</option>
+                </select>
+              </fieldset>
+              <fieldset>
+                <label>Tipo</label>
+                <select name="type" value={formState.type} onChange={handleInput}>
+                  <option value="" defaultValue={""}>
+                    Selecciona una opción
+                  </option>
+                  <option value="italiana">Italiana</option>
+                  <option value="mediterranea">Mediterránea</option>
+                  <option value="oriental">Oriental</option>
+                </select>
+              </fieldset>
 
-              <label>Tipo</label>
-              <select name="type" value={formState.type} onChange={handleInput}>
-                <option value="" defaultValue={""}>
-                  Selecciona una opción
-                </option>
-                <option value="italiana">Italiana</option>
-                <option value="mediterranea">Mediterránea</option>
-                <option value="oriental">Oriental</option>
-              </select>
+              <fieldset>
+                <label>Ingredientes</label>
+                <AutoCompleteText changeIngredients={changeIngredients} />
+              </fieldset>
 
-              <label>Ingredientes</label>
-              <AutoCompleteText changeIngredients={changeIngredients} />
-
-              <label>Preparación</label>
-              <textarea name="description" value={formState.description} onChange={handleInput}></textarea>
+              <fieldset>
+                <label>Preparación</label>
+                <textarea name="description" value={formState.description} onChange={handleInput}></textarea>
+              <fieldset/>
 
               <input type="file" name="img" onChange={handleFileInput}></input>
 

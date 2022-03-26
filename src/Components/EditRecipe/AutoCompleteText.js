@@ -1,5 +1,5 @@
 import { useState } from "react";
-import ingredients from "./ingredients";
+import ingredients from "../AddRecipes/IngredientsList/ingredients";
 
 const AutoCompleteText = (props) => {
   const [inputValue, setInputValue] = useState("");

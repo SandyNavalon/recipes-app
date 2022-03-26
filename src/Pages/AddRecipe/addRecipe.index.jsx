@@ -6,7 +6,7 @@ import { addToExistingArrayNested } from "../../Services/storage.service";
 
 const AddRecipe = () => {
   const dispatch = useAuthDispatch();
-  
+
   const handleSubmit = async (data) => {
     const newRecipe = await saveRecipeService(data);
     dispatch({type: 'ADD_RECIPE', payload: newRecipe});

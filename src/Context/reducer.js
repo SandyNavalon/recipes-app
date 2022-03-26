@@ -41,6 +41,12 @@ export const AuthReducer = (state = initialState, action) => {
         recipes: [...state.recipes, action.payload],
         loading: false,
       };
+    case "EDIT_RECIPE":
+      return {
+        ...state,
+        recipes: [...state.recipes, action.payload],
+        loading: false,
+      };
 
     default:
       throw new Error(`Unhandled action type: ${action.type}`);
