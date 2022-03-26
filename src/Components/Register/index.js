@@ -7,23 +7,23 @@ function RegisterUser({handleSubmit}) {
         const errors = {};
 
         if (!values.email) {
-            errors.email = "Required";
+            errors.email = "Requerido";
         } else if (values.email.length < 4) {
-            errors.email = "Must be 5 characters or more";
+            errors.email = "Debe tener más de 5 caracteres";
         }
 
         if (!values.password) {
-            errors.password = "Required";
+            errors.password = "Requerido";
         } else if (values.password.length < 8) {
-            errors.password = "Must be 8 characters or more";
+            errors.password = "Debes escribir un número, una letra mayúscula, una minúscula y un símbolo, más de 8 caracteres";
         } else if (values.password === "12345678") {
-            errors.password = "Must not be 12345678 !!!";
+            errors.password = "Eso no vale";
         }
 
         if (!values.passwordVerification) {
-            errors.passwordVerification = "Required";
+            errors.passwordVerification = "Requerido";
         } else if (values.passwordVerification !== values.password) {
-            errors.passwordVerification = "Second password doesn't match";
+            errors.passwordVerification = "Las contraseñas no coinciden";
         }
 
         return errors;
@@ -63,7 +63,9 @@ function RegisterUser({handleSubmit}) {
                         value={formik.values.email}
                     />
                     {formik.touched.email && formik.errors.email ? (
-                        <div>{formik.errors.email}</div>
+                        <div>
+                            <p>{formik.errors.email}</p>
+                        </div>
                     ) : null}
                 </div>
 
@@ -90,7 +92,9 @@ function RegisterUser({handleSubmit}) {
                         value={formik.values.password}
                     />
                     {formik.touched.password && formik.errors.password ? (
-                        <div>{formik.errors.password}</div>
+                        <div>
+                            <p>{formik.errors.password}</p>
+                        </div>
                     ) : null}
                 </div>
 
@@ -105,7 +109,9 @@ function RegisterUser({handleSubmit}) {
                         value={formik.values.passwordVerification}
                     />
                     {formik.touched.passwordVerification && formik.errors.passwordVerification ? (
-                        <div>{formik.errors.passwordVerification}</div>
+                        <div>
+                            <p>{formik.errors.passwordVerification}</p>
+                        </div>
                     ) : null}
                 </div>
 

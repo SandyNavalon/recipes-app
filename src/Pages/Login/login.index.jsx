@@ -1,16 +1,16 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { loginUser, useAuthState, useAuthDispatch } from "../../Context/context.index";
-import styles from "./login.scss";
-// import RecipeList from "../../Components/RecipeList/RecipeList";
+import RecipeList from "../../Components/RecipeList/RecipeList";
 
 function Login(props) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const dispatch = useAuthDispatch();
-  let navigate = useNavigate();
-  const { loading, errorMessage } = useAuthState(); //lee los valores del loading y errorMessages del contexto
 
+  let navigate = useNavigate();
+
+  const { loading, errorMessage } = useAuthState(); //lee los valores del loading y errorMessages del contexto
 
 
   const handleLogin = async (e) => {
@@ -18,10 +18,10 @@ function Login(props) {
 
     try {
       let response = await loginUser(dispatch, { email, password });
-      if (!response.user) return;
+      if (!response.user) return <div>Credenciales incorrectas</div>;
       navigate("/dashboard");
     } catch (error) {
-      console.log(error);
+      return error
     }
   };
 
@@ -29,7 +29,7 @@ function Login(props) {
     <div>
         <div className="login">
           <h1>Login</h1>
-          {errorMessage ? <p className={styles.error}>{errorMessage}</p> : null}
+          {errorMessage ? <p>{errorMessage}</p> : null}
           <form className="login__form">
               <div className="login__form-email">
                 <label htmlFor="email">Email</label>
@@ -60,9 +60,13 @@ function Login(props) {
       <div className="new">
         <h3 className="new__title">¿Todavía no tienes cuenta?</h3>
         <Link to='/register'>
-        <button className="new__btn">Registrar</button>
+        <button className="new__btn">Registrate</button>
         </Link>
       </div>
+
+      {/* <div>
+        <RecipeList/>
+      </div> */}
     </div>
   );
 }

@@ -1,0 +1,15 @@
+
+@import '../../Styles/variables';
+
+.recipeList{
+    display: flex;
+    list-style: none;
+    justify-content: space-around;
+    flex-direction: row;
+
+    &__item{
+        width: 200px;
+        font-family: $font-family;
+    }
+
+}

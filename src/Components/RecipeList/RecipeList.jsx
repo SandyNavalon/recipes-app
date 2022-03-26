@@ -7,8 +7,8 @@ import '../../Pages/Home/home.scss';
 //import RecipeDetail from "../../RecipeDetail/recipeDetail.index";
 const RecipeList = () => {
 
-    const [error, setError] = useState(null);
-    const [isLoaded, setIsLoaded] = useState(false);
+    // const [error, setError] = useState(null);
+    // const [isLoaded, setIsLoaded] = useState(false);
 
     const [recipe, setRecipe] = useState([]);
 
@@ -20,13 +20,11 @@ const RecipeList = () => {
                 setRecipe(recipesList)
             },
                 (error) => {
-                    setIsLoaded(true);
-                    setError(error);
+                    // setIsLoaded(true);
+                    // setError(error);
                 }
             )
-    }, [])
-
-    console.log('recipe:', recipe);
+    }, []);
 
     return (
         <div className='recipeCard'>
@@ -37,7 +35,7 @@ const RecipeList = () => {
                         <img alt={item.title} src={item.img}/>
                     </div>
                     <h3 >{item.title}</h3>
-                    <Link to={`detail/${item._id}`}><button>Preparar</button></Link>
+                    <Link to={`detail/${item._id}`} state ={{recipe: item}}><button>Preparar</button></Link>
                 </li>
                 )}
             </ul>

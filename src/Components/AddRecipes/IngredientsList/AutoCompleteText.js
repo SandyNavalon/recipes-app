@@ -1,108 +1,89 @@
-import React from "react";
+import { useState } from "react";
+import ingredients from "./ingredients";
 
-import ingredientsList from './ingredients'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faXmark } from '@fortawesome/free-solid-svg-icons';
 
-export default class AutoCompleteText extends React.Component {
-    constructor (props) {
-        super(props);
-        this.ingredients = ingredientsList;
+import './AutoComplete.scss'
 
-        this.state = {
-            text: '',
-            suggestions: [],
-            ingredients: [],
-        };
+const AutoCompleteText = (props) => {
+  const [inputValue, setInputValue] = useState("");
+  const [suggestions, setSuggestions] = useState([]);
+  const [selectedIngredients, setSelectedIngredients] = useState([]);
+
+  const onTextChanged = (ev) => {
+    const { value } = ev.target;
+
+    if (value.length) {
+      const regex = new RegExp(`^${value}`, "i");
+      const filter = ingredients.sort().filter((v) => regex.test(v));
+      setSuggestions(filter);
+    } else {
+      setSuggestions([]);
     }
 
+    setInputValue(value);
+  };
 
-    onTextChanged = (ev) => {
-        const value = ev.target.value;
-        let suggestions = [];
+  const suggestionSelected = (value) => {
+    if (selectedIngredients.find(ingredient => ingredient === value)) return;
 
-        if(value.length > 0) {
-            const regex = new RegExp(`^${value}`, 'i');
-            suggestions = this.ingredients.sort().filter(v => regex.test(v));
-            }
-            this.setState(() => ({ suggestions, text: value }));
+    const newIngredients = [...selectedIngredients, value];
+    setSelectedIngredients([...selectedIngredients, value]);
+    setSuggestions([]);
+    setInputValue("");
+    props.changeIngredients(newIngredients);
+  };
 
-            // console.log(value)
-    }
+  const deleteSeletedIngredients = (ingredients) => {
+    const newIngredients = selectedIngredients.filter(i => i !== ingredients);
+    setSelectedIngredients(newIngredients);
+    props.changeIngredients(newIngredients);
+  };
 
-    suggestionSelected (value) {
-        //guardo el value elegido/escrito en input
-        // const ingredientChoosen = value;
-        // let selectionIngredients = [];
+  const renderSelected = () => {
+    if (!selectedIngredients.length) return null;
 
-        this.setState(() => ({
-            ingredients:[...this.state.ingredients, value],
-            text:'',
-            suggestions:[],
-        }))
+    return (
+      <>
+        <div>
+          <h2 className="list__title">LISTA INGREDIENTES</h2>
+          <ul className="list">
+            {selectedIngredients.map((item) => (
+              <li key={item}>
+                <span className="list__icon" onClick={() => deleteSeletedIngredients(item)}><FontAwesomeIcon icon={faXmark}/> </span>
+                <span>{item}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </>
+    );
+  };
 
-        // return(
-        //     <>
-        //         <div>
-        //             <p>{selectionIngredients}</p>
-        //         </div>
-        //     </>
-        // )
-    }
+  const renderSuggestions = () => {
+    if (!suggestions.length) return null;
 
-    ingredientsSelected (value) {
-        this.setState(() => ({
-            ingredients:[...this.state.ingredients, value],
-            // ingredientsChoosen: []
-        }))
-    }
+    return (
+      <>
+        <ul className="renderList">
+          {suggestions.map((item, index) => (
+            <li key={index} onClick={() => suggestionSelected(item)}>
+              {item}
+            </li>
+          ))}
+        </ul>
+      </>
+    );
+  };
 
-    renderSelected () {
-        const { ingredients } =this.state;
-        if(ingredients.length === 0) {
-            return null;
-        }
-        console.log(ingredients);
+  return (
+    <div>
+      <input value={inputValue} onChange={onTextChanged} type="text" />
+      <div>{renderSuggestions()}</div>
+      <div>{renderSelected()}</div>
+    </div>
+  );
+};
 
-        return (
-            <>
-                <div>
-                <h2>LISTA INGREDIENTES</h2>
-                    <ul>
-                    {ingredients.map((item, index) => <li key={index}>{item}</li>)}
-                    </ul>
-                    {/* <button>Confirmar ingredientes</button> */}
-                </div>
-
-            </>
-        )
-
-    }
-
-
-    renderSuggestions () {
-        const { suggestions } = this.state;
-        if(suggestions.length === 0) {
-            return null;
-
-        }
-        return (
-            <>
-                <ul>
-                    {suggestions.map((item, index) => <li key={index} onClick={() => this.suggestionSelected(item)}>{item}</li>)}
-                </ul>
-
-            </>
-        )
-    }
-
-    render () {
-        const {text} = this.state;
-
-        return (
-            <div>
-                <input value={text} onChange={this.onTextChanged} type='text'/>
-                <div>{this.renderSuggestions()}</div>
-                <div>{this.renderSelected()}</div>
-            </div>
-        )
-    }
-}
+export default AutoCompleteText;

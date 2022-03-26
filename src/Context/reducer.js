@@ -1,76 +1,51 @@
-import React, { useReducer } from "react";
+import { getItem } from "../Services/storage.service";
 
-//
-let user = localStorage.getItem("currentUser")
-  ? JSON.parse(localStorage.getItem("currentUser")).user
-  : "";
-  // console.log('user:', user);
+const user = getItem("currentUser");
 
-// let _id = localStorage.getItem("currentUser")
-// ? JSON.parse(localStorage.getItem("currentUser"))._id
-// : "";
-
-// console.log('_id:', _id);
-
-let email = localStorage.getItem("currentUser")
-? JSON.parse(localStorage.getItem("currentUser")).email
-: "";
-
-  // console.log('email:', email);
-
-let recipes = localStorage.getItem("currentUser")
-? JSON.parse(localStorage.getItem("currentUser")).recipes
-: "";
-
-  // console.log('recipes:', recipes);
-
-let token = localStorage.getItem("currentUser")
-  ? JSON.parse(localStorage.getItem("currentUser")).auth_token
-  : "";
-
-  // console.log('token->', token);
-  //punto de partida
 export const initialState = {
-  user: "" || user,
-  // _id: ""  || _id,
-  email: "" || email,
-  recipes: "" || recipes,
-  token: "" || token,
+  user: user ? user.user: "",
+  id: user ? user._id : "",
+  email: user ? user.email : "",
+  recipes: user ? user.recipes : [],
   loading: false, //estado de la carga
   errorMessage: null, //si el inicio de sesion falla
 };
 
 
 ///esta es la lista de casos que te vas a poder encontrar
-export const AuthReducer = (initialState, action) => {
+export const AuthReducer = (state = initialState, action) => {
   switch (action.type) {
     case "REQUEST_LOGIN":
       return {
-        ...initialState,
+        ...state,
         loading: true
       };
     case "LOGIN_SUCCESS":
-      return {
-        ...initialState,
-        user: action.payload.user,
-        // _id: action.payload._id,
-        email: action.payload.email,
-        recipes: action.payload.recipes,
-        token: action.payload.auth_token,
-        loading: false
-      };
+      const {user, email, recipes, _id} = action.payload;
+      return { ...state, user, email, recipes, id: _id, loading: false};
     case "LOGOUT":
       return {
-        ...initialState,
+        ...state,
         user: "",
-        token: ""
       };
 
     case "LOGIN_ERROR":
       return {
-        ...initialState,
+        ...state,
         loading: false,
         errorMessage: action.error
+      };
+    case "ADD_RECIPE":
+      return {
+        ...state,
+        recipes: [...state.recipes, action.payload],
+        loading: false,
+      };
+    case "EDIT_RECIPE":
+      return {
+        ...state,
+        recipes: [...state.recipes, action.payload],
+        loading: false,
       };
 
     default:

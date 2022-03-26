@@ -1,20 +1,24 @@
+import React from "react";
+import { saveRecipeService } from "../../Services/saveRecipeService";
+import AddRecipeComponent from "../../Components/AddRecipes/AddRecipesComponent";
+import { useAuthDispatch } from "../../Context/context.index";
+import { addToExistingArrayNested } from "../../Services/storage.service";
 
-import React from 'react'
-import { saveRecipeService } from '../../Services/saveRecipeService'
-import AddRecipe from '../../Components/AddRecipes/AddRecipesComponent'
+const AddRecipe = () => {
+  const dispatch = useAuthDispatch();
 
-const addRecipe = () => {
+  const handleSubmit = async (data) => {
+    const newRecipe = await saveRecipeService(data);
+    dispatch({type: 'ADD_RECIPE', payload: newRecipe});
+    addToExistingArrayNested('currentUser','recipes', newRecipe);
+  };
 
-    const handleSubmit = (data) => {
-        saveRecipeService(data)
-        }
+  return (
+    <div>
+      <h2>AÑADIR RECETA</h2>
+      <AddRecipeComponent handleSubmit={handleSubmit} />
+    </div>
+  );
+};
 
-    return (
-        <div>
-            <h2>AÑADIR RECETA</h2>
-            <AddRecipe handleSubmit= {handleSubmit}/>
-        </div>
-    )
-}
-
-export default addRecipe;
+export default AddRecipe;
