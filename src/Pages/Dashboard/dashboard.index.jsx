@@ -59,7 +59,7 @@ function Dashboard(props) {
     }, []);
     setFilterContent(arrayOfIngredients);
     setFilterResults(results)
-    // console.log(results);
+    console.log(results);
   };
 
 
@@ -116,7 +116,7 @@ function Dashboard(props) {
         <ul>
           {suggestions.map((item, index) => (
             //al hacer click disparas la funcion de sugerencia seleccionada
-            //que envia item que es un array de sugerencias
+            //que envia item que es un array de sugerencias 
             <li key={index} onClick={() => suggestionSelected(item)}>
               {item}
             </li>
@@ -142,10 +142,8 @@ function Dashboard(props) {
 
   return (
     <div style={{ padding: 10 }}>
-      <div>
-        <p>Hola {user.user}</p>
-      </div>
 
+      <p>Welcome {user.user}</p>
       <div>
         <p>Filtro</p>
 
@@ -155,7 +153,6 @@ function Dashboard(props) {
       </div>
 
       <div>
-        <hr></hr>
         <div className="recipebtns">
           <h1>Recetas</h1>
           <Link to="/dashboard/add-recipes">Añadir receta</Link>
@@ -166,7 +163,7 @@ function Dashboard(props) {
           filterResults.map((item) => (
             <div key={item._id} className="recipeList">
               <h1>{item.title}</h1>
-              <h3>Ingredientes</h3>
+              <h3>ingredientes</h3>
               {item.ingredients.map((item, index) => (
                 <p key={index.toString()}>{item}</p>
               ))}
@@ -174,7 +171,7 @@ function Dashboard(props) {
                 <img alt={item.title} src={item.img} width="300px"></img>
               </p>
               <Link to={`/detail/${item._id}`} state={{recipe: item}}>
-                <button>Preparar</button>
+                <button>view detail</button>
               </Link>
                 {/*<button>delete recipe</button>*/}
               <hr></hr>
@@ -198,7 +195,7 @@ function Dashboard(props) {
               <img alt={item.title} src={item.img} width="300px"></img>
             </p>
             <Link to={`/detail/${item._id}`} state={{recipe: item}}>
-              <button>Preparar</button>
+              <button>view detail</button>
             </Link>
               <button onClick={() => deleteRecipe(item._id)}>delete recipe</button>
             <hr></hr>
@@ -209,7 +206,6 @@ function Dashboard(props) {
       <div></div>
     </div>
   );
-  }
-
+}
 
 export default Dashboard;

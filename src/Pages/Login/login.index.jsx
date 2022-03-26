@@ -7,9 +7,10 @@ function Login(props) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const dispatch = useAuthDispatch();
-  let navigate = useNavigate();
-  const { loading, errorMessage } = useAuthState(); //lee los valores del loading y errorMessages del contexto
 
+  let navigate = useNavigate();
+
+  const { loading, errorMessage } = useAuthState(); //lee los valores del loading y errorMessages del contexto
 
 
   const handleLogin = async (e) => {
@@ -17,7 +18,7 @@ function Login(props) {
 
     try {
       let response = await loginUser(dispatch, { email, password });
-      if (!response.user) return;
+      if (!response.user) return <div>Credenciales incorrectas</div>;
       navigate("/dashboard");
     } catch (error) {
       return error
@@ -63,9 +64,9 @@ function Login(props) {
         </Link>
       </div>
 
-      <div>
-       <RecipeList/>
-      </div>
+      {/* <div>
+        <RecipeList/>
+      </div> */}
     </div>
   );
 }

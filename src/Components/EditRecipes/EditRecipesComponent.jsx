@@ -45,22 +45,21 @@ const EditRecipeComponent = ({ handleSubmit, recipe }) => {
     ev.preventDefault(); //prevenir comportamiento nativo navegador
     handleSubmit({ ...formState });
     console.log(formState);
-    console.log("ingredientessssss:", ingredients);
   };
 
   return (
     <>
       {user ? (
         <div>
-          <form autoComplete="off" onSubmit={submitForm} encType="multipart/form-data">
+          <form onSubmit={submitForm} encType="multipart/form-data">
             <fieldset className="form-style">
               <label>Título</label>
-              <input type="text" name="title" value={formState.title} onChange={handleInput}></input>
+              <input type="text" name="title" defaultValue={recipe.title} onChange={handleInput}></input>
 
               <label>Categoría</label>
-              <select name="category" value={formState.category} onChange={handleInput}>
-                <option value="" defaultValue={""}>
-                  Selecciona una opción
+              <select name="category" defaultValue={recipe.category} onChange={handleInput}>
+                <option defaultValue={recipe.category}>
+                {recipe.category}
                 </option>
                 <option value="desayuno">Desayuno</option>
                 <option value="almuerzo">Almuerzo</option>
@@ -70,9 +69,9 @@ const EditRecipeComponent = ({ handleSubmit, recipe }) => {
               </select>
 
               <label>Tipo</label>
-              <select name="type" value={formState.type} onChange={handleInput}>
-                <option value="" defaultValue={""}>
-                  Selecciona una opción
+              <select name="type" defaultValue={recipe.type} onChange={handleInput}>
+                <option defaultValue={recipe.type}>
+                  {recipe.type}
                 </option>
                 <option value="italiana">Italiana</option>
                 <option value="mediterranea">Mediterránea</option>
@@ -83,7 +82,7 @@ const EditRecipeComponent = ({ handleSubmit, recipe }) => {
               <AutoCompleteText changeIngredients={changeIngredients} />
 
               <label>Preparación</label>
-              <textarea name="description" value={formState.description} onChange={handleInput}></textarea>
+              <textarea name="description" defaultValue={recipe.description} onChange={handleInput}></textarea>
 
               <input type="file" name="img" onChange={handleFileInput}></input>
 

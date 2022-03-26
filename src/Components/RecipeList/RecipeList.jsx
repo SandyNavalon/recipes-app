@@ -35,7 +35,7 @@ const RecipeList = () => {
                         <img alt={item.title} src={item.img}/>
                     </div>
                     <h3 >{item.title}</h3>
-                    <Link to={`detail/${item._id}`}><button>Preparar</button></Link>
+                    <Link to={`detail/${item._id}`} state ={{recipe: item}}><button>Preparar</button></Link>
                 </li>
                 )}
             </ul>

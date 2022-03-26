@@ -4,7 +4,6 @@ import { useLocation } from 'react-router-dom';
 import { editRecipeService } from "../../Services/editRecipeService";
 import EditRecipeComponent from "../../Components/EditRecipes/EditRecipesComponent";
 import { useAuthDispatch } from "../../Context/context.index";
-import { addToExistingArrayNested } from "../../Services/storage.service";
 
 const EditRecipe = () => {
   const dispatch = useAuthDispatch();
@@ -37,7 +36,7 @@ const EditRecipe = () => {
       );
     }
   }, []);
-  
+
   const handleSubmit = async (data) => {
     const modifyRecipe = await editRecipeService(recipeId, data);
     dispatch({type: 'EDIT_RECIPE', payload: modifyRecipe});

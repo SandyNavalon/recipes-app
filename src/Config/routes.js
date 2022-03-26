@@ -1,7 +1,6 @@
 import React from "react";
 
-import AddRecipe from "../Pages/AddRecipe/AddRecipe.index";
-import EditRecipe from "../Pages/EditRecipe/EditRecipe.index";
+import AddRecipe from "../Pages/AddRecipe/addRecipe.index";
 import Login from '../Pages/Login/login.index'
 import PageNotFound from '../Pages/NotFound/notFound.index'
 import RecipeDetail from "../Pages/RecipeDetail/recipeDetail.index";
@@ -50,11 +49,6 @@ const routes = [
     {
       path:"/detail/:id",
       element: <RecipeDetail/>,
-      isPrivate: false
-    },
-    {
-      path:"/detail/edit/:id",
-      element: <EditRecipe/>,
       isPrivate: false
     },
 

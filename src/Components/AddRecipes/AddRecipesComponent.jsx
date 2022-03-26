@@ -66,7 +66,7 @@ const AddRecipe = ({ handleSubmit }) => {
             <fieldset>
                 <label>Título</label>
                 <input type="text" name="title" value={formState.title} onChange={handleInput} />
-              </fieldset>
+            </fieldset>
 
               <fieldset>
                 <label>Categoría</label>
@@ -101,14 +101,16 @@ const AddRecipe = ({ handleSubmit }) => {
               <fieldset>
                 <label>Preparación</label>
                 <textarea name="description" value={formState.description} onChange={handleInput}></textarea>
-              <fieldset/>
+              </fieldset>
 
-              <input type="file" name="img" onChange={handleFileInput}></input>
+              <fieldset>
+                <input type="file" name="img" onChange={handleFileInput}></input>
 
-              {preview ? <img src={preview} alt="product" width="200px"/> : null}
+                {preview ? <img src={preview} alt="product" width="200px"/> : null}
+              </fieldset>
 
               <button type="submit">Guardar receta</button>
-            </fieldset>
+
           </form>
         </div>
       ) : (

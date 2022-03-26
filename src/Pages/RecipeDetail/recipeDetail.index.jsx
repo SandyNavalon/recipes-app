@@ -27,8 +27,10 @@ const RecipeDetail = () => {
 
   useEffect(() => {
     console.log("location recipeDetail", location);
+
     if (location.state?.recipe) {
       setRecipe({...location.state.recipe});
+
     } else {
       const urlId = location.pathname.split("/")[2];
       Axios(`http://localhost:4000/recipes/${urlId}`).then(
@@ -36,13 +38,12 @@ const RecipeDetail = () => {
           setRecipe({...res});
         },
         (error) => {
-          setIsLoaded(true);
-          setError(error);
+          // setIsLoaded(true);
+          // setError(error);
         }
       );
     }
   }, []);
-
 
   return (
     <div className="details">
