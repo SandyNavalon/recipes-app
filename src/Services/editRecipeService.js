@@ -19,7 +19,7 @@ export async function editRecipeService(id, recipeData) {
 
     const response = await axios({
       url: `${ENDPOINT}/recipes/${id}`,
-      method: "PATCH",
+      method: "PUT",
       data: formData,
       headers: {'Content-Type': 'multipart/form-data'},
     });

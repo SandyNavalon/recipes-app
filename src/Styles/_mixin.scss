@@ -1,3 +1,29 @@
-@mixin card{
+@mixin button{
+        margin-top: 20px;
+        width: 150px;
+        padding: 5px;
+        background-color: #503617;
+        color: azure;
 
+        cursor: pointer;
+        transition: all 300ms cubic-bezier(.23, 1, 0.32, 1);
+        user-select: none;
+        -webkit-user-select: none;
+        touch-action: manipulation;
+        will-change: transform;
 };
+
+@mixin button-disabled{
+    pointer-events: none;
+};
+
+@mixin button-hover{
+    box-shadow: rgba(0, 0, 0, 0.25) 0 8px 15px;
+    transform: translateY(-2px);
+}
+
+@mixin button-active{
+    box-shadow: none;
+    transform: translateY(0);
+};
+
