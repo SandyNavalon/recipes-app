@@ -85,9 +85,9 @@ const RecipeDetail = () => {
           </button>
 
           {user ?
-          <button className='details__btns-edit'>
-            <Link to="*">Editar</Link>
-          </button>
+          <Link to={`/detail/edit/${urlId}`}>
+          <button className='details__btns-edit'>Editar</button>
+          </Link>
           :
           null}
         </div>
