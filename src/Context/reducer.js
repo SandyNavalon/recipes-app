@@ -6,7 +6,7 @@ export const initialState = {
   user: user ? user.user: "",
   id: user ? user._id : "",
   email: user ? user.email : "",
-  recipes: user ? user.recipes : "",
+  recipes: user ? user.recipes : [],
   loading: false, //estado de la carga
   errorMessage: null, //si el inicio de sesion falla
 };

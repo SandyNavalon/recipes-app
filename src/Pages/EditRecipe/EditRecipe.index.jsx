@@ -1,25 +1,61 @@
-import React from 'react'
-import EditRecipeComponent from '../../Components/EditRecipe/EditRecipe.component.jsx';
-import { useAuthDispatch } from '../../Context/contexts.js';
-import { editRecipeService } from '../../Services/editRecipeService.js';
-import { addToExistingArrayNested } from '../../Services/storage.service.js';
+import { useEffect, useState } from "react";
+import axios from 'axios';
+import { useLocation } from 'react-router-dom';
+import { editRecipeService } from "../../Services/editRecipeService";
+import EditRecipeComponent from "../../Components/EditRecipes/EditRecipesComponent";
+import { useAuthDispatch } from "../../Context/context.index";
+import { addToExistingArrayNested } from "../../Services/storage.service";
 
 const EditRecipe = () => {
+  const dispatch = useAuthDispatch();
+  const location = useLocation();
 
-        const dispatch = useAuthDispatch();
+  const recipeId = location.pathname.split("/")[3];
 
-    const handleSubmit = async (data) => {
-        const newRecipe = await editRecipeService(data);
-        dispatch({type: 'EDIT_RECIPE', payload: newRecipe});
-        addToExistingArrayNested('currentUser','recipes', newRecipe);
-    };
+  const [recipe, setRecipe] = useState({
+    title: "",
+    type: "",
+    category: "",
+    ingredients: [],
+    description: "",
+    img: "",
+  });
 
-    return (
-        <div>
-        <h2>Editar Receta</h2>
-        <EditRecipeComponent handleSubmit={handleSubmit} />
-        </div>
-    );
+  useEffect(() => {
+    console.log("location EditRecipe", location);
+    if (location.state?.recipe) {
+      setRecipe({...location.state.recipe});
+    } else {
+      axios(`http://localhost:4000/recipes/${recipeId}`).then(
+        (res) => {
+          setRecipe({...res});
+        },
+        (error) => {
+          // setIsLoaded(true);
+          // setError(error);
+        }
+      );
+    }
+  }, []);
+  
+  const handleSubmit = async (data) => {
+    const modifyRecipe = await editRecipeService(recipeId, data);
+    dispatch({type: 'EDIT_RECIPE', payload: modifyRecipe});
+
+    /**
+     * 1. Traer el user del dispatch
+     * 2. Modificar user.recipes
+     * 3. Guardar el user completo en el localStorage
+     */
+    // addToExistingArrayNested('currentUser','recipes', modifyRecipe);
+  };
+
+  return (
+    <div>
+      <h2>EDITAR RECETA</h2>
+      <EditRecipeComponent handleSubmit={handleSubmit} recipe={recipe} />
+    </div>
+  );
 };
 
-export default EditRecipe
+export default EditRecipe;
