@@ -39,8 +39,16 @@ function Dashboard(props) {
     setInputValue(value);
   };
 
+  
   const updateSearchFilter = (arrayOfIngredients) => {
+
+    arrayOfIngredients.map((elemento, index, array) => {});
+    arrayOfIngredients.reduce((acumulador, elemento, index, array) => {}, []);
+
+
+
     const results = arrayOfIngredients.reduce((acc, curr, index) => {
+
       if (index === 0) {
         return user.recipes.filter((recipe) => recipe.ingredients.includes(curr));
       } else {
@@ -133,7 +141,9 @@ function Dashboard(props) {
           <h1>Recetas</h1>
           <Link to="/dashboard/add-recipes">añadir receta</Link>
         </div>
-        {filterResults.length > 0 && filterContent.length > 0 ?
+
+        {/* Caso 3: Tenemos filtros de ingredientes y tenemos resultados */}
+        {filterResults.length && filterContent.length &&
           filterResults.map((item) => (
             <div key={item._id}>
               <h1>{item.title}</h1>
@@ -150,11 +160,13 @@ function Dashboard(props) {
               <hr></hr>
             </div>
           ))
-        :null}
+        }
 
-        {filterContent.length && !filterResults.length ? <div>No hay resultados, ponte a dieta mamón</div> : null}
+        {/* Caso 2: Tengo filtros, pero no hay resultados */}
+        {filterContent.length && !filterResults.length && <div>No hay resultados, ponte a dieta mamón</div>}
 
 
+        {/* Caso 1: No tengo filtros, por lo tanto muestro todas las recetas */}
         {!filterContent.length && recipes.map((item) => (
           <div key={item._id}>
             <h1>{item.title}</h1>
