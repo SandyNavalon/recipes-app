@@ -41,7 +41,13 @@ const EditRecipe = () => {
   const handleSubmit = async (data) => {
     const modifyRecipe = await editRecipeService(recipeId, data);
     dispatch({type: 'EDIT_RECIPE', payload: modifyRecipe});
-    addToExistingArrayNested('currentUser','recipes', modifyRecipe);
+
+    /**
+     * 1. Traer el user del dispatch
+     * 2. Modificar user.recipes
+     * 3. Guardar el user completo en el localStorage
+     */
+    // addToExistingArrayNested('currentUser','recipes', modifyRecipe);
   };
 
   return (
