@@ -43,7 +43,16 @@ let ingredients = [
     'Harina',
     'Arroz',
     'Pasta',
-    'Huevos'
+    'Huevos',
+    'Pan',
+    'Aceite de oliva',
+    'Aceite de girasol',
+    'Vino tinto',
+    'Vino blanco',
+    'Levadura',
+    'Canela',
+    'Naranja',
+    'Limón'
 ]
 
 export default ingredients;
