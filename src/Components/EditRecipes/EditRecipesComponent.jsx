@@ -1,10 +1,10 @@
 import React, { useState } from "react";
 import { Navigate, useNavigate } from "react-router-dom";
-import AutoCompleteText from "./IngredientsList/AutoCompleteText";
+import AutoCompleteText from "../AddRecipes/IngredientsList/AutoCompleteText";
 import { useAuthState } from "../../Context/contexts";
-// import "../../Pages/AddRecipe/AddRecipe.scss";
+//import "../../Pages/AddRecipe/AddRecipe.scss";
 
-const AddRecipe = ({ handleSubmit }) => {
+const EditRecipeComponent = ({ handleSubmit, recipe }) => {
   let navigate = useNavigate();
 
   const user = useAuthState();
@@ -15,21 +15,9 @@ const AddRecipe = ({ handleSubmit }) => {
 
   console.log(user.id);
 
-  const [formState, setFormState] = useState({
-    title: "",
-    type: "",
-    category: "",
-    ingredients: [],
-    img: null,
-    description: "",
-    userId: user.id,
-  });
+  const [formState, setFormState] = useState(recipe);
 
   const [preview, setPreview] = useState(null);
-
-  // console.log(formState);
-
-  // const [ingredientChoosen, setIngredientChoosen] = useState()
 
   const changeIngredients = (ingredients) => {
     setFormState({ ...formState, ingredients });
@@ -56,8 +44,6 @@ const AddRecipe = ({ handleSubmit }) => {
   const submitForm = (ev) => {
     ev.preventDefault(); //prevenir comportamiento nativo navegador
     handleSubmit({ ...formState });
-
-    navigate("/dashboard"); //redirige a dashboard cuando posteas la receta
     console.log(formState);
     console.log("ingredientessssss:", ingredients);
   };
@@ -101,9 +87,9 @@ const AddRecipe = ({ handleSubmit }) => {
 
               <input type="file" name="img" onChange={handleFileInput}></input>
 
-              {preview ? <img src={preview} alt="product" width="200px"/> : null}
+              {recipe.img ? <img src={recipe.img} alt="product" width="200px"/> : null}
 
-              <button type="submit">Guardar receta</button>
+              <button type="submit">Actualizar receta</button>
             </fieldset>
           </form>
         </div>
@@ -114,4 +100,4 @@ const AddRecipe = ({ handleSubmit }) => {
   );
 };
 
-export default AddRecipe;
+export default EditRecipeComponent;

@@ -30,6 +30,19 @@ let ingredients = [
     'Pimiento',
     'Puerro',
     'Remolacha',
+    'Leche',
+    'Atún',
+    'Salchicha',
+    'Plátano',
+    'Manzana',
+    'Ternera',
+    'Cerdo',
+    'Nata montada',
+    'Azúcar',
+    'Sal',
+    'Harina',
+    'Arróz',
+    'Pasta'
 ]
 
 export default ingredients;
