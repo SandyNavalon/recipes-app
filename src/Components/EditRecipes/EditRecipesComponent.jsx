@@ -44,6 +44,8 @@ const EditRecipeComponent = ({ handleSubmit, recipe }) => {
   const submitForm = (ev) => {
     ev.preventDefault(); //prevenir comportamiento nativo navegador
     handleSubmit({ ...formState });
+    navigate('/dashboard/')
+
     console.log(formState);
   };
 
@@ -54,12 +56,12 @@ const EditRecipeComponent = ({ handleSubmit, recipe }) => {
           <form onSubmit={submitForm} encType="multipart/form-data">
             <fieldset className="form-style">
               <label>Título</label>
-              <input type="text" name="title" defaultValue={recipe.title} onChange={handleInput}></input>
+              <input type="text" name="title" defaultValue={formState.title} onChange={handleInput}></input>
 
               <label>Categoría</label>
-              <select name="category" defaultValue={recipe.category} onChange={handleInput}>
-                <option defaultValue={recipe.category}>
-                {recipe.category}
+              <select name="category" defaultValue={formState.category} onChange={handleInput}>
+                <option defaultValue={formState.category}>
+                {formState.category}
                 </option>
                 <option value="desayuno">Desayuno</option>
                 <option value="almuerzo">Almuerzo</option>
@@ -69,8 +71,8 @@ const EditRecipeComponent = ({ handleSubmit, recipe }) => {
               </select>
 
               <label>Tipo</label>
-              <select name="type" defaultValue={recipe.type} onChange={handleInput}>
-                <option defaultValue={recipe.type}>
+              <select name="type" defaultValue={formState.type} onChange={handleInput}>
+                <option defaultValue={formState.type}>
                   {recipe.type}
                 </option>
                 <option value="italiana">Italiana</option>
@@ -82,11 +84,11 @@ const EditRecipeComponent = ({ handleSubmit, recipe }) => {
               <AutoCompleteText changeIngredients={changeIngredients} />
 
               <label>Preparación</label>
-              <textarea name="description" defaultValue={recipe.description} onChange={handleInput}></textarea>
+              <textarea name="description" defaultValue={formState.description} onChange={handleInput}></textarea>
 
               <input type="file" name="img" onChange={handleFileInput}></input>
 
-              {recipe.img ? <img src={recipe.img} alt="product" width="200px"/> : null}
+              {formState.img ? <img src={formState.img} alt="product" width="200px"/> : null}
 
               <button type="submit">Actualizar receta</button>
             </fieldset>

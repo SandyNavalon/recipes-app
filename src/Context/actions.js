@@ -10,7 +10,7 @@ export async function loginUser(dispatch, loginPayload) {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify(loginPayload),
-  };
+  }
 
   try {
     dispatch({ type: "REQUEST_LOGIN" });
@@ -22,14 +22,13 @@ export async function loginUser(dispatch, loginPayload) {
         data.recipes = res.data;
 
         console.log('RES DATA FETCH', res.data)
-      });
+      })
       setItem("currentUser", data);
       dispatch({ type: "LOGIN_SUCCESS", payload: data });
       return data;
     }
-
     dispatch({ type: "LOGIN_ERROR", error: data.errors[0] });
-    return;
+    return console.error('ta mal');;
   } catch (error) {
     dispatch({ type: "LOGIN_ERROR", error: error });
   }

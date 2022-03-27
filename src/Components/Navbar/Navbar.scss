@@ -23,10 +23,11 @@
     top: 0;
     margin: 0;
     width: 100%;
-    height: 500px;
+    height: 300px;
     background-image: url('../../assets/cabecera02.jpg');
     background-repeat: no-repeat;
     background-size: cover;
+    background-position: center bottom;
 
 
     &__items {
@@ -51,21 +52,21 @@
 
         }
 
-            &-btn:disabled {
-                @include button-disabled
-            }
+        &-btn:disabled {
+            @include button-disabled
+        }
 
-            &-btn:hover {
-                @include button-hover
-            }
-            &-btn:active{
-                @include button-active
-            }
+        &-btn:hover {
+            @include button-hover
+        }
+        &-btn:active{
+            @include button-active
+        }
 
-            p{
-                font-weight: 400;
-                font-size: 20px;
-            }
+        p{
+            font-weight: 400;
+            font-size: 20px;
+        }
 
 }
 
