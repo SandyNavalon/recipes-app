@@ -13,6 +13,7 @@ export const initialState = {
 
 
 ///esta es la lista de casos que te vas a poder encontrar
+//son los objetos de acción que cambian el estado inicial que es el initialState
 export const AuthReducer = (state = initialState, action) => {
   switch (action.type) {
     case "REQUEST_LOGIN":
@@ -33,7 +34,7 @@ export const AuthReducer = (state = initialState, action) => {
       return {
         ...state,
         loading: false,
-        errorMessage: action.error
+        errorMessage: 'credenciales incorrectas',/*action.error*/
       };
     case "ADD_RECIPE":
       return {

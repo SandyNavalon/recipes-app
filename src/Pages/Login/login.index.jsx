@@ -21,7 +21,7 @@ function Login(props) {
       if (!response.user) return <div>Credenciales incorrectas</div>;
       navigate("/dashboard");
     } catch (error) {
-      return error
+      return <p>ha habido un error en {`${error}`}</p>
     }
   };
 

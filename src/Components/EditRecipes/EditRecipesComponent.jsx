@@ -84,9 +84,9 @@ const EditRecipeComponent = ({ handleSubmit, recipe }) => {
               <label>Preparación</label>
               <textarea name="description" defaultValue={recipe.description} onChange={handleInput}></textarea>
 
-              <input type="file" name="img" onChange={handleFileInput}></input>
+              {/* <input type="file" name="img" onChange={handleFileInput}></input> */}
 
-              {recipe.img ? <img src={recipe.img} alt="product" width="200px"/> : null}
+              {/*recipe.img ? <img src={recipe.img} alt="product" width="200px"/> : null*/}
 
               <button type="submit">Actualizar receta</button>
             </fieldset>
