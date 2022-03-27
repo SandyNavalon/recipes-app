@@ -29,13 +29,13 @@ function Login(props) {
 
   return (
     <div className="container">
-      <div className='containerlogin'>
-            <form className="containerlogin-form">
-              <h1 className="containerlogin-form-title">Login</h1>
-              <div className="containerlogin-form-items">
-                <div className="containerlogin-form-items">
+      <div className='container__login'>
+            <form className="container__login-form">
+              <h1 className="container__login-form-title">Login</h1>
+              <div className="container__login-form-items">
+                <div className="container__login-form-items">
                   <input
-                    className="containerlogin-form-items-input"
+                    className="container__login-form-items-input"
                     type="email"
                     id="email"
                     value={email}
@@ -44,9 +44,9 @@ function Login(props) {
                     disabled={loading}
                   />
                 </div>
-                <div className="containerlogin-form-items">
+                <div className="container__login-form-items">
                   <input
-                    className="containerlogin-form-items-input"
+                    className="container__login-form-items-input"
                     type="password"
                     id="password"
                     value={password}
@@ -55,11 +55,11 @@ function Login(props) {
                     disabled={loading}
                   />
                 </div>
-                <button className="containerlogin-form-items-btn" onClick={handleLogin} disabled={loading}>
+                <button className="container__login-form-items-btn" onClick={handleLogin} disabled={loading}>
                 Login
                 </button>
               </div>
-                {errorMessage ? <p className='containerlogin-form-items-error'>{errorMessage}</p> : null}
+                {errorMessage ? <p className='container__login-form-items-error'>{errorMessage}</p> : null}
             </form>
 
         <div className="new">

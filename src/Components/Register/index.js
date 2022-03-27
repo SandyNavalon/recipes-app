@@ -2,6 +2,8 @@ import React from "react";
 import { useFormik } from 'formik';
 import { useNavigate } from "react-router-dom";
 
+import './register.scss'
+
 function RegisterUser({handleSubmit}) {
     const validate = (values) => {
         const errors = {};
@@ -53,12 +55,14 @@ function RegisterUser({handleSubmit}) {
     return (
         <div className="register">
             <form className="register__form" onSubmit={formik.handleSubmit}>
-                <div className="register__form-email">
-                    <label htmlFor="email">Email</label>
+                <div className="register__form-items">
+                    {/* <label htmlFor="email">Email</label> */}
                     <input
+                        className="register__form-items-input"
                         id="email"
                         name="email"
                         type="email"
+                        placeholder="email"
                         onChange={formik.handleChange}
                         onBlur={formik.handleBlur}
                         value={formik.values.email}
@@ -70,11 +74,14 @@ function RegisterUser({handleSubmit}) {
                     ) : null}
                 </div>
 
-                <div className="register__form-user">
-                    <label htmlFor="user">Usuario</label>
+                <div className="register__form-items">
+                    {/* <label htmlFor="user">Usuario</label> */}
                     <input
+                        className="register__form-items-input"
                         id="user"
                         name="user"
+                        type='user'
+                        placeholder="nombre de usuario"
                         onChange={formik.handleChange}
                         onBlur={formik.handleBlur}
                         value={formik.values.user}
@@ -82,12 +89,14 @@ function RegisterUser({handleSubmit}) {
                 </div>
 
 
-                <div className="register__form-password">
-                    <label htmlFor="password">Contraseña</label>
+                <div className="register__form-items">
+                    {/* <label htmlFor="password">Contraseña</label> */}
                     <input
+                        className="register__form-items-input"
                         id="password"
                         name="password"
                         type="password"
+                        placeholder="contraseña"
                         onChange={formik.handleChange}
                         onBlur={formik.handleBlur}
                         value={formik.values.password}
@@ -99,12 +108,14 @@ function RegisterUser({handleSubmit}) {
                     ) : null}
                 </div>
 
-                <div className="register__form-passwordRepit">
-                    <label htmlFor="passwordVerification">Repetir contraseña</label>
+                <div className="register__form-items">
+                    {/* <label htmlFor="passwordVerification">Repetir contraseña</label> */}
                     <input
+                        className="register__form-items-input"
                         id="passwordVerification"
                         name="passwordVerification"
                         type="password"
+                        placeholder="repetir contraseña"
                         onChange={formik.handleChange}
                         onBlur={formik.handleBlur}
                         value={formik.values.passwordVerification}
@@ -116,7 +127,7 @@ function RegisterUser({handleSubmit}) {
                     ) : null}
                 </div>
 
-                <button className="register__form-btn" type="submit">Registro</button>
+                <button className="register__form-items-btn" type="submit">Registro</button>
 
             </form>
         </div>

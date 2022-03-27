@@ -14,7 +14,6 @@
 }
 
 .navbar {
-
     display: flex;
     justify-content: space-around;
     align-items:flex-start;
@@ -45,9 +44,10 @@
         }
 
         &-btn {
-            margin: 40px;
             @include button;
+            background-color: $bgc-color-principal;
 
+            margin: 40px;
             width: 120px;
 
         }

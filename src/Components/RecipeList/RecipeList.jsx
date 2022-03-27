@@ -17,7 +17,8 @@ const RecipeList = () => {
         Axios(`http://localhost:4000/recipes/`)
             .then(res => {
                 const recipesList = res.data;
-                setRecipe(recipesList)
+                setRecipe(recipesList);
+                console.log('res', res);
             },
                 (error) => {
                     // setIsLoaded(true);
@@ -30,12 +31,15 @@ const RecipeList = () => {
         <div className='recipeCard'>
             <ul className='recipeCard__list'>
                 {recipe.map((item) =>
-                <li className='recipeCard__list-item' key={item._id.toString()}>
-                    <div>
-                        <img alt={item.title} src={item.img}/>
-                    </div>
-                    <h3 >{item.title}</h3>
-                    <Link to={`detail/${item._id}`} state ={{recipe: item}}><button>Preparar</button></Link>
+                <li className='recipeCard__list-item' key={item._id.toString()} >
+                   <Link to={`detail/${item._id}`} state ={{recipe: item}} className="no-link"> 
+                        <div className='img'>
+                            <img alt={item.title} src={item.img}/>
+                        </div>
+                        <h3>{item.title}</h3>
+                        <p>Tipo: {item.type}</p>
+                        {/* <button>Preparar</button> */}
+                    </Link>
                 </li>
                 )}
             </ul>

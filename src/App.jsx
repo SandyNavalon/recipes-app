@@ -5,12 +5,14 @@ import AppRoutes from "./Components/AppRoute";
 import { AuthProvider } from "./Context/context.index";
 import Navbar from "./Components/Navbar/Navbar.jsx";
 import Footer from "./Components/Footer/Footer.jsx";
+import './App.scss';
 
 function App() {
   return (
     <AuthProvider>
       <Router>
-      <Navbar/>
+      
+      
         <Routes>
           {routes.map((route) => (
             <Route key={route.path} path={route.path} element={route.element} />
@@ -18,6 +20,7 @@ function App() {
           <Route element={<AppRoutes />} path="/dashboard/*" />
           <Route element={<AppRoutes />} path="/dashboard/add-recipe" />
         </Routes>
+        
         <Footer />
       </Router>
     </AuthProvider>

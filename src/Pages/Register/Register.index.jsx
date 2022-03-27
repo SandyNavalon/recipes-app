@@ -11,7 +11,6 @@ registerService(data)
 }
   return (
     <>
-    <h2>Registro de usuario</h2>
     <RegisterUser handleSubmit={handleSubmit}/>
     </>
   )
