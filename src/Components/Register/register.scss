@@ -1,11 +1,11 @@
-@use '../../Styles/' as *;
+@use '../../Styles/' as * ;
 
-.container {
+.register{
     display: flex;
     align-items: center;
     flex-direction: column;
 
-    &__login{
+    &__form{
     display: flex;
     align-items: center;
     flex-direction: column;
@@ -14,27 +14,17 @@
     border-radius: 10px;
     box-shadow: rgba(0, 0, 0, 0.15) 0 0px 38px;
 
-    width: 800px;
-    height: 250px;
+    width: 500px;
+    height:max-content;
 
     margin-bottom: 100px;
+    padding: 20px 0 20px 0;
 
-    &-form{
+    &-items{
         display: flex;
         flex-direction: column;
         align-items:center;
         justify-content: center;
-        margin: 20px 0px 10px 0px;
-
-        &-title{
-            margin-top: 0;
-        }
-
-        &-items{
-            display: flex;
-            flex-direction: row;
-            align-items: center;
-            gap: 10px;
 
             &-input{
                 @include input;
@@ -47,9 +37,8 @@
             &-btn{
                 @include button;
                 border: 0;
-                margin-top: 0;
                 background-color: $bgc-color-principal;
-                margin-right: 10px;
+                margin: 10px 0 10px 0;
 
                 height: 40px;
 
@@ -67,40 +56,9 @@
 
         }
     }
-    }
-}
 
-
-.new{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-
-    margin:40px 0 80px 0;
-
-    &__btn{
-        border: 0;
-        background-color: transparent;
-
-        cursor: pointer;
-    }
-
-    &__btn:after {
-        display: block;
-        content: '';
-        border-bottom: solid 1px #503617;
-        border-radius: 20px;
-        transform: scaleX(0);
-        transition: transform 250ms ease-in-out;
-    }
-
-    &__btn:hover:after {
-        transform: scaleX(1);
-    }
-
-    &__btn:after{
-        transform-origin:  0% 50%;
+    p{
+        color: red;
     }
 
 }
