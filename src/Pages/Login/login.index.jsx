@@ -28,46 +28,48 @@ function Login(props) {
   };
 
   return (
-    <div className='container'>
-        <h1>Login</h1>
-        {errorMessage ? <p className='error'>{errorMessage}</p> : null}
-          <form>
-            <div className="loginForm">
-              <div className="loginForm__item">
-                <input
-                  type="email"
-                  id="email"
-                  value={email}
-                  placeholder='email'
-                  onChange={(e) => setEmail(e.target.value)}
-                  disabled={loading}
-                />
+    <div className="container">
+      <div className='containerlogin'>
+            <form className="containerlogin-form">
+              <h1 className="containerlogin-form-title">Login</h1>
+              <div className="containerlogin-form-items">
+                <div className="containerlogin-form-items">
+                  <input
+                    className="containerlogin-form-items-input"
+                    type="email"
+                    id="email"
+                    value={email}
+                    placeholder='email'
+                    onChange={(e) => setEmail(e.target.value)}
+                    disabled={loading}
+                  />
+                </div>
+                <div className="containerlogin-form-items">
+                  <input
+                    className="containerlogin-form-items-input"
+                    type="password"
+                    id="password"
+                    value={password}
+                    placeholder='contraseña'
+                    onChange={(e) => setPassword(e.target.value)}
+                    disabled={loading}
+                  />
+                </div>
+                <button className="containerlogin-form-items-btn" onClick={handleLogin} disabled={loading}>
+                Login
+                </button>
               </div>
-              <div className="loginForm__item">
-                <input
-                  type="password"
-                  id="password"
-                  value={password}
-                  placeholder='contraseña'
-                  onChange={(e) => setPassword(e.target.value)}
-                  disabled={loading}
-                />
-              </div>
-              <button className="loginForm__item-btn" onClick={handleLogin} disabled={loading}>
-              Login
-              </button>
-            </div>
-          </form>
+                {errorMessage ? <p className='containerlogin-form-items-error'>{errorMessage}</p> : null}
+            </form>
 
-      <div className="new">
-        <h3 className="new__title">¿Todavía no tienes cuenta?</h3>
-        <Link to='/register'>
-        <button className="new__btn">Regístrate</button>
-        </Link>
+        <div className="new">
+          <Link to='/register'>
+          <button className="new__btn">¿Todavía no tienes cuenta?</button>
+          </Link>
+        </div>
+
       </div>
-
     </div>
   );
 }
-
 export default Login;

@@ -100,7 +100,7 @@ let ingredients = [
     'Remolacha 🌿',
     'Rodajas Piña🍍',
     'Sal🧂',
-    'Salchicha🥩',
+    'Salchicha🌭',
     'Salchichas alemanas🌭',
     'Salsa de soja🧴',
     'Salsa🧴',
