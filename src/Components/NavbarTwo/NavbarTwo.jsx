@@ -28,7 +28,9 @@ const NavbarTwo = () => {
         <div className="navbar__items">
           <div className="navbar__items-box">
             <img className="navbar__items-box-lang" src={lang} />
-            <About className="navbar__items-box-about"/>
+            <NavLink className={({ isActive }) => (isActive ? "active" : "inactive")} to="/about">
+                <p className="navbar__items-box-about">About</p>
+            </NavLink>
           </div>
 
           <div className="navbar__items-box">
