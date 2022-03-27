@@ -2,52 +2,74 @@
 
 .container {
     display: flex;
-    justify-content: center;
     align-items: center;
     flex-direction: column;
-}
 
-.loginForm {
+    &__login{
     display: flex;
-    flex-direction: row;
-    align-items:center;
-    justify-content: center;
-    gap: 10px;
+    align-items: center;
+    flex-direction: column;
+
     background-color: $bgc-color-form;
-
-    width: 600px;
-    height: 200px;
-
     border-radius: 10px;
     box-shadow: rgba(0, 0, 0, 0.15) 0 0px 38px;
 
-    &__item {
+    width: 800px;
+    height: 250px;
+
+    margin-bottom: 100px;
+
+    &-form{
         display: flex;
         flex-direction: column;
+        align-items:center;
+        justify-content: center;
+        margin: 20px 0px 10px 0px;
 
-        input{
-            @include input;
-        }
-
-        &-btn{
-            @include button;
-            border: 0;
+        &-title{
             margin-top: 0;
-
-        }
-        &-btn:disabled {
-            @include button-disabled
         }
 
-        &-btn:hover {
-            @include button-hover
-        }
-        &-btn:active{
-            @include button-active
-        }
+        &-items{
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            gap: 10px;
 
+            &-input{
+                @include input;
+                width: 250px;
+            }
+            &-error{
+                color: red
+            }
+
+            &-btn{
+                @include button;
+                border: 0;
+                margin-top: 0;
+                background-color: $bgc-color-principal;
+                margin-right: 10px;
+
+                height: 40px;
+
+            }
+            &-btn:disabled {
+                @include button-disabled
+            }
+
+            &-btn:hover {
+                @include button-hover
+            }
+            &-btn:active{
+                @include button-active
+            }
+
+        }
+    }
     }
 }
+
 
 
 .new{
@@ -58,22 +80,28 @@
 
     margin:40px 0 80px 0;
 
-    // &__title{
-
-    // }
-
     &__btn{
-        @include button;
         border: 0;
-    }
-    &__btn:disabled {
-        @include button-disabled
+        background-color: transparent;
+
+        cursor: pointer;
     }
 
-    &__btn:hover {
-        @include button-hover
+    &__btn:after {
+        display: block;
+        content: '';
+        border-bottom: solid 1px #503617;
+        border-radius: 20px;
+        transform: scaleX(0);
+        transition: transform 250ms ease-in-out;
     }
-    &__btn:active{
-        @include button-active
+
+    &__btn:hover:after {
+        transform: scaleX(1);
     }
+
+    &__btn:after{
+        transform-origin:  0% 50%;
+    }
+
 }
