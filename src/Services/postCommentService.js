@@ -10,7 +10,6 @@ export async function postCommentService(comment, reciId, usId) {
           recipeId: reciId,
           userId: usId,
         },
-    
     );
     console.log('comment para enviar', data);
     //console.log(data);

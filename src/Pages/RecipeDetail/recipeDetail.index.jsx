@@ -65,8 +65,10 @@ const RecipeDetail = () => {
           </div>
           <div className="details__info">
             <h1 className="details__info-title">{recipe.title}</h1>
-            <h4 className="details__info-type">Tipo: {recipe.type}</h4>
-            <h4 className="details__info-category">Categoría: {recipe.category}</h4>
+            <div>
+              <h4 className="details__info-type">Tipo: {recipe.type}</h4>
+              <h4 className="details__info-category">Categoría: {recipe.category}</h4>
+            </div>
             <div className="details__info-ing">
               <h4 className="details__info-ing-title">Ingredientes:</h4>
               <ul className="details__info-ing-list">
@@ -105,6 +107,15 @@ const RecipeDetail = () => {
           ) : null}
         </div>
       </div>
+        {/* <div>
+          { recipe.comments ?(
+            recipe.comments.map((item, index) => {
+              <p key={index}>{item}</p>
+            }))
+            :
+            ( <p>ESTA RECETA TODAVIA NO TIENE COMENTARIOS</p>)
+          }
+        </div> */}
     </div>
   );
 };
