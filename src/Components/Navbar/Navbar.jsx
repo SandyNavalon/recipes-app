@@ -38,8 +38,8 @@ const Navbar = () => {
             <img src={logo} alt="logo" />
           </div>
 
-          <p>Bienvenida/o {user.user}</p>
-          <div className="navbar__items-btn">
+          {/* <p>Bienvenida/o {user.user}</p> */}
+          <div className="navbar__items-btn-logout">
             <NavLink onClick={handleLogout} className={({ isActive }) => (isActive ? "active" : "inactive")} to="/">
               LOGOUT
             </NavLink>
@@ -57,14 +57,6 @@ const Navbar = () => {
             <img src={logo} alt="logo"/>
           </div>
 
-          <p>Bienvenida/o</p>
-
-          <div className="navbar__items-btn">
-            {/* la className afecta a todos los endpoints porque van con '/' */}
-            <NavLink className={({ isActive }) => (isActive ? "active" : "inactive")} to="/login">
-              LOGIN
-            </NavLink>
-          </div>
         </div>
       )}
     </div>
