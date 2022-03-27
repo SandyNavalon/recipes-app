@@ -1,5 +1,7 @@
+@use '../../Styles/' as *;
+
 .footer {
-    background-color: #503617;
+    background-color: $bgc-color-principal;
     display: flex;
     flex-wrap: wrap;
     flex-direction: column;
