@@ -1,13 +1,16 @@
 import { useEffect, useState } from "react";
 import axios from 'axios';
 import { useLocation } from 'react-router-dom';
+import { Navigate } from "react-router-dom";
 import { editRecipeService } from "../../Services/editRecipeService";
 import EditRecipeComponent from "../../Components/EditRecipes/EditRecipesComponent";
-import { useAuthDispatch } from "../../Context/context.index";
+import { useAuthDispatch, useAuthState } from "../../Context/context.index";
 
 const EditRecipe = () => {
   const dispatch = useAuthDispatch();
   const location = useLocation();
+
+  const user = useAuthState();
 
   const recipeId = location.pathname.split("/")[3];
 
@@ -50,11 +53,16 @@ const EditRecipe = () => {
   };
 
   return (
-    <div>
-      <h2>EDITAR RECETA</h2>
-      <EditRecipeComponent handleSubmit={handleSubmit} recipe={recipe} />
-    </div>
-  );
+    <>
+      { user ? (
+        <div>
+          <h2>EDITAR RECETA</h2>
+          <EditRecipeComponent handleSubmit={handleSubmit} recipe={recipe} />
+        </div>
+        ) : (<Navigate to="/" />)
+      }
+  </>
+  )
 };
 
 export default EditRecipe;

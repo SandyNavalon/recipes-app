@@ -5,6 +5,8 @@ import Axios from "axios";
 import { Link, useLocation } from "react-router-dom";
 import { useAuthState } from "../../Context/contexts";
 
+import Rating from "../../Components/Rating/Rating";
+
 import "./recipeDetail.scss";
 
 const RecipeDetail = () => {
@@ -50,6 +52,7 @@ const RecipeDetail = () => {
       <div className="details__top">
         <h1 className="details__top-title">{recipe.title}</h1>
         <img alt={recipe.title} src={recipe.img} className="details__top-img" />
+        <Rating/>
         <h2 className="details__top-type">Tipo: {recipe.type}</h2>
       </div>
 
