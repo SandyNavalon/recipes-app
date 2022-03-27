@@ -1,9 +1,9 @@
-
 import React from "react";
 import { useEffect, useState } from "react";
 import Axios from "axios";
 import { Link, useLocation } from "react-router-dom";
 import { useAuthState } from "../../Context/contexts";
+import { postCommentService } from "../../Services/postCommentService";
 
 import "./recipeDetail.scss";
 
@@ -11,11 +11,13 @@ const RecipeDetail = () => {
   const location = useLocation();
 
   //securizamos ruta usando user
-  const { user } = useAuthState();
-
+  const { user, id } = useAuthState();
+  const urlId = location.pathname.split("/")[2];
   //const [error, setError] = useState(null);
   //const [isLoaded, setIsLoaded] = useState(false);
   const [comment, setComment] = useState("");
+  const [users, setUsers] = useState([]);
+  const [listComments, setListComments] = useState([]);
 
   const [recipe, setRecipe] = useState({
     title: "",
@@ -24,7 +26,7 @@ const RecipeDetail = () => {
     ingredients: [],
     description: "",
     img: "",
-    //comments: []
+    comments: []
   });
 
   useEffect(() => {
@@ -34,7 +36,7 @@ const RecipeDetail = () => {
       setRecipe({...location.state.recipe});
 
     } else {
-      const urlId = location.pathname.split("/")[2];
+      
       Axios(`http://localhost:4000/recipes/${urlId}`).then(
         (res) => {
           setRecipe({...res});
@@ -47,8 +49,22 @@ const RecipeDetail = () => {
     }
   }, []);
 
-  const handleComment = (ev) =>{
+  useEffect(()=> {
+    const getUserData = async (id) => {
+      const { data } = await Axios.get(
+        `http://localhost:4000/user/${id}`
+      );
+      setUsers(data);
+    }
+    getUserData(id);
+  }, []);
+
+  const handleComment = async (ev) =>{
     ev.preventDefault();
+    setListComments([...listComments, comment])
+    await postCommentService(comment, urlId, id)
+    ev.target.reset();
+    setComment('')
   }
 
   return (
@@ -97,6 +113,15 @@ const RecipeDetail = () => {
           </form>
         ) : null}
       </div>
+      {listComments.map((item, index)=>{
+        return(<div key={index}>
+          <p> {user} {item}</p>
+        </div>
+
+        )
+      })
+        
+      }
     </div>
   );
 };
