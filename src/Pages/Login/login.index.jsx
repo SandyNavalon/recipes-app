@@ -34,29 +34,29 @@ function Login(props) {
           <form>
             <div className="loginForm">
               <div className="loginForm__item">
-                <label htmlFor="email">Email</label>
                 <input
                   type="email"
                   id="email"
                   value={email}
+                  placeholder='email'
                   onChange={(e) => setEmail(e.target.value)}
                   disabled={loading}
                 />
               </div>
               <div className="loginForm__item">
-                <label htmlFor="password">Contraseña</label>
                 <input
                   type="password"
                   id="password"
                   value={password}
+                  placeholder='contraseña'
                   onChange={(e) => setPassword(e.target.value)}
                   disabled={loading}
                 />
               </div>
-              <button className="loginForm__btn" onClick={handleLogin} disabled={loading}>
+              <button className="loginForm__item-btn" onClick={handleLogin} disabled={loading}>
               Login
               </button>
-              </div>
+            </div>
           </form>
 
       <div className="new">

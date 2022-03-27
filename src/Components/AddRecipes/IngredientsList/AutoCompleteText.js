@@ -79,7 +79,7 @@ const AutoCompleteText = (props) => {
 
   return (
     <div>
-      <input value={inputValue} onChange={onTextChanged} type="text" />
+      <input value={inputValue} placeholder='Escribe un ingrediente' onChange={onTextChanged} type="text" />
       <div>{renderSuggestions()}</div>
       <div>{renderSelected()}</div>
     </div>

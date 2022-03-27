@@ -1,49 +1,54 @@
 @use '../../Styles/' as *;
 
 .container {
-    width: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
 }
 
-.formContainer {
-    width: 200px;
-}
-
-.error {
-    font-size: 0.8rem;
-    color: #bb0000;
-}
-
 .loginForm {
     display: flex;
-    flex-direction: column;
-    align-items: center;
+    flex-direction: row;
+    align-items:center;
+    justify-content: center;
+    gap: 10px;
+    background-color: $bgc-color-form;
 
-    &__btn{
-        @include button;
-        border: 0;
+    width: 600px;
+    height: 200px;
 
-    }
-    &__btn:disabled {
-        @include button-disabled
-    }
+    border-radius: 10px;
+    box-shadow: rgba(0, 0, 0, 0.15) 0 0px 38px;
 
-    &__btn:hover {
-        @include button-hover
-    }
-    &__btn:active{
-        @include button-active
+    &__item {
+        display: flex;
+        flex-direction: column;
+
+        input{
+            @include input;
+        }
+
+        &-btn{
+            @include button;
+            border: 0;
+            margin-top: 0;
+
+        }
+        &-btn:disabled {
+            @include button-disabled
+        }
+
+        &-btn:hover {
+            @include button-hover
+        }
+        &-btn:active{
+            @include button-active
+        }
+
     }
 }
 
-.loginForm__item {
-    display: flex;
-    flex-direction: column;
-    margin-bottom: 10px;
-}
 
 .new{
     display: flex;
