@@ -52,7 +52,8 @@ let ingredients = [
     'Levadura',
     'Canela',
     'Naranja',
-    'Limón'
+    'Limón',
+    'Mantequilla'
 ]
 
 export default ingredients;

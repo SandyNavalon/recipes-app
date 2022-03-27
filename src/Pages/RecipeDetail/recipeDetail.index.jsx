@@ -13,8 +13,9 @@ const RecipeDetail = () => {
   //securizamos ruta usando user
   const { user } = useAuthState();
 
-  const [error, setError] = useState(null);
-  const [isLoaded, setIsLoaded] = useState(false);
+  //const [error, setError] = useState(null);
+  //const [isLoaded, setIsLoaded] = useState(false);
+  const [comment, setComment] = useState("");
 
   const [recipe, setRecipe] = useState({
     title: "",
@@ -23,6 +24,7 @@ const RecipeDetail = () => {
     ingredients: [],
     description: "",
     img: "",
+    //comments: []
   });
 
   useEffect(() => {
@@ -44,6 +46,10 @@ const RecipeDetail = () => {
       );
     }
   }, []);
+
+  const handleComment = (ev) =>{
+    ev.preventDefault();
+  }
 
   return (
     <div className="details">
@@ -81,6 +87,14 @@ const RecipeDetail = () => {
           <Link to={`/detail/edit/${recipe._id}`} state={{ recipe }}>
             <button className="details__btns-edit">Editar</button>
           </Link>
+        ) : null}
+      </div>
+      <div className="details__comments">
+        {user ? (
+          <form onSubmit={handleComment}>
+            <input type="text" placeholder="Agrega un comentario" onChange={ (ev) => setComment(ev.target.value) } />
+            <button type="submit">Subir</button>
+          </form>
         ) : null}
       </div>
     </div>
