@@ -2,6 +2,8 @@ import React from "react";
 import { NavLink, useNavigate } from "react-router-dom";
 import { logoutUser } from "../../Context/actions";
 import { useAuthDispatch, useAuthState } from "../../Context/contexts";
+import chef from "../../assets/chef-icon.svg"
+
 
 import logo from "../../assets/LOGO-boilbook-blanco.png";
 import engImg from "../../assets/eng-switch.png";
@@ -37,9 +39,13 @@ const NavbarOne = () => {
                 </div>
         
                 <div className="navbarOne__col2">
-                  <div>
-                    <NavLink onClick={handleLogout} className={({ isActive }) => (isActive ? "active" : "inactive")} to="/">
-                      LOGOUT
+                  <div className="navbarOne__col2-items">
+                    <div className="navbarOne__col2-user">
+                      <img src={chef} ></img>
+                      <p> Chef {user.user}  </p>
+                    </div>
+                    <NavLink onClick={handleLogout} className="navbarOne__col2-link" to="/">
+                       <p>| Logout</p>
                     </NavLink>
                 </div>
                   
@@ -68,7 +74,7 @@ const NavbarOne = () => {
         </div>
 
         <div className="navbarOne__col2">
-          <div><p>Login</p></div>
+          <div><p></p></div>
           
        </div> 
     </div>

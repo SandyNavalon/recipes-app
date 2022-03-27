@@ -59,6 +59,38 @@
             margin-right:20px;
             color: #fff;
                 }
+
+        &__col2-items{
+            display: flex;
+            flex-direction: row;
+            align-content: center;
+
+          
+            }
+            
+                &__col2-user{
+                    margin-top:0px;
+                    display: flex;
+                    flex-direction: row;
+                    justify-content:start;
+                
+
+                img{
+                    width: 20px;
+                    color: #fff;
+                }
+        }  
+        
+        &__col2-link{
+        margin-left:5px;
+            p{
+                color: $bgc-color-form;
+            }
+            p:hover {
+                color: $btn-second;
+            }
+            }
+
   &__row2{
       max-width: 1280px;
       display: flex;
@@ -73,4 +105,8 @@
           width:230px;
       }
   }
+}
+
+.icon{
+    color: #fff;
 }

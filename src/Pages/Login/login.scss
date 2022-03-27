@@ -14,13 +14,13 @@
     border-radius: 10px;
     box-shadow: rgba(0, 0, 0, 0.15) 0 0px 38px;
 
-    width: 800px;
-    height: 250px;
+    max-width: 800px;
 
     margin-bottom: 100px;
 
     &-form{
         display: flex;
+        padding: 0px 20px 0px 20px;
         flex-direction: column;
         align-items:center;
         justify-content: center;
@@ -33,6 +33,7 @@
         &-items{
             display: flex;
             flex-direction: row;
+            flex-wrap:wrap;
             align-items: center;
             gap: 10px;
 

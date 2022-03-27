@@ -4,7 +4,6 @@ import { logoutUser } from "../../Context/actions";
 import { useAuthDispatch, useAuthState } from "../../Context/contexts";
 
 import logo from "../../assets/LOGO-boilbook-blanco.png";
-import chef from "../../assets/chef-icon.svg"
 
 import "./Navbar.scss";
 
@@ -41,7 +40,7 @@ const Navbar = () => {
 
           {/* <p>Bienvenida/o {user.user}</p> */}
           <div className="navbar__items-btn-logout">
-            <p> <img src={chef}></img>Chef {user.user}</p>
+            
             <NavLink onClick={handleLogout} className={({ isActive }) => (isActive ? "active" : "inactive")} to="/">
               LOGOUT
             </NavLink>

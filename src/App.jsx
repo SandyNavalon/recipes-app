@@ -21,7 +21,7 @@ function App() {
           <Route element={<AppRoutes />} path="/dashboard/add-recipe" />
         </Routes>
         
-        <Footer />
+        <Footer className="footer" />
       </Router>
     </AuthProvider>
   );

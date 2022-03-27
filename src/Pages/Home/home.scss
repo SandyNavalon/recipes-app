@@ -1,13 +1,14 @@
 @use '../../Styles/' as *;
 .container{
     display: flex;
-    align-items: center;
+    align-items: center; 
 }
 
 .dashboardPublic{
     display: flex;
     align-items: center;
     max-width: 1280px;
+   
 }
 .recipeCard{
 display: flex;
