@@ -5,6 +5,7 @@ import { Navigate } from "react-router-dom";
 import { editRecipeService } from "../../Services/editRecipeService";
 import EditRecipeComponent from "../../Components/EditRecipes/EditRecipesComponent";
 import { useAuthDispatch, useAuthState } from "../../Context/context.index";
+import NavbarTwo from "../../Components/NavbarTwo/NavbarTwo";
 
 const EditRecipe = () => {
   const dispatch = useAuthDispatch();
@@ -55,10 +56,13 @@ const EditRecipe = () => {
   return (
     <>
       { user ? (
-        <div>
-          <h2>EDITAR RECETA</h2>
-          <EditRecipeComponent handleSubmit={handleSubmit} recipe={recipe} />
-        </div>
+        <>
+        <NavbarTwo/>
+          <div>
+            <h2>EDITAR RECETA</h2>
+            <EditRecipeComponent handleSubmit={handleSubmit} recipe={recipe} />
+          </div>
+        </>
         ) : (<Navigate to="/" />)
       }
   </>

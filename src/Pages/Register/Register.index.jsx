@@ -1,4 +1,5 @@
 import React from 'react'
+import NavbarTwo from '../../Components/NavbarTwo/NavbarTwo';
 import RegisterUser from '../../Components/Register';
 import { registerService } from '../../Services/registerService';
 
@@ -11,7 +12,8 @@ registerService(data)
 }
   return (
     <>
-    <RegisterUser handleSubmit={handleSubmit}/>
+      <NavbarTwo/>
+      <RegisterUser handleSubmit={handleSubmit}/>
     </>
   )
 }

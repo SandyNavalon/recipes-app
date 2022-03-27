@@ -18,6 +18,7 @@
     justify-content: space-around;
     align-items:flex-start;
     font-family: $font-family;
+    color: white;
 
     top: 0;
     margin: 0;
@@ -29,45 +30,49 @@
     background-position: center bottom;
 
 
-    &__items {
+    &__items{
         display: flex;
-        justify-content: space-around;
         align-items: center;
+        flex-direction: row;
+        gap: 200px;
+        margin: 20px 20px 0 20px;
 
-        margin-top: 50px;
+        &-box{
+        display: flex;
+        align-items: center;
+        flex-direction: row;
+        justify-content: space-between;
+        gap: 100px;
 
-        &-logo img{
-            width: 150px;
-
-            margin-left: 100px;
-            margin-right: 100px;
+        &-lang{
+            width: 40px;
+            cursor: pointer;
+        }
+        &-about{
+            cursor: pointer;
         }
 
-        &-btn {
-            @include button;
-            background-color: $bgc-color-principal;
-
-            margin: 40px;
-            width: 120px;
+        &-logo{
+            width: 80px;
 
         }
 
-        &-btn:disabled {
-            @include button-disabled
+        &-user{
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            text-transform: capitalize;
+
+            cursor: pointer;
+            width: 40px;
         }
 
-        &-btn:hover {
-            @include button-hover
-        }
-        &-btn:active{
-            @include button-active
         }
 
         p{
             font-weight: 400;
             font-size: 20px;
         }
-
+    }
 }
 
-}

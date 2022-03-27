@@ -35,7 +35,7 @@ function RegisterUser({handleSubmit}) {
     const formik = useFormik({
         initialValues: {
             email: "",
-            username: "",
+            user: "",
             password: "",
             passwordVerification: "",
         },
@@ -78,13 +78,13 @@ function RegisterUser({handleSubmit}) {
                     {/* <label htmlFor="user">Usuario</label> */}
                     <input
                         className="register__form-items-input"
-                        id="username"
-                        name="username"
-                        type='username'
+                        id="user"
+                        name="user"
+                        type='user'
                         placeholder="nombre de usuario"
                         onChange={formik.handleChange}
                         onBlur={formik.handleBlur}
-                        value={formik.values.username}
+                        value={formik.values.user}
                     />
                 </div>
 
