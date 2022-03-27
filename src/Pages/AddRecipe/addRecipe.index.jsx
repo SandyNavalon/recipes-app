@@ -17,8 +17,8 @@ const AddRecipe = () => {
   return (
     <>
       <NavbarTwo/>
-      <div>
-        <h2>AÑADIR RECETA</h2>
+      <div className="container">
+        <h1>Añade una receta</h1>
         <AddRecipeComponent handleSubmit={handleSubmit} />
       </div>
     </>

@@ -1,10 +1,23 @@
 @use '../../Styles/' as * ;
 
+.div{
+    display: flex;
+    justify-content: center;
+}
 .form-style {
     display: flex;
     flex-direction: column;
 
-    margin: 0 40px 40px 40px;
+    width: $pc-width;
+    // margin: 0 40px 40px 40px;
+
+    @include tablet{
+        width: 500px;
+    }
+
+    @include mobile{
+        width: 300px;
+    }
 
     fieldset{
         display: flex;
@@ -26,7 +39,7 @@
     }
 
     textarea{
-        height: 400px;
+        height: 200px;
     }
 
     select {
@@ -37,6 +50,8 @@
     button{
         @include button;
         background-color: $bgc-color-principal;
+        margin: 40px 0 80px 10px;
+        height: 40px;
     }
 
     button:disabled{
