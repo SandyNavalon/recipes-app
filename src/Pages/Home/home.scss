@@ -1,4 +1,13 @@
+@use '../../Styles/' as *;
+
+.recipeCard{
+display: flex;
+flex-direction: row;
 
 
-
+    &__list{
+      background-color: #fff;  
+      list-style: none;
+    }
+}
 
