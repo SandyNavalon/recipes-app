@@ -16,6 +16,6 @@ const Rating = (newRating) => {
             activeColor="#ffd700"
         />
     )
-};
+}
 
 export default Rating;

@@ -1,6 +1,11 @@
 import { useState } from "react";
 import ingredients from "./ingredients";
 
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faXmark } from '@fortawesome/free-solid-svg-icons';
+
+import './AutoComplete.scss'
+
 const AutoCompleteText = (props) => {
   const [inputValue, setInputValue] = useState("");
   const [suggestions, setSuggestions] = useState([]);
@@ -42,11 +47,11 @@ const AutoCompleteText = (props) => {
     return (
       <>
         <div>
-          <h2>LISTA INGREDIENTES</h2>
-          <ul>
+          <h2 className="list__title">LISTA INGREDIENTES</h2>
+          <ul className="list">
             {selectedIngredients.map((item) => (
               <li key={item}>
-                <span onClick={() => deleteSeletedIngredients(item)}>x</span>
+                <span className="list__icon" onClick={() => deleteSeletedIngredients(item)}><FontAwesomeIcon icon={faXmark}/> </span>
                 <span>{item}</span>
               </li>
             ))}
@@ -61,7 +66,7 @@ const AutoCompleteText = (props) => {
 
     return (
       <>
-        <ul>
+        <ul className="renderList">
           {suggestions.map((item, index) => (
             <li key={index} onClick={() => suggestionSelected(item)}>
               {item}

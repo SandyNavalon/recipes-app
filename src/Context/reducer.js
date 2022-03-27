@@ -34,7 +34,7 @@ export const AuthReducer = (state = initialState, action) => {
       return {
         ...state,
         loading: false,
-        errorMessage: 'credenciales incorrectas',/*action.error*/
+        errorMessage: 'Credenciales incorrectas'
       };
     case "ADD_RECIPE":
       return {

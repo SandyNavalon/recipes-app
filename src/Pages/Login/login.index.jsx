@@ -1,11 +1,12 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { loginUser, useAuthState, useAuthDispatch } from "../../Context/context.index";
-import RecipeList from "../../Components/RecipeList/RecipeList";
+import './login.scss'
 
 function Login(props) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+
   const dispatch = useAuthDispatch();
 
   let navigate = useNavigate();
@@ -17,31 +18,32 @@ function Login(props) {
     e.preventDefault();
 
     try {
-      let response = await loginUser(dispatch, { email, password });
-      if (!response.user) return <div>Credenciales incorrectas</div>;
-      navigate("/dashboard");
+      let response = await loginUser(dispatch, {email, password});
+      if (!response.user) return
+      navigate("/dashboard")
+
     } catch (error) {
       return <p>ha habido un error en {`${error}`}</p>
     }
   };
 
   return (
-    <div>
-        <div className="login">
-          <h1>Login</h1>
-          {errorMessage ? <p>{errorMessage}</p> : null}
-          <form className="login__form">
-              <div className="login__form-email">
+    <div className='container'>
+        <h1>Login</h1>
+        {errorMessage ? <p className='error'>{errorMessage}</p> : null}
+          <form>
+            <div className="loginForm">
+              <div className="loginForm__item">
                 <label htmlFor="email">Email</label>
                 <input
-                  type="text"
+                  type="email"
                   id="email"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                   disabled={loading}
                 />
               </div>
-              <div className="login__form-password">
+              <div className="loginForm__item">
                 <label htmlFor="password">Contraseña</label>
                 <input
                   type="password"
@@ -51,22 +53,19 @@ function Login(props) {
                   disabled={loading}
                 />
               </div>
-              <button className="login__form-btn" onClick={handleLogin} disabled={loading}>
-              login
+              <button className="loginForm__btn" onClick={handleLogin} disabled={loading}>
+              Login
               </button>
+              </div>
           </form>
-        </div>
 
       <div className="new">
         <h3 className="new__title">¿Todavía no tienes cuenta?</h3>
         <Link to='/register'>
-        <button className="new__btn">Registrate</button>
+        <button className="new__btn">Regístrate</button>
         </Link>
       </div>
 
-      {/* <div>
-        <RecipeList/>
-      </div> */}
     </div>
   );
 }
