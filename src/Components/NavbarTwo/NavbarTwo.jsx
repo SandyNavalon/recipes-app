@@ -2,7 +2,6 @@ import React from "react";
 import { NavLink, useNavigate } from "react-router-dom";
 import { logoutUser } from "../../Context/actions";
 import { useAuthDispatch, useAuthState } from "../../Context/contexts";
-import About from "../../Pages/About/About";
 
 import icon from "../../assets/chef-icon.svg"
 import logo from "../../assets/LOGO-boilbook-blanco.png";
@@ -32,9 +31,6 @@ const NavbarTwo = () => {
         <div className="navbar__items">
           <div className="navbar__items-box">
             <img className="navbar__items-box-lang" src={lang} />
-            {/* <NavLink className={({ isActive }) => (isActive ? "active" : "inactive")} to="/about">
-                <p className="navbar__items-box-about">Nosotros</p>
-            </NavLink> */}
           </div>
 
             <div className="navbar__items-box">
@@ -55,7 +51,6 @@ const NavbarTwo = () => {
         <div className="navbar__items">
         <div className="navbar__items-box">
             <img className="navbar__items-box-lang" src={lang} />
-            <About className="navbar__items-box-about"/>
           </div>
 
           <div className="navbar__items-box-log">

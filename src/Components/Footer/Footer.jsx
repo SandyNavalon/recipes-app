@@ -23,7 +23,7 @@ const Footer =  () => {
             </div>
             <div>
                 <div className='footer__center'>
-                <NavLink className={({ isActive }) => (isActive ? "active" : "inactive")} to="/about">
+                <NavLink to="/about">
                     <p className="footer__center-about">Sobre nosotros</p>
                 </NavLink>
                 </div>
