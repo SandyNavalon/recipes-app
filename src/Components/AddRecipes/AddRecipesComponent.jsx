@@ -89,7 +89,14 @@ const AddRecipe = ({ handleSubmit }) => {
                   </option>
                   <option value="italiana">Italiana</option>
                   <option value="mediterranea">Mediterránea</option>
-                  <option value="oriental">Oriental</option>
+                  <option value="Japonesa">Japonesa</option>
+                  <option value="Americana">Americana</option>
+                  <option value="Postre">Postres</option>
+                  <option value="Vegana">Vegana</option>
+                  <option value="China">China</option>
+                  <option value="Turca">Turca</option>
+                  <option value="Sudamericana">Sudamericana</option>
+                  <option value="Otros">Otros</option>
                 </select>
               </fieldset>
 

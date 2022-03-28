@@ -95,11 +95,12 @@
              padding: 0px;
              margin: 0px;
              justify-content: center;
+             position: relative;
 
          }
     
           &__list-item{ @include card;
-            position: relative;
+            
     
                 .img {
                 align-self: center;
@@ -113,22 +114,9 @@
                     }
                 }
 
-                button{
-                    border-radius: 42px;
-                    background-color: $btn-principal;
-                    color: #fff;
-                    border: 0px;
-                    width: 40px;
-                    height: 40px;
-                    position: absolute;
-                    left: 250px;
-                    top: -18px;
+               
 
-                }
-
-                button:hover{
-                    background-color: $btn-second;
-                }
+               
           }
     
           &__list-item:hover{
@@ -158,6 +146,24 @@
                 transform: scale(1.1);
                 
             }
+        }
+
+        &__delete{
+            border-radius: 42px;
+            background-color: $btn-principal;
+            color: #fff;
+            border: 0px;
+            width: 40px;
+            height: 40px;
+            position: absolute;
+            left: 280px
+            
+        }
+
+        &__delete:hover{
+           
+                background-color: $btn-second;
+            
         }
     }
 

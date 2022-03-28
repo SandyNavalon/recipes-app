@@ -214,7 +214,7 @@ function Dashboard(props) {
           
           <Link to={`/detail/${item._id}`} state={{ recipe: item }} className="no-link">
             <div className="recipeCard__list-item">
-              <button onClick={() => deleteRecipe(item._id)} ><FontAwesomeIcon icon={faXmark}/></button>
+              
               <div className="img">
                   <img alt={item.title} src={item.img} width="300px"></img>
               </div>
@@ -224,8 +224,12 @@ function Dashboard(props) {
               ))} */}
                 <h3>{item.title}</h3>
                 <p>Tipo: {item.type}</p>
-            </div>
+            </div>           
+            
+            
+
           </Link>
+          <button onClick={() => deleteRecipe(item._id)} className="recipeCard__delete" ><FontAwesomeIcon icon={faXmark}/></button>
         </div>
         ))}
       </div>
