@@ -9,14 +9,14 @@
 
 .dashboard{
     max-width: 1280px;
+    width: 100%;
     margin: 10px;
     display: flex;
     flex-direction: column;
     flex-wrap: wrap;
-    
+
 
     &__row1{
-     
         display: flex;
         flex-direction: row;
         justify-content: space-between;
@@ -25,7 +25,7 @@
     }
 
     &__user {
-       
+
 
         &-btn{ @include  button;
             border: 0;
@@ -112,9 +112,8 @@
             z-index: 100;
             animation: scale .4s linear;
             animation-fill-mode: forwards;
-          }
-    
-          @keyframes scaledown {
+            }
+        @keyframes scaledown {
             0% {
                 -webkit-transform: scale(1.1);
                 transform: scale(1.1);
@@ -124,7 +123,7 @@
                 transform: scale(1.0);
             }
         }
-        
+
         @keyframes scale {
             0% {
                 -webkit-transform: sacale(1);
@@ -143,4 +142,3 @@
     text-decoration: none;
     color: inherit;
     }
-    
