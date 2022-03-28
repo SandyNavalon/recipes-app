@@ -4,6 +4,7 @@ import routes from "./Config/routes.js";
 import AppRoutes from "./Components/AppRoute";
 import { AuthProvider } from "./Context/context.index";
 import Footer from "./Components/Footer/Footer.jsx";
+import './App.scss';
 
 function App() {
 
@@ -18,7 +19,7 @@ function App() {
           <Route element={<AppRoutes />} path="/dashboard/*" />
           <Route element={<AppRoutes />} path="/dashboard/add-recipe" />
         </Routes>
-        <Footer />
+        <Footer className="footer" />
       </Router>
     </AuthProvider>
   );

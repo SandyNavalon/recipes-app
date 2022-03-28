@@ -1,4 +1,88 @@
+@use '../../Styles/' as *;
+.container{
+    display: flex;
+    align-items: center; 
+}
+
+.dashboardPublic{
+    display: flex;
+    align-items: center;
+    max-width: 1280px;
+   
+}
+.recipeCard{
+display: flex;
+flex-direction: row;
+flex-wrap: wrap;
+
+    
+
+     &__list{
+         display: flex;
+         flex-wrap: wrap;
+         text-decoration: none;
+         color: $btn-principal;
+         padding: 0px;
+         margin: 0px;
+         justify-content: center;
 
 
+       
+     }
 
+      &__list-item{ @include card;
+
+            .img {
+            align-self: center;
+            width:235px;
+            height: 170px;
+            
+
+                img{
+                    width: 100%;
+                    height: 100%;
+                    border-radius: 10px 10px 0px 0px;
+                }
+            }
+       
+      }
+
+      &__list-item:hover{
+        z-index: 100;
+        animation: scale .4s linear;
+        animation-fill-mode: forwards;
+      }
+
+      @keyframes scaledown {
+        0% {
+            -webkit-transform: scale(1.1);
+            transform: scale(1.1);
+        }
+        100% {
+            -webkit-transform: scale(1.0);
+            transform: scale(1.0);
+        }
+    }
+    
+    @keyframes scale {
+        0% {
+            -webkit-transform: sacale(1);
+            transform: scale(1);
+        }
+        100% {
+            -webkit-transform: scale(1.1);
+            transform: scale(1.1);
+            
+        }
+    }
+}
+
+.login-module{
+    margin-top: -100px;
+}
+
+.no-link {
+text-decoration: none;
+color: inherit;
+}
 

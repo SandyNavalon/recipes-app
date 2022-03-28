@@ -26,9 +26,13 @@ export async function loginUser(dispatch, loginPayload) {
       setItem("currentUser", data);
       dispatch({ type: "LOGIN_SUCCESS", payload: data });
       return data;
-    }
-    dispatch({ type: "LOGIN_ERROR", error: data.errors[0] });
-    return console.error('ta mal');;
+    } else {  
+      dispatch({ type: "LOGIN_ERROR", error: data.errors[0] });
+      console.log('habemus error');
+    return;
+  }
+
+  
   } catch (error) {
     dispatch({ type: "LOGIN_ERROR", error: error });
   }
