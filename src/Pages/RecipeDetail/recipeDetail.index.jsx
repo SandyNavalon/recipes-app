@@ -133,13 +133,16 @@ const RecipeDetail = () => {
       
       <Comments urlId={urlId}/>
       
-      {listComments.map((item, index)=>{
-        return(<div key={index}>
-          <p> {user} dice: {item}</p>
+      {/* {listComments.map((item, index)=>{
+        return(
+        <div key={index}>
+          <p> <strong>{user} dice:</strong></p> 
+          <p className="details__comments-comment">{item}</p>
+
         </div>
         )
       })
-      }
+      } */}
     </div>
   )
 }

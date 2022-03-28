@@ -129,6 +129,8 @@
             max-width: 1280px;
             width: 100%;
 
+          
+
             @include mobile{
                 display: flex;
                 flex-direction: column;
@@ -164,6 +166,9 @@
                     width: 80px;
                 }
             }
+            &-comment{
+                font-style: italic;
+                }
 
             &-publi{
                 background-color: $bgc-color-form;

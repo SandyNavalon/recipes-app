@@ -6,30 +6,29 @@ import './Comments.scss'
 const Comments = ({urlId}) => {
     const [comments, setComments] = useState([]);
     const [users, setUsers] = useState([]);
-    const [userAndComment, setUserAndComment] = useState([]);
+    
 
-    //Hacemos llamada para acceder al nombre del usuario de dicho comentario
-    useEffect(()=> {
-        const getUserComment = async () => {
+    const usuarios = [];
+    const getUserComment = async (data) => {
+        for (const com of data) {
             const { data } = await Axios.get(
-            `http://localhost:4000/user`
-            );
-            console.log('data user:',data)
-            setUsers(data);
-        }
-        getUserComment();
-    }, []);
-
-    //Hacemos peticion para obtener todos los comentarios de la receta indicada
+                `http://localhost:4000/user/${com.userId}`
+            ); 
+            usuarios.push(data)
+            
+        }  
+        setUsers(usuarios) 
+    }
     useEffect(()=> {
         const getCommentsByRecipe = async () => {
           const { data } = await Axios.get(
             `http://localhost:4000/comments/recipes/${urlId}`
           );
-          //console.log('data comments:',data)
-          setComments(data);
+            setComments(data)
+            getUserComment(data)
         }
         getCommentsByRecipe();
+        
     }, []);
 
  
@@ -37,15 +36,13 @@ const Comments = ({urlId}) => {
     return ( 
     <div className="comments">
         <h3>Comentarios: </h3>
-        <hr/>
-        {
+        {(users.length>0 && comments.length>0) &&
             comments.map((itemcm, indexcm)=>{
                 return (<div key={indexcm}>
-                    <p className="comments__comment">"{itemcm.content}"</p>
+                    <p>{users[indexcm].user} : {itemcm.content} </p>
                 </div>
                 )
             })
-
         }
     </div>
     )
