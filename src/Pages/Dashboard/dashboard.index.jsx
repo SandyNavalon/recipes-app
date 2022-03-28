@@ -7,6 +7,8 @@ import "./dashboard.scss";
 import axios from "axios";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faXmark } from '@fortawesome/free-solid-svg-icons';
+import NavbarTwo from '../../Components/NavbarTwo/NavbarTwo';
+import notFound from "../../assets/not-found.png";
 
 //import '../general.scss'
 
@@ -144,6 +146,8 @@ function Dashboard(props) {
   };
 
   return (
+  <>
+<NavbarTwo></NavbarTwo>    
     <div className="container">
      <div className="dashboard">
       <div className="dashboard__row1">
@@ -161,7 +165,7 @@ function Dashboard(props) {
      </div>
 
 {/**LISTA DE RECETAS */}
-        <div>
+        <div className="dashboard__recipeTitle">
           <h2>¿Qué tal algo de ésto?</h2>
         </div>
 
@@ -196,7 +200,11 @@ function Dashboard(props) {
 
         {/* Caso 2: Tengo filtros, pero no hay resultados */}
         {filterContent.length && !filterResults.length && 
-        <div><h4>No hay resultados</h4><p>Prueba con otros ingredientes</p></div>
+        <div className="dashboard__notFoundText">
+        <img src={notFound} alt="not found image"/>
+        <h4>No hay resultados</h4>
+        <p>Prueba con otros ingredientes</p>
+        </div>
         }
 
 
@@ -223,7 +231,7 @@ function Dashboard(props) {
       </div>
 
       </div>
-    </div>
+    </div></>
   );
 }
 
