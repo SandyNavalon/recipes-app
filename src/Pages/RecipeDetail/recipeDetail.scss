@@ -7,14 +7,14 @@
     flex-direction:column;
     color: $brown;
 
-    width: $pc-width;
+    max-width: $pc-width;
 
     @include mobile{
-        width: $mobile-width;
+        max-width: $mobile-width;
     }
 
     @include tablet{
-        width: $tablet-width;
+        max-width: $tablet-width;
     }
 
 
@@ -23,7 +23,11 @@
         flex-direction: row;
         justify-content: center;
         align-items: center;
-        gap: 50px;
+        width: 100%;
+        max-width: 1280px;
+        
+        
+        //gap: 50px;
 
         @include mobile{
             flex-direction: column;
@@ -36,9 +40,10 @@
             flex-direction: column;
             align-items: center;
             img{
-                width: 350px;
-                border-radius: 250px;
-                border: 8px solid white;
+                max-width: 60%;
+                width: 100%;
+                border-radius: 10px;
+                border: 2px solid white;
 
                 margin-bottom: 10px;
             }
@@ -49,6 +54,8 @@
                 display: flex;
                 flex-direction: column;
                 justify-content: left;
+                max-width: 40%;
+                width: 100%;
 
 
                 &-title{
@@ -66,13 +73,18 @@
             display: flex;
             flex-direction: column;
             align-items: center;
+            max-width: 1280px;
+            width: 100%;
+            
 
             @include tablet{
-                width: 600px;
+                max-width: 600px;
+                width: 100%;
             }
 
             @include mobile{
-                width: 400px;
+               max-width: 400px;
+               width:100%;
             }
 
 
@@ -114,6 +126,8 @@
             display: flex;
             flex-direction: row;
             align-items: center;
+            max-width: 1280px;
+            width: 100%;
 
             @include mobile{
                 display: flex;
@@ -122,16 +136,19 @@
                 align-items: center;
             }
 
-            input{
+            textarea{
                 @include input;
-                width: 800px;
+            width: 576px;
+                
 
                 @include tablet{
                     width: 500px;
+                    
                 }
 
                 @include mobile{
                     width: 400px;
+                    
                 }
 
             }

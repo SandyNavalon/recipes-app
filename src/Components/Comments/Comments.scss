@@ -1,0 +1,21 @@
+@use '../../Styles/' as * ;
+
+.comments{
+    max-width: 1200px;
+    width: 80%;
+    padding: 40px;
+    background-color: #ffc382;
+    border-radius: 10px;
+    color: $brown;
+    &__comment{
+        font-style: italic;
+        
+    }
+
+
+        hr {
+            width: 100%;
+            color: $brown;
+            background-color: $brown;
+        }
+}

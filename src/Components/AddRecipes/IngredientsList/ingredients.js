@@ -1,4 +1,4 @@
-let ingredients =  [
+let ingredients = [
     'Aceite de sésamo🛢️',
     'Aceite oliva 🛢️',
     'Aceite🛢️',
@@ -119,6 +119,10 @@ let ingredients =  [
     'Salsa🧴',
     'Sésamo',
     'Sirope de arce🧴',
+    'Salsa de soja🧴',
+    'Salsa🧴',
+    'Sésamo',
+    'Sirope de arce',
     'Ternera🥩',
     'Tomate🍅',
     'Tortillas de maíz o trigo🥯',

@@ -1,17 +1,14 @@
-
 import React from "react";
 import { useEffect, useState } from "react";
 import Axios from "axios";
 import { Link, useLocation } from "react-router-dom";
 import { useAuthState } from "../../Context/contexts";
 import { postCommentService } from "../../Services/postCommentService";
-
-
-import Rating from "../../Components/Rating/Rating";
-
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faAngleLeft } from "@fortawesome/free-solid-svg-icons"
+import Comments from "../../Components/Comments/Comments";
 import "./recipeDetail.scss";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faAngleLeft } from "@fortawesome/free-solid-svg-icons";
+import Rating from "../../Components/Rating/Rating"
 
 const RecipeDetail = () => {
   const location = useLocation();
@@ -42,7 +39,7 @@ const RecipeDetail = () => {
       setRecipe({...location.state.recipe});
 
     } else {
-
+      
       Axios(`http://localhost:4000/recipes/${urlId}`).then(
         (res) => {
           setRecipe({...res});
@@ -68,19 +65,23 @@ const RecipeDetail = () => {
   const handleComment = async (ev) =>{
     ev.preventDefault();
     setListComments([...listComments, comment])
+    setRecipe({...recipe, comments:comment})
     await postCommentService(comment, urlId, id)
     ev.target.reset();
     setComment('')
   }
+  
 
   return (
     <div className="container">
       <div className="box">
         <div className="details">
+
           <div className="details__img">
             <img alt={recipe.title} src={recipe.img} className="details__top-img" width='300px'/>
             <Rating/>
           </div>
+
           <div className="details__info">
             <h1 className="details__info-title">{recipe.title}</h1>
             <div>
@@ -96,6 +97,7 @@ const RecipeDetail = () => {
               </ul>
             </div>
           </div>
+
         </div>
 
         <div className="details__description">
@@ -112,7 +114,7 @@ const RecipeDetail = () => {
         <div>
         {user ? (
           <form className="details__comments" onSubmit={handleComment}>
-            <input type="text" placeholder="Añade un comentario" onChange={ (ev) => setComment(ev.target.value) } />
+            <textarea type="text" placeholder="Añade un comentario" onChange={ (ev) => setComment(ev.target.value) }/>
             <button type="submit">Enviar</button>
           </form>
         ) : null}
@@ -128,6 +130,16 @@ const RecipeDetail = () => {
         )
       })}
       </div>
+      
+      <Comments urlId={urlId}/>
+      
+      {listComments.map((item, index)=>{
+        return(<div key={index}>
+          <p> {user} dice: {item}</p>
+        </div>
+        )
+      })
+      }
     </div>
   )
 }
