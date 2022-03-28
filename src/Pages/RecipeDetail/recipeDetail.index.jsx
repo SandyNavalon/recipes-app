@@ -1,10 +1,10 @@
-
 import React from "react";
 import { useEffect, useState } from "react";
 import Axios from "axios";
 import { Link, useLocation } from "react-router-dom";
 import { useAuthState } from "../../Context/contexts";
 import { postCommentService } from "../../Services/postCommentService";
+import Comments from "../../Components/Comments/Comments";
 
 
 import Rating from "../../Components/Rating/Rating";
@@ -42,7 +42,7 @@ const RecipeDetail = () => {
       setRecipe({...location.state.recipe});
 
     } else {
-
+      
       Axios(`http://localhost:4000/recipes/${urlId}`).then(
         (res) => {
           setRecipe({...res});
@@ -68,10 +68,12 @@ const RecipeDetail = () => {
   const handleComment = async (ev) =>{
     ev.preventDefault();
     setListComments([...listComments, comment])
+    setRecipe({...recipe, comments:comment})
     await postCommentService(comment, urlId, id)
     ev.target.reset();
     setComment('')
   }
+  
 
   return (
     <div className="container">
@@ -128,6 +130,16 @@ const RecipeDetail = () => {
         )
       })}
       </div>
+      
+      <Comments urlId={urlId}/>
+      
+      {listComments.map((item, index)=>{
+        return(<div key={index}>
+          <p> {user} dice: {item}</p>
+        </div>
+        )
+      })
+      }
     </div>
   )
 }

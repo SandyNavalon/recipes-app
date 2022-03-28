@@ -64,6 +64,7 @@ let ingredients = [
     'Hinojo 🌿',
     'Huevo🥚',
     'Jalapeños🌶️',
+    'Jamón',
     'Jengibre en polvo🌿',
     'Judías 🌿',
     'Ketchup🍅',
