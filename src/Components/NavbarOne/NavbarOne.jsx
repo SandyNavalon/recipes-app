@@ -32,7 +32,7 @@ const NavbarOne = () => {
                     <div >
                       <img src={engImg} alt="language switch" className="navbarOne__img"/>
                     </div>
-        
+
                     <div>
                       <NavLink to="#">Nosotros</NavLink>
                     </div>

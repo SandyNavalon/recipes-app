@@ -22,11 +22,6 @@ const Footer =  () => {
                 <p className='title'>2022-UpgradeHub</p>
             </div>
             <div>
-                <div className='footer__center'>
-                <NavLink to="/about">
-                    <p className="footer__center-about">Sobre nosotros</p>
-                </NavLink>
-                </div>
                 <div className='info__apps'>
                     <p className='apps__text'>No te descargues la app en:</p>
                     <img className='apps__img' alt='apple' src={apple}/>
