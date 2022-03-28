@@ -54,7 +54,7 @@ function Dashboard(props) {
 
     const results = arrayOfIngredients.reduce((acc, curr, index) => {
 
-      if (index === 0) {
+      if (!index.length) {
         return user.recipes.filter((recipe) => recipe.ingredients.includes(curr));
       } else {
         return acc.filter((recipe) => recipe.ingredients.includes(curr));
@@ -154,7 +154,7 @@ function Dashboard(props) {
 
         <div className="dashboard__recommender">
           <h2>¿Qué tienes en la nevera?</h2>
-          <input type="search" value={inputValue} onChange={onTextChanged} placeholder="Filtrito"></input>
+          <input type="search" value={inputValue} onChange={onTextChanged} placeholder="Introduce ingredientes" className="dashboard__recommender-input"></input>
           <div>{renderSuggestions()}</div>
           <div>{renderSelected()}</div>
         </div>
@@ -170,22 +170,23 @@ function Dashboard(props) {
       <div className="recipeCard">
 
         {/* Caso 3: Tenemos filtros de ingredientes y tenemos resultados */}
-        {filterResults.length && filterContent.length &&
+       {filterResults.length && filterContent.length &&
           filterResults.map((item) => (
             
             <div key={item._id} className="recipeCard__list">
               <Link to={`/detail/${item._id}`} state={{ recipe: item }} className="no-link" >
                 <div className="recipeCard__list-item">
                   <div className="img">
-                      <img alt={item.title} src={item.img} width="300px"></img>
+                      <img alt={item.title} src={item.img} ></img>
                   </div>
-                  <h3 className="no-link">ingredientes</h3>
+                  <h3 className="no-link">{item.title}</h3>
+                  <h4 className="no-link">ingredientes</h4>
                   {item.ingredients.map((item, index) => (
                     <p key={index.toString()} className="no-link">{item}</p>
                   ))}
-                    <h3 className="no-link">{item.title}</h3>
+                    
                     <p className="no-link">Tipo: {item.type}</p>
-                    <button onClick={() => deleteRecipe(item._id)}><FontAwesomeIcon icon={faXmark}/></button>
+                    
                 </div>
                 </Link>
               </div>
@@ -194,15 +195,18 @@ function Dashboard(props) {
         }
 
         {/* Caso 2: Tengo filtros, pero no hay resultados */}
-        {filterContent.length && !filterResults.length && <div>No hay resultados, ponte a dieta mamón</div>}
+        {filterContent.length && !filterResults.length && 
+        <div><h4>No hay resultados</h4><p>Prueba con otros ingredientes</p></div>
+        }
 
 
         {/* Caso 1: No tengo filtros, por lo tanto muestro todas las recetas */}
         {!filterContent.length && recipes.map((item) => (
         <div key={item._id} className="recipeCard__list">
           
-        <Link to={`/detail/${item._id}`} state={{ recipe: item }} className="no-link">
+          <Link to={`/detail/${item._id}`} state={{ recipe: item }} className="no-link">
             <div className="recipeCard__list-item">
+              <button onClick={() => deleteRecipe(item._id)} ><FontAwesomeIcon icon={faXmark}/></button>
               <div className="img">
                   <img alt={item.title} src={item.img} width="300px"></img>
               </div>
@@ -212,10 +216,9 @@ function Dashboard(props) {
               ))} */}
                 <h3>{item.title}</h3>
                 <p>Tipo: {item.type}</p>
-                <button onClick={() => deleteRecipe(item._id)}><FontAwesomeIcon icon={faXmark}/></button>
-              
             </div>
-          </Link></div>
+          </Link>
+        </div>
         ))}
       </div>
 

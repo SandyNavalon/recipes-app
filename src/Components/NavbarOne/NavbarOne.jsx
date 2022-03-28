@@ -42,7 +42,7 @@ const NavbarOne = () => {
                   <div className="navbarOne__col2-items">
                     <div className="navbarOne__col2-user">
                       <img src={chef} ></img>
-                      <p> Chef {user.user}  </p>
+                      <NavLink to="/dashboard" className="navbarOne__col2-link"><p > Chef {user.user}  </p></NavLink>
                     </div>
                     <NavLink onClick={handleLogout} className="navbarOne__col2-link" to="/">
                        <p>| Logout</p>
