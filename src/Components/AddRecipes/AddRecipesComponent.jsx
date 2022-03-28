@@ -1,7 +1,9 @@
 import React, { useState } from "react";
-import { Navigate, useNavigate } from "react-router-dom";
+import { Navigate, useNavigate, Link } from "react-router-dom";
 import AutoCompleteText from "./IngredientsList/AutoCompleteText";
 import { useAuthState } from "../../Context/contexts";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faAngleLeft } from "@fortawesome/free-solid-svg-icons"
 
 import "../AddRecipes/AddRecipesComponent.scss";
 
@@ -119,6 +121,11 @@ const AddRecipe = ({ handleSubmit }) => {
               <button type="submit">Guardar receta</button>
 
           </form>
+          <div>
+          <button >
+            <Link to="/dashboard/"><FontAwesomeIcon className="icon" icon={faAngleLeft} /></Link>
+          </button>
+        </div>
         </div>
       ) : (
         <Navigate to="/" />

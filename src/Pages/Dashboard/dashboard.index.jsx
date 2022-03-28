@@ -174,7 +174,7 @@ function Dashboard(props) {
       <div className="recipeCard">
 
         {/* Caso 3: Tenemos filtros de ingredientes y tenemos resultados */}
-       {filterResults.length && filterContent.length &&
+       {filterContent.length && filterResults.length &&
           filterResults.map((item) => (
             
             <div key={item._id} className="recipeCard__list">
