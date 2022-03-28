@@ -4,6 +4,8 @@ import { useEffect, useState } from "react";
 import Axios from "axios";
 import { Link, useLocation } from "react-router-dom";
 import { useAuthState } from "../../Context/contexts";
+import { postCommentService } from "../../Services/postCommentService";
+
 
 import Rating from "../../Components/Rating/Rating";
 
@@ -15,11 +17,13 @@ const RecipeDetail = () => {
   const location = useLocation();
 
   //securizamos ruta usando user
-  const { user } = useAuthState();
-
+  const { user, id } = useAuthState();
+  const urlId = location.pathname.split("/")[2];
   //const [error, setError] = useState(null);
   //const [isLoaded, setIsLoaded] = useState(false);
   const [comment, setComment] = useState("");
+  const [users, setUsers] = useState([]);
+  const [listComments, setListComments] = useState([]);
 
   const [recipe, setRecipe] = useState({
     title: "",
@@ -38,7 +42,7 @@ const RecipeDetail = () => {
       setRecipe({...location.state.recipe});
 
     } else {
-      const urlId = location.pathname.split("/")[2];
+
       Axios(`http://localhost:4000/recipes/${urlId}`).then(
         (res) => {
           setRecipe({...res});
@@ -51,8 +55,22 @@ const RecipeDetail = () => {
     }
   }, []);
 
-  const handleComment = (ev) =>{
+  useEffect(()=> {
+    const getUserData = async (id) => {
+      const { data } = await Axios.get(
+        `http://localhost:4000/user/${id}`
+      );
+      setUsers(data);
+    }
+    getUserData(id);
+  }, []);
+
+  const handleComment = async (ev) =>{
     ev.preventDefault();
+    setListComments([...listComments, comment])
+    await postCommentService(comment, urlId, id)
+    ev.target.reset();
+    setComment('')
   }
 
   return (
@@ -89,35 +107,29 @@ const RecipeDetail = () => {
           <button className="details__btns-back">
             <Link to="/dashboard/"><FontAwesomeIcon className="icon" icon={faAngleLeft} /></Link>
           </button>
-
-
-          {/* {user ? (
-            <Link to={`/detail/edit/${recipe._id}`} state={{ recipe }}>
-              <button className="details__btns-edit">Editar</button>
-            </Link>
-          ) : null} */}
         </div>
 
         <div>
-          {user ? (
-            <form onSubmit={handleComment} className="details__comments">
-              <input type="text" placeholder="Deja tu comentario" onChange={ (ev) => setComment(ev.target.value) } />
-              <button type="submit">Enviar</button>
-            </form>
-          ) : null}
+        {user ? (
+          <form className="details__comments" onSubmit={handleComment}>
+            <input type="text" placeholder="Añade un comentario" onChange={ (ev) => setComment(ev.target.value) } />
+            <button type="submit">Enviar</button>
+          </form>
+        ) : null}
         </div>
+
+      {listComments.map((item, index)=>{
+        return(
+          <>
+          <div className="details__comments-publi" key={index}>
+            <p><strong>{user} dice:</strong> {item}</p>
+          </div>
+          </>
+        )
+      })}
       </div>
-        {/* <div>
-          { recipe.comments ?(
-            recipe.comments.map((item, index) => {
-              <p key={index}>{item}</p>
-            }))
-            :
-            ( <p>ESTA RECETA TODAVIA NO TIENE COMENTARIOS</p>)
-          }
-        </div> */}
     </div>
-  );
-};
+  )
+}
 
 export default RecipeDetail;
