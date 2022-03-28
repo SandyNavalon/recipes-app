@@ -8,6 +8,8 @@ import logo from "../../assets/LOGO-boilbook-blanco.png";
 import lang from "../../assets/eng-switch.png";
 
 import "./Navbar.scss";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faDoorOpen } from "@fortawesome/free-solid-svg-icons";
 
 const NavbarTwo = () => {
   let navigate = useNavigate();
@@ -23,42 +25,59 @@ const NavbarTwo = () => {
 
   return (
     <div className="navbar">
-      <NavLink className="navbar__items-box-logo" to={'/'}>
-            <img  src={logo} alt="logo" />
-      </NavLink>
-
       {user.email ? (
-        <div className="navbar__items">
-          <div className="navbar__items-box">
-            <img className="navbar__items-box-lang" src={lang} />
+
+      <div className="navbar__box">
+          <div className="navbar__box1">
+              <div className="navbar__box1-lang">
+                <img className="navbar__box1-lang-icon" src={lang} />
+              </div>
+              <NavLink className="navbar__box1-about" to="/about">
+                  <p className="navbar__box1-about-p">Nosotros</p>
+              </NavLink>
+          </div>
+          <div className="navbar__box0">
+            <NavLink  to={'/'}>
+                <img className="navbar__box0-logo" src={logo} alt="logo" />
+            </NavLink>
           </div>
 
-            <div className="navbar__items-box">
-                <NavLink className="navbar__items-box-user" to="/dashboard">
-                  <img src={icon}/>
-                  <p className="navbar__items-box-user-name">Chef {user.user}</p>
-                </NavLink>
+          <div className="navbar__box2">
+                  <NavLink className="navbar__box2-user" to="/dashboard">
+                    <img className="navbar__box2-user-img" src={icon}/>
+                    <p className="navbar__box2-user-name">Chef {user.user}</p>
+                  </NavLink>
 
-            {/* <p>Bienvenida/o {user.user}</p> */}
-            <div className="navbar__items-box-logout">
-              <NavLink onClick={handleLogout} className={({ isActive }) => (isActive ? "active" : "inactive")} to="/">
-                Logout
-              </NavLink>
-            </div>
+              {/* <p>Bienvenida/o {user.user}</p> */}
+              <div className="navbar__box2-logout">
+              <FontAwesomeIcon className="navbar__box2-logout-icon" icon={ faDoorOpen}/>
+                <NavLink onClick={handleLogout} className={({ isActive }) => (isActive ? "active" : "inactive")} to="/">
+                  Logout
+                </NavLink>
+              </div>
           </div>
         </div>
       ) : (
-        <div className="navbar__items">
-        <div className="navbar__items-box">
-            <img className="navbar__items-box-lang" src={lang} />
+        <div className="navbar__box">
+          <div className="navbar__box1">
+            <div className="navbar__box1-lang">
+              <img className="navbar__box1-lang-icon" src={lang} />
+            </div>
+            <NavLink className="navbar__box1-about" to="/about">
+              <p className="navbar__box1-about-p">Sobre nosotros</p>
+            </NavLink>
+          </div>
+          <div className="navbar__box0">
+            <NavLink  to={'/'}>
+                <img className="navbar__box0-logo" src={logo} alt="logo" />
+            </NavLink>
           </div>
 
-          <div className="navbar__items-box-log">
-              <NavLink onClick={handleLogout} className={({ isActive }) => (isActive ? "active" : "inactive")} to="/login">
-                Login
-              </NavLink>
+          <div className="navbar__box2-log">
+            <NavLink onClick={handleLogout} className={({ isActive }) => (isActive ? "active" : "inactive")} to="/login">
+                  Login
+            </NavLink>
           </div>
-
         </div>
       )}
     </div>

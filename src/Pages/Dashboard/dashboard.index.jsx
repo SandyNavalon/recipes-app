@@ -2,13 +2,14 @@ import React, { useEffect } from "react";
 import { useAuthState } from "../../Context/context.index";
 import { Link } from "react-router-dom";
 import { useState } from "react";
-import ingredients from "../../Components/AddRecipes/IngredientsList/ingredients";
-import "./dashboard.scss";
 import axios from "axios";
+
+import ingredients from "../../Components/AddRecipes/IngredientsList/ingredients";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faXmark } from '@fortawesome/free-solid-svg-icons';
 import NavbarTwo from '../../Components/NavbarTwo/NavbarTwo';
 import notFound from "../../assets/not-found.png";
+import "./dashboard.scss";
 
 //import '../general.scss'
 
@@ -79,7 +80,7 @@ function Dashboard(props) {
     //3. y con esta variable actualiza selected ingredients y le pasa este array de ingredientes a
     //la función updateSearchFilter que es la funcion que no sabes bien qué hace
     updateSearchFilter(newIngredients);
-    //4. también actualizas selectedIngredients, claro. 
+    //4. también actualizas selectedIngredients, claro.
     setSelectedIngredients(newIngredients);
     setSuggestions([]);
     setInputValue("");
@@ -121,7 +122,7 @@ function Dashboard(props) {
         <ul>
           {suggestions.map((item, index) => (
             //al hacer click disparas la funcion de sugerencia seleccionada
-            //que envia item que es un array de sugerencias 
+            //que envia item que es un array de sugerencias
             <li key={index} onClick={() => suggestionSelected(item)}>
               {item}
             </li>
@@ -146,10 +147,10 @@ function Dashboard(props) {
   };
 
   return (
-  <>
-<NavbarTwo></NavbarTwo>    
+    <>
+    <NavbarTwo/>
     <div className="container">
-     <div className="dashboard">
+      <div className="dashboard">
       <div className="dashboard__row1">
         <div className="dashboard__user">
           <h1>Hola,<br/> {user.user}</h1>
@@ -162,7 +163,7 @@ function Dashboard(props) {
           <div>{renderSuggestions()}</div>
           <div>{renderSelected()}</div>
         </div>
-     </div>
+      </div>
 
 {/**LISTA DE RECETAS */}
         <div className="dashboard__recipeTitle">
@@ -176,7 +177,7 @@ function Dashboard(props) {
         {/* Caso 3: Tenemos filtros de ingredientes y tenemos resultados */}
        {filterContent.length && filterResults.length &&
           filterResults.map((item) => (
-            
+
             <div key={item._id} className="recipeCard__list">
               <Link to={`/detail/${item._id}`} state={{ recipe: item }} className="no-link" >
                 <div className="recipeCard__list-item">
@@ -188,13 +189,13 @@ function Dashboard(props) {
                   {item.ingredients.map((item, index) => (
                     <p key={index.toString()} className="no-link">{item}</p>
                   ))}
-                    
+
                     <p className="no-link">Tipo: {item.type}</p>
-                    
+
                 </div>
                 </Link>
               </div>
-            
+
           ))
         }
 
@@ -211,7 +212,7 @@ function Dashboard(props) {
         {/* Caso 1: No tengo filtros, por lo tanto muestro todas las recetas */}
         {!filterContent.length && recipes.map((item) => (
         <div key={item._id} className="recipeCard__list">
-          
+
           <Link to={`/detail/${item._id}`} state={{ recipe: item }} className="no-link">
             <div className="recipeCard__list-item">
               

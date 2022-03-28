@@ -9,6 +9,7 @@ import "./recipeDetail.scss";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faAngleLeft } from "@fortawesome/free-solid-svg-icons";
 import Rating from "../../Components/Rating/Rating"
+import NavbarTwo from "../../Components/NavbarTwo/NavbarTwo";
 
 const RecipeDetail = () => {
   const location = useLocation();
@@ -72,7 +73,8 @@ const RecipeDetail = () => {
   }
   
 
-  return (
+  return (<>
+    <NavbarTwo></NavbarTwo>
     <div className="container">
       <div className="box">
         <div className="details">
@@ -144,7 +146,7 @@ const RecipeDetail = () => {
       })
       } */}
     </div>
-  )
+    </>)
 }
 
 export default RecipeDetail;
