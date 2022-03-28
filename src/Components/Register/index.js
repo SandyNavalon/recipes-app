@@ -47,7 +47,6 @@ function RegisterUser({handleSubmit}) {
             navigate('/login')
             // alert(JSON.stringify(values, null, 2));
         },
-
     }
 
     );
