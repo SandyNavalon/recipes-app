@@ -4,7 +4,7 @@ import Axios from "axios";
 import { Link, useLocation } from "react-router-dom";
 import { useAuthState } from "../../Context/contexts";
 import { postCommentService } from "../../Services/postCommentService";
-
+import Comments from "../../Components/Comments/Comments";
 import "./recipeDetail.scss";
 
 const RecipeDetail = () => {
@@ -62,10 +62,12 @@ const RecipeDetail = () => {
   const handleComment = async (ev) =>{
     ev.preventDefault();
     setListComments([...listComments, comment])
+    setRecipe({...recipe, comments:comment})
     await postCommentService(comment, urlId, id)
     ev.target.reset();
     setComment('')
   }
+  
 
   return (
     <div className="details">
@@ -113,14 +115,15 @@ const RecipeDetail = () => {
           </form>
         ) : null}
       </div>
+      
+      <Comments urlId={urlId}/>
+      
       {listComments.map((item, index)=>{
         return(<div key={index}>
-          <p> {user} {item}</p>
+          <p> {user} dice: {item}</p>
         </div>
-
         )
       })
-        
       }
     </div>
   );
