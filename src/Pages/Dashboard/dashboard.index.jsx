@@ -5,6 +5,11 @@ import { useState } from "react";
 import ingredients from "../../Components/AddRecipes/IngredientsList/ingredients";
 import "./dashboard.scss";
 import axios from "axios";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faXmark } from '@fortawesome/free-solid-svg-icons';
+import NavbarTwo from '../../Components/NavbarTwo/NavbarTwo';
+import notFound from "../../assets/not-found.png";
+
 //import '../general.scss'
 
 function Dashboard(props) {
@@ -27,7 +32,7 @@ function Dashboard(props) {
     setRecipes(user.recipes);
   }, [user]);
 
-// te recoge los cambios del input de filtro y te extrae value
+  // te recoge los cambios del input de filtro y te extrae value
   const onTextChanged = (ev) => {
     const { value } = ev.target;
 
@@ -41,7 +46,7 @@ function Dashboard(props) {
       //si no, sugerencias permanece vacío
       setSuggestions([]);
     }
-  //despues seteame InputValue con el contenido
+    //despues seteame InputValue con el contenido
     setInputValue(value);
   };
 
@@ -51,7 +56,7 @@ function Dashboard(props) {
 
     const results = arrayOfIngredients.reduce((acc, curr, index) => {
 
-      if (index === 0) {
+      if (!index.length) {
         return user.recipes.filter((recipe) => recipe.ingredients.includes(curr));
       } else {
         return acc.filter((recipe) => recipe.ingredients.includes(curr));
@@ -64,7 +69,7 @@ function Dashboard(props) {
 
 
 
-/// ESTA FUNCIÓN ES LA QUE ENCUENTRA EL INGREDIENTE DEL VALUE EN UN ARRAY DE INGREDIENTES PREVIO
+  /// ESTA FUNCIÓN ES LA QUE ENCUENTRA EL INGREDIENTE DEL VALUE EN UN ARRAY DE INGREDIENTES PREVIO
   const suggestionSelected = (value) => {
     //1. si encuentra un ingrediente en el selected ingredients que sea igual a value, lo retorna
     if (selectedIngredients.find((ingredient) => ingredient === value)) return;
@@ -94,11 +99,11 @@ function Dashboard(props) {
     return (
       <>
         <div>
-          <h2>LISTA INGREDIENTES</h2>
+          <h3>LISTA INGREDIENTES</h3>
           <ul>
             {selectedIngredients.map((item) => (
               <li key={item}>
-                <span onClick={() => deleteSeletedIngredients(item)}>X </span>
+                <span onClick={() => deleteSeletedIngredients(item)}><FontAwesomeIcon icon={faXmark}/> </span>
                 <span>{item}</span>
               </li>
             ))}
@@ -132,7 +137,7 @@ function Dashboard(props) {
         `http://localhost:4000/recipes/${id}`
       );
       console.log(data);
-      const arrayFiltrado = recipes.filter(item=>item._id !== id);
+      const arrayFiltrado = recipes.filter(item => item._id !== id);
       setRecipes(arrayFiltrado)
       console.log(id)
     } catch (error) {
@@ -141,70 +146,96 @@ function Dashboard(props) {
   };
 
   return (
-    <div style={{ padding: 10 }}>
-
-      <p>Welcome {user.user}</p>
-      <div>
-        <p>Filtro</p>
-
-        <input type="search" value={inputValue} onChange={onTextChanged} placeholder="Filtrito"></input>
-        <div>{renderSuggestions()}</div>
-        <div>{renderSelected()}</div>
-      </div>
-
-      <div>
-        <div className="recipebtns">
-          <h1>Recetas</h1>
-          <Link to="/dashboard/add-recipes">Añadir receta</Link>
+  <>
+<NavbarTwo></NavbarTwo>    
+    <div className="container">
+     <div className="dashboard">
+      <div className="dashboard__row1">
+        <div className="dashboard__user">
+          <h1>Hola,<br/> {user.user}</h1>
+          <Link to="/dashboard/add-recipes"><button className="dashboard__user-btn">¿Nueva Receta?</button></Link>
         </div>
 
+        <div className="dashboard__recommender">
+          <h2>¿Qué tienes en la nevera?</h2>
+          <input type="search" value={inputValue} onChange={onTextChanged} placeholder="Introduce ingredientes" className="dashboard__recommender-input"></input>
+          <div>{renderSuggestions()}</div>
+          <div>{renderSelected()}</div>
+        </div>
+     </div>
+
+{/**LISTA DE RECETAS */}
+        <div className="dashboard__recipeTitle">
+          <h2>¿Qué tal algo de ésto?</h2>
+        </div>
+
+
+
+      <div className="recipeCard">
+
         {/* Caso 3: Tenemos filtros de ingredientes y tenemos resultados */}
-        {filterResults.length && filterContent.length &&
+       {filterContent.length && filterResults.length &&
           filterResults.map((item) => (
-            <div key={item._id} className="recipeList">
-              <h1>{item.title}</h1>
-              <h3>ingredientes</h3>
-              {item.ingredients.map((item, index) => (
-                <p key={index.toString()}>{item}</p>
-              ))}
-              <p>
-                <img alt={item.title} src={item.img} width="300px"></img>
-              </p>
-              <Link to={`/detail/${item._id}`} state={{recipe: item}}>
-                <button>view detail</button>
-              </Link>
-                {/*<button>delete recipe</button>*/}
-              <hr></hr>
-            </div>
+            
+            <div key={item._id} className="recipeCard__list">
+              <Link to={`/detail/${item._id}`} state={{ recipe: item }} className="no-link" >
+                <div className="recipeCard__list-item">
+                  <div className="img">
+                      <img alt={item.title} src={item.img} ></img>
+                  </div>
+                  <h3 className="no-link">{item.title}</h3>
+                  <h4 className="no-link">ingredientes</h4>
+                  {item.ingredients.map((item, index) => (
+                    <p key={index.toString()} className="no-link">{item}</p>
+                  ))}
+                    
+                    <p className="no-link">Tipo: {item.type}</p>
+                    
+                </div>
+                </Link>
+              </div>
+            
           ))
         }
 
         {/* Caso 2: Tengo filtros, pero no hay resultados */}
-        {filterContent.length && !filterResults.length && <div>No hay resultados, ponte a dieta mamón</div>}
+        {filterContent.length && !filterResults.length && 
+        <div className="dashboard__notFoundText">
+        <img src={notFound} alt="not found image"/>
+        <h4>No hay resultados</h4>
+        <p>Prueba con otros ingredientes</p>
+        </div>
+        }
 
 
         {/* Caso 1: No tengo filtros, por lo tanto muestro todas las recetas */}
         {!filterContent.length && recipes.map((item) => (
-          <div key={item._id}>
-            <h1>{item.title}</h1>
-            <h3>ingredientes</h3>
-            {item.ingredients.map((item, index) => (
-              <p key={index.toString()}>{item}</p>
-            ))}
-            <p>
-              <img alt={item.title} src={item.img} width="300px"></img>
-            </p>
-            <Link to={`/detail/${item._id}`} state={{recipe: item}}>
-              <button>view detail</button>
-            </Link>
-              <button onClick={() => deleteRecipe(item._id)}>delete recipe</button>
-            <hr></hr>
-          </div>
+        <div key={item._id} className="recipeCard__list">
+          
+          <Link to={`/detail/${item._id}`} state={{ recipe: item }} className="no-link">
+            <div className="recipeCard__list-item">
+              
+              <div className="img">
+                  <img alt={item.title} src={item.img} width="300px"></img>
+              </div>
+              {/* <h3>ingredientes</h3>
+              {item.ingredients.map((item, index) => (
+                <p key={index.toString()}>{item}</p>
+              ))} */}
+                <h3>{item.title}</h3>
+                <p>Tipo: {item.type}</p>
+            </div>           
+            
+            
+
+          </Link>
+          <button onClick={() => deleteRecipe(item._id)} className="recipeCard__delete" ><FontAwesomeIcon icon={faXmark}/></button>
+        </div>
         ))}
       </div>
 
-      <div></div>
-    </div>
+      </div>
+    </div></>
   );
 }
 

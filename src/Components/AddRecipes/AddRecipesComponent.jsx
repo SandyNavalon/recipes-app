@@ -1,7 +1,9 @@
 import React, { useState } from "react";
-import { Navigate, useNavigate } from "react-router-dom";
+import { Navigate, useNavigate, Link } from "react-router-dom";
 import AutoCompleteText from "./IngredientsList/AutoCompleteText";
 import { useAuthState } from "../../Context/contexts";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faAngleLeft } from "@fortawesome/free-solid-svg-icons"
 
 import "../AddRecipes/AddRecipesComponent.scss";
 
@@ -61,7 +63,7 @@ const AddRecipe = ({ handleSubmit }) => {
   return (
     <>
       {user ? (
-        <div>
+        <div className="container">
           <form className="form-style" autoComplete="off" onSubmit={submitForm} encType="multipart/form-data">
             <fieldset>
                 <label>Título</label>
@@ -89,7 +91,14 @@ const AddRecipe = ({ handleSubmit }) => {
                   </option>
                   <option value="italiana">Italiana</option>
                   <option value="mediterranea">Mediterránea</option>
-                  <option value="oriental">Oriental</option>
+                  <option value="Japonesa">Japonesa</option>
+                  <option value="Americana">Americana</option>
+                  <option value="Postre">Postres</option>
+                  <option value="Vegana">Vegana</option>
+                  <option value="China">China</option>
+                  <option value="Turca">Turca</option>
+                  <option value="Sudamericana">Sudamericana</option>
+                  <option value="Otros">Otros</option>
                 </select>
               </fieldset>
 
@@ -112,6 +121,11 @@ const AddRecipe = ({ handleSubmit }) => {
               <button type="submit">Guardar receta</button>
 
           </form>
+          <div>
+          <button >
+            <Link to="/dashboard/"><FontAwesomeIcon className="icon" icon={faAngleLeft} /></Link>
+          </button>
+        </div>
         </div>
       ) : (
         <Navigate to="/" />

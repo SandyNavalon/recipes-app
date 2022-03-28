@@ -1,0 +1,8 @@
+@use './Styles/' as *;
+body{
+    font-family: $font-family;
+    color: $btn-principal;
+}
+.footer {
+    margin-top:100px;
+}

@@ -1,0 +1,192 @@
+@use '../../Styles/' as *;
+
+.box{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction:column;
+    color: $brown;
+
+    max-width: $pc-width;
+
+    @include mobile{
+        max-width: $mobile-width;
+    }
+
+    @include tablet{
+        max-width: $tablet-width;
+    }
+
+
+    .details{
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        max-width: 1280px;
+        
+        
+        //gap: 50px;
+
+        @include mobile{
+            flex-direction: column;
+        }
+
+
+        &__img{
+            display: flex;
+            justify-content: center;
+            flex-direction: column;
+            align-items: center;
+            img{
+                max-width: 60%;
+                width: 100%;
+                border-radius: 10px;
+                border: 2px solid white;
+
+                margin-bottom: 10px;
+            }
+        }
+
+
+            &__info{
+                display: flex;
+                flex-direction: column;
+                justify-content: left;
+                max-width: 40%;
+                width: 100%;
+
+
+                &-title{
+                    font-weight: 400;
+                }
+
+                &-ing{
+                    display: flex;
+                    flex-direction: column;
+
+                }
+            }
+
+        &__description{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            max-width: 1280px;
+            width: 100%;
+            
+
+            @include tablet{
+                max-width: 600px;
+                width: 100%;
+            }
+
+            @include mobile{
+               max-width: 400px;
+               width:100%;
+            }
+
+
+        }
+
+        &__btns{
+
+            &-back{
+                background-color: $btn-principal;
+
+                margin: 20px 0 40px 0;
+
+                .icon{
+                    color: white;
+                }
+
+                @include button;
+                width: 30px;
+                height: 30px;
+                border-radius: 15px;
+                border: none;
+            }
+
+            &-back:disabled{
+                @include button-disabled
+            }
+
+            &-back:hover{
+                @include button-hover
+            }
+
+            &-back:active{
+                @include button-active
+            }
+        }
+
+        &__comments{
+            margin: 0 0 60px 0;
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            max-width: 1280px;
+            width: 100%;
+
+          
+
+            @include mobile{
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+            }
+
+            textarea{
+                @include input;
+            width: 576px;
+                
+
+                @include tablet{
+                    width: 500px;
+                    
+                }
+
+                @include mobile{
+                    width: 400px;
+                    
+                }
+
+            }
+
+            button{
+                @include button;
+                background-color: $btn-principal;
+                border: 0;
+
+                margin: 0;
+
+                @include tablet{
+                    width: 80px;
+                }
+            }
+            &-comment{
+                font-style: italic;
+                }
+
+            &-publi{
+                background-color: $bgc-color-form;
+                width: 800px;
+                border-radius: 5px;
+                margin: 10px 0 20px 0;
+                padding: 10px;
+
+                @include tablet{
+                    width: 500px;
+                }
+
+                @include mobile{
+                    width: 400px;
+                }
+            }
+        }
+    }
+
+}
+

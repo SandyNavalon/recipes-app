@@ -1,11 +1,13 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import Login from "../../Components/Login/login.component";
+import NavbarTwo from "../../Components/NavbarTwo/NavbarTwo";
 import { loginUser, useAuthState, useAuthDispatch } from "../../Context/context.index";
-import RecipeList from "../../Components/RecipeList/RecipeList";
 
-function Login(props) {
+function LoginPage(props) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+
   const dispatch = useAuthDispatch();
 
   let navigate = useNavigate();
@@ -17,58 +19,20 @@ function Login(props) {
     e.preventDefault();
 
     try {
-      let response = await loginUser(dispatch, { email, password });
-      if (!response.user) return <div>Credenciales incorrectas</div>;
-      navigate("/dashboard");
+      let response = await loginUser(dispatch, {email, password});
+      if (!response.user) return
+      navigate("/dashboard")
+
     } catch (error) {
-      return error
+      return <p>ha habido un error en {`${error}`}</p>
     }
   };
 
   return (
-    <div>
-        <div className="login">
-          <h1>Login</h1>
-          {errorMessage ? <p>{errorMessage}</p> : null}
-          <form className="login__form">
-              <div className="login__form-email">
-                <label htmlFor="email">Email</label>
-                <input
-                  type="text"
-                  id="email"
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                  disabled={loading}
-                />
-              </div>
-              <div className="login__form-password">
-                <label htmlFor="password">Contraseña</label>
-                <input
-                  type="password"
-                  id="password"
-                  value={password}
-                  onChange={(e) => setPassword(e.target.value)}
-                  disabled={loading}
-                />
-              </div>
-              <button className="login__form-btn" onClick={handleLogin} disabled={loading}>
-              login
-              </button>
-          </form>
-        </div>
-
-      <div className="new">
-        <h3 className="new__title">¿Todavía no tienes cuenta?</h3>
-        <Link to='/register'>
-        <button className="new__btn">Registrate</button>
-        </Link>
-      </div>
-
-      {/* <div>
-        <RecipeList/>
-      </div> */}
-    </div>
+    <>
+      <NavbarTwo />
+      <Login/>
+    </>
   );
 }
-
-export default Login;
+export default LoginPage;
