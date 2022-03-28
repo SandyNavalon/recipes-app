@@ -1,0 +1,32 @@
+
+.us{
+    display: flex;
+    flex-direction: column;
+    margin: 200px;
+    gap: 80px;
+
+    &__item{
+        display: flex;
+        flex-direction: row;
+
+        &-jesus{
+            text-align: right;
+        }
+    }
+
+    &__img{
+
+
+        img {
+            width: 300px;
+            border-radius: 5px;
+        }
+
+    }
+    p{
+        margin: 20px;
+        text-align: justify;
+        width: 500px;
+    }
+}
+

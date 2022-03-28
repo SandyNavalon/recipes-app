@@ -32,7 +32,7 @@ const RecipeList = () => {
             <ul className='recipeCard__list'>
                 {recipe.map((item) =>
                 <li className='recipeCard__list-item' key={item._id.toString()} >
-                   <Link to={`detail/${item._id}`} state ={{recipe: item}} className="no-link"> 
+                <Link to={`detail/${item._id}`} state ={{recipe: item}} className="no-link"> 
                         <div className='img'>
                             <img alt={item.title} src={item.img}/>
                         </div>

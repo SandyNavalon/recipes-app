@@ -3,6 +3,7 @@ import './Footer.scss';
 import logo from '../../assets/LOGO-boilbook-blanco.png';
 import apple from '../../assets/app.png';
 import google from '../../assets/google.png';
+import { NavLink } from 'react-router-dom';
 
 const Footer =  () => {
     return <footer className='footer'>
@@ -20,10 +21,17 @@ const Footer =  () => {
                 <p>Jesús Corrales</p>
                 <p className='title'>2022-UpgradeHub</p>
             </div>
-            <div className='info__apps'>
-                <p className='apps__text'>No te descargues la app en:</p>
-                <img className='apps__img' alt='apple' src={apple}/>
-                <img className='apps__img' alt='google' src={google} />
+            <div>
+                <div className='footer__center'>
+                <NavLink to="/about">
+                    <p className="footer__center-about">Sobre nosotros</p>
+                </NavLink>
+                </div>
+                <div className='info__apps'>
+                    <p className='apps__text'>No te descargues la app en:</p>
+                    <img className='apps__img' alt='apple' src={apple}/>
+                    <img className='apps__img' alt='google' src={google} />
+                </div>
             </div>
             <div className='info__gratitude'>
                 <p className='title'>Especiales agradecimientos a:</p>

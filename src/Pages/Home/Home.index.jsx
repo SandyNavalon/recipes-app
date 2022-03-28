@@ -3,7 +3,7 @@ import { useLocation } from 'react-router-dom';
 import NavbarOne from '../../Components/NavbarOne/NavbarOne';
 import RecipeList from '../../Components/RecipeList/RecipeList'
 import { useAuthState } from '../../Context/contexts';
-import Login from '../Login/login.index';
+import Login from '../../Components/Login/login.component';
 import './home.scss';
 
 const Home = () => {
@@ -20,8 +20,8 @@ const Home = () => {
 
       {!user.id ? (
        <div className='login-module'>
-      <Login/> 
-      </div> 
+      <Login/>
+      </div>
        ) : (<div><p></p></div>)
        }
 

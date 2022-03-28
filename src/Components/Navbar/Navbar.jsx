@@ -40,11 +40,11 @@ const Navbar = () => {
 
           {/* <p>Bienvenida/o {user.user}</p> */}
           <div className="navbar__items-btn-logout">
-            
+
             <NavLink onClick={handleLogout} className={({ isActive }) => (isActive ? "active" : "inactive")} to="/">
               LOGOUT
             </NavLink>
-            
+
           </div>
         </div>
       ) : (

@@ -3,6 +3,7 @@ import { saveRecipeService } from "../../Services/saveRecipeService";
 import AddRecipeComponent from "../../Components/AddRecipes/AddRecipesComponent";
 import { useAuthDispatch } from "../../Context/context.index";
 import { addToExistingArrayNested } from "../../Services/storage.service";
+import NavbarTwo from "../../Components/NavbarTwo/NavbarTwo";
 
 const AddRecipe = () => {
   const dispatch = useAuthDispatch();
@@ -14,10 +15,13 @@ const AddRecipe = () => {
   };
 
   return (
-    <div>
-      <h2>AÑADIR RECETA</h2>
-      <AddRecipeComponent handleSubmit={handleSubmit} />
-    </div>
+    <>
+      <NavbarTwo/>
+      <div className="container">
+        <h1>Añade una receta</h1>
+        <AddRecipeComponent handleSubmit={handleSubmit} />
+      </div>
+    </>
   );
 };
 

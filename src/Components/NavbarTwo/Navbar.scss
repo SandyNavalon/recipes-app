@@ -1,0 +1,94 @@
+@use '../../Styles/' as *;
+
+.active {
+    color: white;
+    font-weight: 500;
+    text-decoration: none;
+    text-align: center;
+    font-family: $font-family;
+}
+
+.inactive {
+    color: white;
+    text-decoration: none;
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-around;
+    align-items:flex-start;
+    font-family: $font-family;
+    color: white;
+    position: relative;
+
+    top: 0;
+    margin: 0;
+    width: 100%;
+    height: 300px;
+    background-image: url('../../assets/cabecera02.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center bottom;
+
+
+    &__items{
+        display: flex;
+        align-items: center;
+        flex-direction: row;
+        gap: 200px;
+        margin: 40px 20px 0 20px;
+
+        &-box{
+        display: flex;
+        align-items: center;
+        flex-direction: row;
+        justify-content: space-between;
+        gap: 100px;
+
+        &-lang{
+            width: 40px;
+            cursor: pointer;
+        }
+
+        &-about{
+            cursor: pointer;
+        }
+
+        &-logo{
+            display:flex;
+            align-items: center;
+            position:absolute;
+            margin-top: 20px;
+
+            img{
+                width: 80px;
+            }
+        }
+
+        &-user{
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            text-transform: capitalize;
+
+            text-decoration: none;
+            color: white;
+            font-weight: 20px;
+
+            cursor: pointer;
+            img{
+                width: 30px;
+                margin-right: 5px;
+            }
+
+            &-name{
+                font-weight: 400;
+                font-size: 20px;
+            }
+        }
+
+        }
+
+    }
+}
+

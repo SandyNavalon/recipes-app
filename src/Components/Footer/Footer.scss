@@ -8,6 +8,16 @@
     align-items: center;
     color: white;
 }
+
+.footer__center{
+    display: flex;
+    justify-content: center;
+
+    &-about{
+        font-weight: bold;
+    }
+}
+
 .title{
     font-weight: bold;
 }

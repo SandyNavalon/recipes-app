@@ -61,7 +61,7 @@ const AddRecipe = ({ handleSubmit }) => {
   return (
     <>
       {user ? (
-        <div>
+        <div className="container">
           <form className="form-style" autoComplete="off" onSubmit={submitForm} encType="multipart/form-data">
             <fieldset>
                 <label>Título</label>
