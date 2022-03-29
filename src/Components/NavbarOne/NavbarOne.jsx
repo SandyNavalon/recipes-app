@@ -2,8 +2,7 @@ import React from "react";
 import { NavLink, useNavigate } from "react-router-dom";
 import { logoutUser } from "../../Context/actions";
 import { useAuthDispatch, useAuthState } from "../../Context/contexts";
-import chef from "../../assets/chef-icon.svg"
-
+import chef from '../../assets/chef-ligth.png'
 
 import logo from "../../assets/LOGO-boilbook-blanco.png";
 import engImg from "../../assets/eng-switch.png";

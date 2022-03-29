@@ -115,7 +115,7 @@ function Dashboard(props) {
   };
 
   const renderSuggestions = () => {
-    if (!suggestions.length) return null;
+    if (!suggestions.length) return;
 
     return (
       <>
@@ -175,7 +175,7 @@ function Dashboard(props) {
       <div className="recipeCard">
 
         {/* Caso 3: Tenemos filtros de ingredientes y tenemos resultados */}
-       {filterContent.length && filterResults.length &&
+        {filterContent.length > 0 && filterResults.length &&
           filterResults.map((item) => (
 
             <div key={item._id} className="recipeCard__list">
@@ -200,7 +200,7 @@ function Dashboard(props) {
         }
 
         {/* Caso 2: Tengo filtros, pero no hay resultados */}
-        {filterContent.length && !filterResults.length && 
+        {filterContent.length > 0 && !filterResults.length &&
         <div className="dashboard__notFoundText">
         <img src={notFound} alt="not found image"/>
         <h4>No hay resultados</h4>
@@ -215,7 +215,7 @@ function Dashboard(props) {
 
           <Link to={`/detail/${item._id}`} state={{ recipe: item }} className="no-link">
             <div className="recipeCard__list-item">
-              
+
               <div className="img">
                   <img alt={item.title} src={item.img} width="300px"></img>
               </div>
@@ -225,9 +225,7 @@ function Dashboard(props) {
               ))} */}
                 <h3>{item.title}</h3>
                 <p>Tipo: {item.type}</p>
-            </div>           
-            
-            
+            </div>
 
           </Link>
           <button onClick={() => deleteRecipe(item._id)} className="recipeCard__delete" ><FontAwesomeIcon icon={faXmark}/></button>

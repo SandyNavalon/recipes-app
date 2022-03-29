@@ -59,7 +59,7 @@
         &-about{
             text-decoration: none;
             &-p{
-                color: white;
+                color: $brown;
             }
             &-p:hover{
                 color:$btn-second;
@@ -81,10 +81,9 @@
         &-user{
             display: flex;
             flex-direction: row;
-            background-color: cornflowrblue;
             justify-content:flex-end;
             text-decoration: none;
-
+            align-items: center;
 
             &-name{
                 text-transform: capitalize;
@@ -100,7 +99,8 @@
             }
 
             &-img{
-                width: 18px;
+                width: 35px;
+                height: 35px;
                 margin-right: 10px;
             }
             &-img:hover{

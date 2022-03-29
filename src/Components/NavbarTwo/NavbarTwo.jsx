@@ -3,7 +3,7 @@ import { NavLink, useNavigate } from "react-router-dom";
 import { logoutUser } from "../../Context/actions";
 import { useAuthDispatch, useAuthState } from "../../Context/contexts";
 
-import icon from "../../assets/chef-icon.svg"
+import chef from "../../assets/chef-brown.png";
 import logo from "../../assets/LOGO-boilbook-blanco.png";
 import lang from "../../assets/eng-switch.png";
 
@@ -44,7 +44,7 @@ const NavbarTwo = () => {
 
           <div className="navbar__box2">
                   <NavLink className="navbar__box2-user" to="/dashboard">
-                    <img className="navbar__box2-user-img" src={icon}/>
+                    <img className="navbar__box2-user-img" src={chef}/>
                     <p className="navbar__box2-user-name">Chef {user.user}</p>
                   </NavLink>
 
