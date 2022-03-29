@@ -1,14 +1,21 @@
 @use '../../Styles/' as * ;
 
-.div{
+.container{
     display: flex;
     justify-content: center;
+    max-width: 1280px;
+    width: 100%;
 }
 .form-style {
     display: flex;
     flex-direction: column;
+    padding: 10px;
+    border-radius: 10px;
+    background-color: $bgc-color-form;
 
-    width: $pc-width;
+
+    max-width: 800px;
+    width: 100%;
     // margin: 0 40px 40px 40px;
 
     @include tablet{
@@ -22,7 +29,6 @@
     fieldset{
         display: flex;
         flex-direction: column;
-        background-color: $bgc-color-form;
 
         border: 0;
 
