@@ -27,7 +27,7 @@
     }
 
     &__user {
-
+        text-transform: capitalize;
 
         &-btn{ @include  button;
             border: 0;
@@ -154,7 +154,11 @@
             width: 40px;
             height: 40px;
             position: absolute;
-            left: 280px
+            left: 280px;
+
+            @include mobile{
+                left:350px
+            }
             
         }
 
