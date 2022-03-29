@@ -88,7 +88,7 @@ function Dashboard(props) {
 
 
 
-  const deleteSeletedIngredients = (ingredients) => {
+  const deleteSelectedIngredients = (ingredients) => {
     const newIngredients = selectedIngredients.filter((i) => i !== ingredients);
     setSelectedIngredients(newIngredients);
     updateSearchFilter(newIngredients);
@@ -100,11 +100,11 @@ function Dashboard(props) {
     return (
       <>
         <div>
-          <h3>LISTA INGREDIENTES</h3>
-          <ul>
+          <h4>LISTA INGREDIENTES</h4>
+          <ul className="dashboard__recommender-list-select">
             {selectedIngredients.map((item) => (
               <li key={item}>
-                <span onClick={() => deleteSeletedIngredients(item)}><FontAwesomeIcon icon={faXmark}/> </span>
+                <span onClick={() => deleteSelectedIngredients(item)}><FontAwesomeIcon icon={faXmark}/> </span>
                 <span>{item}</span>
               </li>
             ))}
@@ -115,11 +115,11 @@ function Dashboard(props) {
   };
 
   const renderSuggestions = () => {
-    if (!suggestions.length) return null;
+    if (!suggestions.length) return;
 
     return (
       <>
-        <ul>
+        <ul className="dashboard__recommender-list-sugg">
           {suggestions.map((item, index) => (
             //al hacer click disparas la funcion de sugerencia seleccionada
             //que envia item que es un array de sugerencias
@@ -175,7 +175,7 @@ function Dashboard(props) {
       <div className="recipeCard">
 
         {/* Caso 3: Tenemos filtros de ingredientes y tenemos resultados */}
-       {filterContent.length && filterResults.length &&
+        {filterContent.length > 0 && filterResults.length &&
           filterResults.map((item) => (
 
             <div key={item._id} className="recipeCard__list">
@@ -200,7 +200,7 @@ function Dashboard(props) {
         }
 
         {/* Caso 2: Tengo filtros, pero no hay resultados */}
-        {filterContent.length && !filterResults.length && 
+        {filterContent.length > 0 && !filterResults.length &&
         <div className="dashboard__notFoundText">
         <img src={notFound} alt="not found image"/>
         <h4>No hay resultados</h4>
@@ -215,7 +215,7 @@ function Dashboard(props) {
 
           <Link to={`/detail/${item._id}`} state={{ recipe: item }} className="no-link">
             <div className="recipeCard__list-item">
-              
+
               <div className="img">
                   <img alt={item.title} src={item.img} width="300px"></img>
               </div>
@@ -225,9 +225,7 @@ function Dashboard(props) {
               ))} */}
                 <h3>{item.title}</h3>
                 <p>Tipo: {item.type}</p>
-            </div>           
-            
-            
+            </div>
 
           </Link>
           <button onClick={() => deleteRecipe(item._id)} className="recipeCard__delete" ><FontAwesomeIcon icon={faXmark}/></button>

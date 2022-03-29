@@ -3,7 +3,7 @@ import { NavLink, useNavigate } from "react-router-dom";
 import { logoutUser } from "../../Context/actions";
 import { useAuthDispatch, useAuthState } from "../../Context/contexts";
 
-import icon from "../../assets/chef-icon.svg"
+import chef from "../../assets/chef-brown.png";
 import logo from "../../assets/LOGO-boilbook-blanco.png";
 import lang from "../../assets/eng-switch.png";
 
@@ -44,15 +44,14 @@ const NavbarTwo = () => {
 
           <div className="navbar__box2">
                   <NavLink className="navbar__box2-user" to="/dashboard">
-                    <img className="navbar__box2-user-img" src={icon}/>
+                    <img className="navbar__box2-user-img" src={chef}/>
                     <p className="navbar__box2-user-name">Chef {user.user}</p>
                   </NavLink>
 
               {/* <p>Bienvenida/o {user.user}</p> */}
               <div className="navbar__box2-logout">
-              <FontAwesomeIcon className="navbar__box2-logout-icon" icon={ faDoorOpen}/>
-                <NavLink onClick={handleLogout} className={({ isActive }) => (isActive ? "active" : "inactive")} to="/">
-                  Logout
+                <NavLink className="navbar__box2-logout-link" onClick={handleLogout} to="/">
+                | <FontAwesomeIcon className="navbar__box2-logout-icon" icon={ faDoorOpen}/><span className="logout-hover"> Logout</span>
                 </NavLink>
               </div>
           </div>
@@ -73,8 +72,8 @@ const NavbarTwo = () => {
             </NavLink>
           </div>
 
-          <div className="navbar__box2-log">
-            <NavLink onClick={handleLogout} className={({ isActive }) => (isActive ? "active" : "inactive")} to="/login">
+          <div className="navbar__box2-login">
+            <NavLink className="navbar__box2-login-link" to="/login">
                   Login
             </NavLink>
           </div>

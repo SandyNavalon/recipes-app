@@ -7,6 +7,7 @@
     flex-direction: column;
     align-items: center;
     color: white;
+
 }
 
 .footer__center{
@@ -21,13 +22,7 @@
 .title{
     font-weight: bold;
 }
-.footer .footer__logo{
 
-}
-
-.footer__logo .logo__container{
-
-}
 .logo__container .container__logo-img{
     width: 150px;
 }
@@ -41,9 +36,7 @@
     justify-content: space-between;
     width: 65%;
 }
-.footer__info .info__creators{
 
-}
 .footer__info .info__apps{
     display: flex;
     flex-wrap: wrap;
@@ -58,9 +51,12 @@
     margin-bottom: 18px;
 }
 
-.footer__info .info__gratitude{
+.footer__info{
 
-}
-.info__gratitude{
-
+    @include mobile{
+        align-items: center;
+        p{
+            text-align: center;
+        }
+    }
 }
