@@ -56,12 +56,16 @@ function Dashboard(props) {
   const updateSearchFilter = (arrayOfIngredients) => {
 
     const results = arrayOfIngredients.reduce((acc, curr, index) => {
-
+      //en la primera iteracion filtras sobre todas las recetas y esto
+      //pasa a ser acc
       if (!index.length) {
         return user.recipes.filter((recipe) => recipe.ingredients.includes(curr));
+        //si no es la primera iteracion filtras sobre acc.
+        //y devuelves valores que pasarán a su vez a aser acc
       } else {
         return acc.filter((recipe) => recipe.ingredients.includes(curr));
       }
+      //en array vacío mostrará el resultado final
     }, []);
     setFilterContent(arrayOfIngredients);
     setFilterResults(results)

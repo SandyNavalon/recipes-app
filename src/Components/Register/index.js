@@ -68,7 +68,7 @@ function RegisterUser({handleSubmit}) {
                     />
                     {formik.touched.email && formik.errors.email ? (
                         <div>
-                            <p>{formik.errors.email}</p>
+                            <p className="error">{formik.errors.email}</p>
                         </div>
                     ) : null}
                 </div>
@@ -102,7 +102,7 @@ function RegisterUser({handleSubmit}) {
                     />
                     {formik.touched.password && formik.errors.password ? (
                         <div>
-                            <p>{formik.errors.password}</p>
+                            <p className="error">{formik.errors.password}</p>
                         </div>
                     ) : null}
                 </div>
@@ -121,7 +121,7 @@ function RegisterUser({handleSubmit}) {
                     />
                     {formik.touched.passwordVerification && formik.errors.passwordVerification ? (
                         <div>
-                            <p>{formik.errors.passwordVerification}</p>
+                            <p className="error">{formik.errors.passwordVerification}</p>
                         </div>
                     ) : null}
                 </div>

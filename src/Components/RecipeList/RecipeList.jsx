@@ -36,7 +36,7 @@ const RecipeList = () => {
                         <div className='img'>
                             <img alt={item.title} src={item.img}/>
                         </div>
-                        <h3>{item.title}</h3>
+                        <h4>{item.title}</h4>
                         <p>Tipo: {item.type}</p>
                         {/* <button>Preparar</button> */}
                     </Link>
