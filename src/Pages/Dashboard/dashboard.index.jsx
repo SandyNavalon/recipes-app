@@ -100,7 +100,7 @@ function Dashboard(props) {
     return (
       <>
         <div>
-          <h3>LISTA INGREDIENTES</h3>
+          <h4>LISTA INGREDIENTES</h4>
           <ul className="dashboard__recommender-list-select">
             {selectedIngredients.map((item) => (
               <li key={item}>
