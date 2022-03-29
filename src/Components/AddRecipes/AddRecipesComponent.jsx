@@ -121,7 +121,7 @@ const AddRecipe = ({ handleSubmit }) => {
               <button type="submit">Guardar receta</button>
 
           </form>
-          <div>
+          <div className="back">
           <button >
             <Link to="/dashboard/"><FontAwesomeIcon className="icon" icon={faAngleLeft} /></Link>
           </button>
