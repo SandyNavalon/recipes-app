@@ -88,7 +88,7 @@ function Dashboard(props) {
 
 
 
-  const deleteSeletedIngredients = (ingredients) => {
+  const deleteSelectedIngredients = (ingredients) => {
     const newIngredients = selectedIngredients.filter((i) => i !== ingredients);
     setSelectedIngredients(newIngredients);
     updateSearchFilter(newIngredients);
@@ -101,10 +101,10 @@ function Dashboard(props) {
       <>
         <div>
           <h3>LISTA INGREDIENTES</h3>
-          <ul>
+          <ul className="dashboard__recommender-list-select">
             {selectedIngredients.map((item) => (
               <li key={item}>
-                <span onClick={() => deleteSeletedIngredients(item)}><FontAwesomeIcon icon={faXmark}/> </span>
+                <span onClick={() => deleteSelectedIngredients(item)}><FontAwesomeIcon icon={faXmark}/> </span>
                 <span>{item}</span>
               </li>
             ))}
@@ -119,7 +119,7 @@ function Dashboard(props) {
 
     return (
       <>
-        <ul>
+        <ul className="dashboard__recommender-list-sugg">
           {suggestions.map((item, index) => (
             //al hacer click disparas la funcion de sugerencia seleccionada
             //que envia item que es un array de sugerencias
