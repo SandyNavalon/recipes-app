@@ -50,9 +50,9 @@ const NavbarTwo = () => {
 
               {/* <p>Bienvenida/o {user.user}</p> */}
               <div className="navbar__box2-logout">
-              
+
                 <NavLink onClick={handleLogout} className={({ isActive }) => (isActive ? "active" : "inactive")} to="/">
-                 | <FontAwesomeIcon className="navbar__box2-logout-icon" icon={ faDoorOpen}/><span className="logout-hover"> Logout</span>
+                | <FontAwesomeIcon className="navbar__box2-logout-icon" icon={ faDoorOpen}/><span className="logout-hover"> Logout</span>
                 </NavLink>
               </div>
           </div>
@@ -73,8 +73,8 @@ const NavbarTwo = () => {
             </NavLink>
           </div>
 
-          <div className="navbar__box2-log">
-            <NavLink onClick={handleLogout}  to="/login">
+          <div className="navbar__box2-login">
+            <NavLink className="navbar__box2-login-link" to="/login">
                   Login
             </NavLink>
           </div>
