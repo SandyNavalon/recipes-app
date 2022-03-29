@@ -3,9 +3,9 @@
 @use '../../Styles/' as *;
 .container{
     display: flex;
-    align-items: center; 
+    align-items: center;
     flex-wrap: wrap;
-    
+
 }
 
 .dashboard{
@@ -28,8 +28,10 @@
 
     &__user {
         text-transform: capitalize;
+        margin-left: 40px;
 
-        &-btn{ @include  button;
+        &-btn{
+            @include  button;
             border: 0;
             background-color: $btn-principal;
             padding: 10px;
@@ -43,7 +45,7 @@
         border-radius: 10px 10px 10px 10px;
         box-shadow: 0px 0px 35px 0px rgba(0,0,0,0.3);
         margin-top: 30px;
-        margin-right: 20px;
+        margin-right: 30px;
 
         &-ingredients{
             display: flex;
@@ -91,7 +93,6 @@
                 align-items: center;
 
                 img{
-                    
                     width: 200px;
                 }
             }
@@ -103,8 +104,7 @@
     flex-direction: row;
     flex-wrap: wrap;
     text-decoration: none;
-        
-    
+
          &__list{
              display: flex;
              flex-wrap: wrap;
@@ -185,7 +185,7 @@
     text-decoration: none;
     color: inherit;
     }
-    
+
 
 
 @media only screen and (max-width: 600px) {
@@ -201,6 +201,11 @@
 
     &__user {
         text-align: center;
+        margin: 0;
+    }
+
+    &__recommender{
+        margin-right: 0;
     }
 
 }
