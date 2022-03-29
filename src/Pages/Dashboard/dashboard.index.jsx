@@ -167,7 +167,7 @@ function Dashboard(props) {
 
 {/**LISTA DE RECETAS */}
         <div className="dashboard__recipeTitle">
-          <h2>¿Qué tal algo de ésto?</h2>
+          <h2>¿Qué tal algo de esto?</h2>
         </div>
 
 
@@ -184,7 +184,7 @@ function Dashboard(props) {
                   <div className="img">
                       <img alt={item.title} src={item.img} ></img>
                   </div>
-                  <h3 className="no-link">{item.title}</h3>
+                  <h4 className="no-link">{item.title}</h4>
                   <h4 className="no-link">ingredientes</h4>
                   {item.ingredients.map((item, index) => (
                     <p key={index.toString()} className="no-link">{item}</p>
@@ -210,7 +210,7 @@ function Dashboard(props) {
 
 
         {/* Caso 1: No tengo filtros, por lo tanto muestro todas las recetas */}
-        {!filterContent.length && recipes.map((item) => (
+        {!filterContent.length  && recipes.map((item) => (
         <div key={item._id} className="recipeCard__list">
 
           <Link to={`/detail/${item._id}`} state={{ recipe: item }} className="no-link">
@@ -223,7 +223,7 @@ function Dashboard(props) {
               {item.ingredients.map((item, index) => (
                 <p key={index.toString()}>{item}</p>
               ))} */}
-                <h3>{item.title}</h3>
+                <h4>{item.title}</h4>
                 <p>Tipo: {item.type}</p>
             </div>
 
