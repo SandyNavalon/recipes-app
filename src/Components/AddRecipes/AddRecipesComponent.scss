@@ -45,6 +45,9 @@
     select {
         cursor: pointer;
         width: 200px;
+        height: 30px;
+        padding: 7px;
+
     }
 
     button{
@@ -66,5 +69,4 @@
         @include button-active;
     }
 
- 
 }
