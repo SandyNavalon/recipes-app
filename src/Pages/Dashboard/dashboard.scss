@@ -29,12 +29,15 @@
     &__user {
         text-transform: capitalize;
         margin-left: 40px;
+        font-size: 25px;
 
         &-btn{
             @include  button;
+            width: 200px;
             border: 0;
             background-color: $btn-principal;
             padding: 10px;
+            font-size: 18px;
 
         }
     }

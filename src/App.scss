@@ -1,4 +1,5 @@
 @use './Styles/' as *;
+
 body{
     font-family: $font-family;
     color: $btn-principal;
@@ -16,5 +17,5 @@ body{
     }
 }
 .footer {
-    margin-top:100px;
+    margin-top: 100px;
 }
