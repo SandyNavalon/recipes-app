@@ -37,7 +37,7 @@ const NavbarOne = () => {
                       <NavLink to="#">Nosotros</NavLink>
                     </div>
                 </div>
-        
+
                 <div className="navbarOne__col2">
                   <div className="navbarOne__col2-items">
                     <div className="navbarOne__col2-user">
@@ -45,14 +45,14 @@ const NavbarOne = () => {
                       <NavLink to="/dashboard" className="navbarOne__col2-link"><p > Chef {user.user}  </p></NavLink>
                     </div>
                     <NavLink onClick={handleLogout} className="navbarOne__col2-link" to="/">
-                       <p>| Logout</p>
+                      <p>| Logout</p>
                     </NavLink>
                 </div>
-                  
-               </div> 
+
+              </div>
             </div>
         {/**fila2 */}
-        
+
             <div className="navbarOne__row2">
                 <img src={logo} alt="logo"></img>
                 <h1>LA COCINA DE L@S MAL@S COCINER@S</h1>
@@ -75,8 +75,8 @@ const NavbarOne = () => {
 
         <div className="navbarOne__col2">
           <div><p></p></div>
-          
-       </div> 
+
+      </div>
     </div>
 {/**fila2 */}
 

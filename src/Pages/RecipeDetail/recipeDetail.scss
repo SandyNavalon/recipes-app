@@ -25,8 +25,7 @@
         align-items: center;
         width: 100%;
         max-width: 1280px;
-        
-        
+
         //gap: 50px;
 
         @include mobile{
@@ -75,7 +74,7 @@
             align-items: center;
             max-width: 1280px;
             width: 100%;
-            
+
 
             @include tablet{
                 max-width: 600px;
@@ -83,8 +82,8 @@
             }
 
             @include mobile{
-               max-width: 400px;
-               width:100%;
+                max-width: 400px;
+                width:100%;
             }
 
 
@@ -102,9 +101,9 @@
                 }
 
                 @include button;
-                width: 30px;
-                height: 30px;
-                border-radius: 15px;
+                width: 40px;
+                height: 40px;
+                border-radius: 20px;
                 border: none;
             }
 

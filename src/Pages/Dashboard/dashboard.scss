@@ -57,12 +57,31 @@
             border-radius: 5px;
             padding: 10px;
         }
+
+        &-list{
+            &-sugg{
+                li{
+                    cursor: pointer;
+                    list-style: none;
+                }
+                li:hover{
+                    font-weight: bold;
+                }
+            }
+
+            &-select{
+                cursor: pointer;
+                list-style: none;
+            }
+
+
+        }
     }
     &__recipeTitle{
         text-align: center ;
         margin-top: 40px;
             }
-    
+
             &__notFoundText{
                 display: flex;
                 width: 100%;
@@ -96,11 +115,11 @@
              justify-content: center;
              position: relative;
 
-         }
-    
-          &__list-item{ @include card;
-            
-    
+        }
+        &__list-item{
+            @include card;
+
+
                 .img {
                 align-self: center;
                 width:235px;
@@ -113,12 +132,9 @@
                     }
                 }
 
-               
+        }
 
-               
-          }
-    
-          &__list-item:hover{
+        &__list-item:hover{
             z-index: 100;
             animation: scale .4s linear;
             animation-fill-mode: forwards;
@@ -142,7 +158,6 @@
             100% {
                 -webkit-transform: scale(1.1);
                 transform: scale(1.1);
-                
             }
         }
 
@@ -159,17 +174,13 @@
             @include mobile{
                 left:350px
             }
-            
         }
 
         &__delete:hover{
-           
                 background-color: $btn-second;
-            
         }
     }
 
-    
 .no-link {
     text-decoration: none;
     color: inherit;
@@ -177,11 +188,10 @@
     
 
 
- @media only screen and (max-width: 600px) {
+@media only screen and (max-width: 600px) {
 .dashboard{
-    
+
     &__row1{
-     
         display: flex;
         flex-direction: row;
         justify-content: center;
