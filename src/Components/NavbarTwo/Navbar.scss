@@ -1,18 +1,5 @@
 @use '../../Styles/' as *;
 
-.active {
-    color: white;
-    font-weight: 500;
-    text-decoration: none;
-    text-align: center;
-    font-family: $font-family;
-}
-
-.inactive {
-    color: white;
-    text-decoration: none;
-}
-
 .navbar {
     top: 0;
     height: 300px;
@@ -130,17 +117,20 @@
             display: flex;
             align-items: center;
 
+            &-link{
+                text-decoration: none;
+
+                color: $brown;
+            }
+            &-link:hover{
+                color: $btn-second;
+            }
 
             .logout-hover{
 
                 @include mobile{
                     display: none;
                 }
-
-                .logout-hover:hover{
-                    color:$btn-second;
-                }
-
             }
 
 
@@ -153,10 +143,6 @@
                 color:$btn-second;
 
             }
-        }
-
-        &-logout:hover{
-            color:chocolate;
         }
 
         &-login{
